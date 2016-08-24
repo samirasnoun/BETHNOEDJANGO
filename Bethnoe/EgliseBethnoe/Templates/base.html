@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html> 
+
+	<head>
+
+	
+		<title>{% block title %}{% endblock %}</title>
+		
+      <meta charset="utf-8">      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">      
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="{% static 'theme.css'   %}" type="text/css" >
+      <link rel="stylesheet" href="{% static 'bootstrap-overrides.css'   %}" type="text/css" >  
+           
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="{% static 'bootstrap.min.js' %}"></script>
+      <script src="{% static 'jquery.min.js' %}"></script>
+
+
+	</head>
+	
+
+
+  <body>
+
+  {% include "menu.html" %}
+
+
+
+	{% block content %}{% endblock %}
+
+
+	
+
+  </body>
+
+
+
+</html>
+
