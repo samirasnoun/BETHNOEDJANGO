@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap3_player.css">
     <link href="app.css" rel="stylesheet" />
 </head>
 
@@ -149,33 +151,41 @@
 
 
 
-        <div class="col-md-5">
+        <div class="col-md-8">
 
 
 
 
-        <audio src="hype_home.mp3" controls>Veuillez mettre à jour votre navigateur !</audio>
+        <audio controls
+          data-info-album-art="./img/chretiens-de-k.jpg"
+          data-info-album-title="8874"
+          data-info-artist="Iain Houston and Felix Gibbons"
+          data-info-title="BeBop Aliens"
+          data-info-label="Independent"
+          data-info-year="2005"
+          data-info-att="Music: Iain Houston and Felix Gibbons."
+          data-info-att-link="https://github.com/iainhouston">
+          <source src="./audios/BeBopAliens.ogg" type="audio/ogg" />
+          <source src="./audios/BeBopAliens.mp3" type="audio/mpeg" />
+          <a href="./audios/BeBopAliens.mp3">BeBopAliens</a>
+          An html5-capable browser is required to play this audio. 
+        </audio>
+
+        </div>
+
+        </div >
+
+        <div class="col-md-12">
+            
 
 
         </div>
 
-        </div>
 
 
 
 
 
-<div class="col-md-12">
-
-
-
-
-
-
-
-
-
-</div><!-- /.col-lg-6 -->
 <br>
 <br><br>
 <br>
@@ -191,33 +201,9 @@
 <br>
 <br>    
 
-<audio src="hype_home.mp3" controls>Veuillez mettre à jour votre navigateur !</audio>
 
 
 
-<video controls poster="sintel.jpg" width="600">
-    <source src="sintel.mp4">
-    <source src="sintel.webm">
-    <source src="sintel.ogv">
-</video>
-
-
-
-<div class="media">
-  <div class="media-left">
-    <a href="http://localhost:88/">
-      <img class="media-object" src="./images/logo.jpg" alt="logo">
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">Titre de la video</h4>
-    <video controls poster="./images/logo.jpg" width="600">
-    <source src="./videos/320x240.mp4">
-    <source src="sintel.webm">
-    <source src="sintel.ogv">
-</video>
-  </div>
-</div>
 
 
 </section>
@@ -243,6 +229,7 @@
     <script src="./Scripts/jquery.nanogallery.min.js"></script>
     <script src="scrolling.js"></script>
     <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="./js/bootstrap3_player.js"></script>
 
 </body>
 
