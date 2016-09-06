@@ -536,7 +536,7 @@ div#EspaceMembres {
 
 
 section.row.bibleenkabyle {
-    min-height: 400px;
+    min-height: 250px;
 }
 div#button-ecouterlabible-en-kabyle {
     float: right;
@@ -580,4 +580,11 @@ ul.pagination.pagination-lg.paging_amazigh {
 
 .row.chapitre-x {
     padding-left: 2%;
+}
+
+
+
+.col-md-6.text-center.cmd {
+    padding-top: 3Px;
+    margin-top: 14px;
 }
