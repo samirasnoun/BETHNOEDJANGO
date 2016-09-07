@@ -394,9 +394,16 @@ a#liens-detailles {
 }
 
 img#logo {
+   
     height: 70px;
-    padding-left: 10px;
+   padding-left: 10px;
     padding-right: 10px;
+}
+
+img#logo_header {
+    margin-top: 2px; 
+
+
 }
 
 
