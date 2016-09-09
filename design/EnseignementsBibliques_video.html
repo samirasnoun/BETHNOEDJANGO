@@ -3,7 +3,7 @@
     <head>  
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        {# <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> #}
         <link href="./Content/font-awesome.min.css" rel="stylesheet" />
         <link href="./Content/bootstrap.min.css" rel="stylesheet" />
         <link href="./Content/animate.css" rel="stylesheet" />
@@ -154,7 +154,7 @@
                     <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-3">
                         
 <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
- preload="auto" width="640" height="264" poster="./img/c-fruit.png"
+ preload="auto" max-width="604" max-height="auto" poster="./img/c-fruit.png"
  data-setup='{}'>
   <source src="/videos/320x240.mp4" type="video/mp4">
   <source src="really-cool-video.webm" type="video/webm">
@@ -270,10 +270,24 @@ Imusnawen di Bitelḥem
 
 
 
-                    
+
 
                     </div>
+                    </div>
 
+
+
+<br>
+<br>
+<br>
+
+fffffffffffffffffffff
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
                     <div class="col-md-12">
 
@@ -375,6 +389,18 @@ Imusnawen di Bitelḥem
                 <h1>FOOTER</h1>
             </div>
         </footer>
+
+
+        <script>
+videojs('really-cool-video', {}, function() {
+    var player = this;
+    player.relatedCarousel([
+      { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 1 title' },
+      { imageSrc: 'video2-image.jpg', url: '/video2-url.html', title: 'video 2 title' }
+    ]);
+});
+</script>
+
 
 
 
