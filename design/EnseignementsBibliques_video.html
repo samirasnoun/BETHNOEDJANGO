@@ -3,7 +3,7 @@
     <head>  
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        {# <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> #}
+         <link href='/css/fonts/videojs.relatedCarousel.css' rel='stylesheet' type='text/css'> 
         <link href="./Content/font-awesome.min.css" rel="stylesheet" />
         <link href="./Content/bootstrap.min.css" rel="stylesheet" />
         <link href="./Content/animate.css" rel="stylesheet" />
@@ -15,8 +15,15 @@
         <link href="app.css" rel="stylesheet" />
 
 
-        <link href="./css/video-js.min.css" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="./css/video-js.css" >
         <script src="./js/video.min.js"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="/css/videojs.relatedCarousel.css">
+        <script src="./js/videojs.relatedCarousel.js"> </script>
+
 
     </head>
 
@@ -143,6 +150,10 @@
 
                     <div class="col-md-12 text-center">
                     
+
+
+
+
                     <h4>Titre de la vidéo   </h4>
 
                     <br>
@@ -151,11 +162,12 @@
                         
                     </div>
 
-                    <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-3">
-                        
-<video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
- preload="auto" max-width="604" max-height="auto" poster="./img/c-fruit.png"
- data-setup='{}'>
+                    <div class="col-md-12 col-lg-12 text-center">
+
+                    
+                                        <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
+ preload="auto" width="500" max-height="500" poster="./img/c-fruit.png"
+ data-setup='{}' margin='auto'>
   <source src="/videos/320x240.mp4" type="video/mp4">
   <source src="really-cool-video.webm" type="video/webm">
 320x240.ogg
@@ -166,6 +178,10 @@
     that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
   </p>
 </video>
+                         
+
+
+
                     </div>
 
                     <div class="col-md-12">
@@ -396,7 +412,7 @@ videojs('really-cool-video', {}, function() {
     var player = this;
     player.relatedCarousel([
       { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 1 title' },
-      { imageSrc: 'video2-image.jpg', url: '/video2-url.html', title: 'video 2 title' }
+      { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 2 title' }
     ]);
 });
 </script>
