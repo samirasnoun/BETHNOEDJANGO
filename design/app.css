@@ -597,6 +597,9 @@ ul.pagination.pagination-lg.paging_amazigh {
 }
 
 
-/*div#really-cool-video {
-    margin: auto;
-}*/
+
+
+
+audio#audio_lecteur {
+    width: 60%;
+}
