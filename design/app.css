@@ -603,3 +603,7 @@ ul.pagination.pagination-lg.paging_amazigh {
 audio#audio_lecteur {
     width: 60%;
 }
+
+.col-md-12.pave1 {
+    margin-bottom: 20px;
+}
