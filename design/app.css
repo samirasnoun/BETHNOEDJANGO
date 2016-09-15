@@ -1,4 +1,4 @@
-﻿body {
+body {
     position: relative;
     font-family: 'Open Sans', sans-serif;
     /*padding-top: 110px;*/
@@ -13,6 +13,12 @@
   scrollbar-shadow-color: #C0C0C0;
   scrollbar-dark-shadow-color: #C0C0C0;
 
+
+}
+
+a#contact_us:active {
+    background: #337ab7;
+    border-radius: 8px;
 }
 
 .navbar {
@@ -607,5 +613,11 @@ audio#audio_lecteur {
 }
 
 .col-md-12.pave1 {
+    background: red
     margin-bottom: 20px;
+}
+
+
+.up-button {
+    text-align: right;
 }

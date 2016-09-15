@@ -18,6 +18,13 @@ $(function () {
         event.preventDefault();
     });
 
+
+    $('nav a, .down-button2 a').bind('click', function () {
+        $('html, body').stop().animate({
+            scrollTop: $($(this).attr('href')).offset().top + 300
+        }, 3500, 'easeInOutExpo');
+        event.preventDefault();
+    });
     // initialize WOW for element animation
     new WOW().init();
 
