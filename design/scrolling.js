@@ -21,8 +21,8 @@ $(function () {
 
     $('nav a, .down-button2 a').bind('click', function () {
         $('html, body').stop().animate({
-            scrollTop: $($(this).attr('href')).offset().top + 300
-        }, 3500, 'easeInOutExpo');
+            scrollTop: $($(this).attr('href')).offset().top + 400
+        }, 2500, 'easeInOutExpo');
         event.preventDefault();
     });
     // initialize WOW for element animation

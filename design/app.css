@@ -16,7 +16,7 @@ body {
 
 }
 
-a#contact_us:active {
+a#contact_us:active, a#contact_us:focus,a#contact_us:hover {
     background: #337ab7;
     border-radius: 8px;
 }
