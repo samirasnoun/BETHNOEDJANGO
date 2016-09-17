@@ -19,12 +19,24 @@ $(function () {
     });
 
 
-    $('nav a, .down-button2 a').bind('click', function () {
+    $('.down-button2 a').bind('click', function () {
         $('html, body').stop().animate({
             scrollTop: $($(this).attr('href')).offset().top + 400
-        }, 2500, 'easeInOutExpo');
+        }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+
+
+
+    $('.bouton_top a' ).bind('click', function () {
+        $('html, body').stop().animate({
+            scrollTop: $($(this).attr('href')).offset().top + 3000
+        }, 250, 'easeOutElastic');
+        event.preventDefault();
+    });
+
+
+
     // initialize WOW for element animation
     new WOW().init();
 
