@@ -120,9 +120,10 @@ USE_TZ = True
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
-STATIC_URL = '/static/'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 
@@ -131,8 +132,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "js"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "css"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "fonts"),
+    os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "Scripts"),
+     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "img"),
 
 
 )
 
-print os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "js")
