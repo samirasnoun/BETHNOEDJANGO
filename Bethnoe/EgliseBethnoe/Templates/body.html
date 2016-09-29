@@ -1,11 +1,15 @@
 
-
+{% load staticfiles %}
 <div class="container-fluid">
 
     <section class="row title-row">
         <div class="fill-screen" >
 
-            <img class="img-responsive title-image" src="./media/yvoire-eglise-croix.jpg" alt="Rocky Mountain Outdoors Logo" />
+            <!--img class="img-responsive title-image" src="./media/yvoire-eglise-croix.jpg" alt="Rocky Mountain Outdoors Logo" /-->
+
+            <img class="img-responsive title-image" src="{% static image.get__absolute_url %}" alt="Rocky Mountain Outdoors Logo" />
+
+
 
             <div class="down-button">
                 <a class="btn" href="#EgliseBethnoe">
