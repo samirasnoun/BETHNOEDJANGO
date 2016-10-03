@@ -2,12 +2,14 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, Adresse, TextDirigentEgliseBethnoe
+from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe
 
 def IndexView(request):
     images_context = []
     try:
-        images = FondEcran.objects.all()        
+        images = FondEcran.objects.all()   
+        for m in images:
+            images_context.append(m)     
         #chantiers = get_list_or_404(Chantier)
     except Image.DoesNotExist:
         raise Http404
@@ -31,7 +33,7 @@ def IndexView(request):
 
     adresses  =[]
     try:
-        adress = Adresse.objects.all()       
+        adress = AdresseSimple.objects.all()       
         for a in adress:
             adresses.append(a)
     except Exception as e:
@@ -46,4 +48,10 @@ def IndexView(request):
         raise e    
 
 
-    return render_to_response('index.html', {"image": images[0], "images_carrousel": images_carrousel, "dirigents_eglise": dirigents_eglise, "adresses": adresses[0], "presentation_equipe_dirigente": presentation_equipe_dirigente[0] } )
+    return render_to_response('index.html', 
+        {"fond1": images_context[1], 
+        "fond2": images_context[0] , 
+        "images_carrousel": images_carrousel, 
+        "dirigents_eglise": dirigents_eglise, 
+        "adresses": adresses[0], 
+        "presentation_equipe_dirigente": presentation_equipe_dirigente[0] } )

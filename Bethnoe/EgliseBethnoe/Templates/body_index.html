@@ -7,7 +7,7 @@
 
             <!--img class="img-responsive title-image" src="./media/yvoire-eglise-croix.jpg" alt="Rocky Mountain Outdoors Logo" /-->
 
-            <img class="img-responsive title-image" src="{% static image.get__absolute_url %}" alt="Rocky Mountain Outdoors Logo" />
+            <img class="img-responsive title-image" src="{% static fond1.get__absolute_url %}" alt="Rocky Mountain Outdoors Logo" />
 
 
 
@@ -171,7 +171,7 @@
     
 
     <section class="row">
-        <div class="fill-screen fixed-attachment" style="background-image: url(./media/snowboarder.jpg)">
+        <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
         </div>
     </section>
 
@@ -182,8 +182,8 @@
     <section id="contact-us" class="row contact-us wow fadeInDown">
         <h1>Contactez nous</h1>
         <h3>{{adresses.num_rue}} {{adresses.type_rue}} {{adresses.nom_rue}} </h3>
-        <p> {{adresses.get_ville_display }} {{adresses.ville}}</p>
-        <p>{{adresses.get_code_dep_display }} {{adresses.code_dep}}</p>
+        <p> {{adresses.code_postale }} {{adresses.ville}}</p>
+        <p>{{adresses.pays }} </p>
        
     </section>
 

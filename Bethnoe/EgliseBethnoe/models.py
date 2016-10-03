@@ -30,6 +30,9 @@ class FondEcran(Image):
     )
     afficher = models.CharField(max_length=3, choices=AFFI_PAGE_ACCUEIL, default='oui')
     caption = models.CharField(max_length=250, blank=True)
+    class Meta:
+        verbose_name = "Fond d ecran"
+        verbose_name_plural = "Fonds d ecrans"
 
 
 class ImageCarrousel(Image):
@@ -74,7 +77,21 @@ class Adresse(models.Model):
         verbose_name_plural = "Adresse de contact de l eglise"
 
     
+class AdresseSimple(models.Model):
+    num_rue = models.IntegerField(blank=True)
+    TYPE_RUE = (
+                ('Bd', 'Boulevard'),
+                ('R.', 'Rue'),
+    ) 
+    type_rue = models.CharField(max_length=2, choices=TYPE_RUE, default='R.')
+    nom_rue = models.CharField(max_length=150, blank=True)
+    ville = models.CharField(max_length=150, blank=True)
+    code_postale = models.CharField(max_length=150, default='75')
+    pays = models.CharField(max_length=150, default='France')
 
+    class Meta:
+        verbose_name = "Adresse de contact de l eglise"
+        verbose_name_plural = "Adresse de contact de l eglise"
 
 class Annonce(models.Model):
     """docstring for Annonce"""
