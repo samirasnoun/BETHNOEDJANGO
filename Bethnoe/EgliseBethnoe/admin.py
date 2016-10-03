@@ -26,6 +26,12 @@ class DirigentEgliseBethnoe(admin.ModelAdmin):
 class Adresse(admin.ModelAdmin):
 	list_display = ('num_rue', 'type_rue', 'nom_rue', 'code_dep', 'ville' )
 
+@admin.register(TextDirigentEgliseBethnoe)
+class ClassName(admin.ModelAdmin):
+	list_display =('titre','texte')
+
+
+
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}

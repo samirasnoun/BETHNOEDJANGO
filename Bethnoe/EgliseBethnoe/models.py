@@ -53,6 +53,10 @@ class DirigentEgliseBethnoe(models.Model):
     role = models.CharField(max_length=250, blank=True)
 
 
+class TextDirigentEgliseBethnoe(models.Model):
+    titre = models.CharField(max_length=50, blank=True)
+    texte = models.CharField(max_length=250, blank=True)
+
 
 class Adresse(models.Model):
     num_rue = models.IntegerField(blank=True)
@@ -66,8 +70,8 @@ class Adresse(models.Model):
     code_dep = models.CharField(max_length=150, choices=data.CODE_DEP_FRANCE, default='75')
 
     class Meta:
-        verbose_name = "Adresse de France"
-        verbose_name_plural = "Adresses de France"
+        verbose_name = "Adresse de contact de l eglise"
+        verbose_name_plural = "Adresse de contact de l eglise"
 
     
 

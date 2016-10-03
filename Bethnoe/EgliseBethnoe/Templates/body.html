@@ -134,9 +134,9 @@
 
 
     <section id="sights" class="row text-banner">
-        <h3 id="equipe">Equipe dirigente</h3>
+        <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>{{presentation_equipe_dirigente.texte}}</p>
 
         <section id="activities" class="row activity-section">
 
@@ -180,11 +180,11 @@
 
 
     <section id="contact-us" class="row contact-us wow fadeInDown">
-        <h1>CONTACT US</h1>
-        <h3>Somewhere in Colorado</h3>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
-        <p>Lorem ipsum dolor sit amet</p>
+        <h1>Contactez nous</h1>
+        <h3>{{adresses.num_rue}} {{adresses.type_rue}} {{adresses.nom_rue}} </h3>
+        <p> {{adresses.get_ville_display }} {{adresses.ville}}</p>
+        <p>{{adresses.get_code_dep_display }} {{adresses.code_dep}}</p>
+       
     </section>
 
 
