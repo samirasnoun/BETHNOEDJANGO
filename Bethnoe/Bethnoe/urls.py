@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-   
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),  
 
 
 
