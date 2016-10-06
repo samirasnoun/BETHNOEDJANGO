@@ -20,6 +20,8 @@ class ChapitreBible(models.Model):
         ('AC', 'Ancien Testament'),
         )
 	type_na = models.CharField(max_length=2, choices=ANCIEN_NOUVEAU, default='nv')
+                    
+
 	def __unicode__(self):
 		return self.titre  
 	def __str__(self):

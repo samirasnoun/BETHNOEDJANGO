@@ -33,14 +33,14 @@ a#contact_us:active, a#contact_us:focus,a#contact_us:hover {
     .navbar-header {
         position: relative;
     }
-    .navbar img {
+/*    .navbar img {
         position: absolute;
         top: 0;
         bottom: 0;
         margin: auto;
        /* width: 70%;*/
         max-width: 40px;
-    }
+    }*/
 }
 
 
