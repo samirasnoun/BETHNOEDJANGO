@@ -1,6 +1,4 @@
-
-{% load staticfiles %}
-
+{% load staticfiles %} 
 
 <div class="container-fluid">
 
@@ -11,8 +9,6 @@
 
             <img class="img-responsive title-image" src="{% static fond1.get__absolute_url %}" alt="Rocky Mountain Outdoors Logo" />
 
-
-
             <div class="down-button">
                 <a class="btn" href="#EgliseBethnoe">
                     <i class="fa fa-arrow-circle-down fa-4x"></i>
@@ -20,30 +16,14 @@
             </div>
         </div>
     </section>
+
     <br>
     <br>
     <br>
-
-
-
+    
     <section id="EgliseBethnoe" class="row fadeInUp egliseb">
 
-
-
-
-        
-
-
-
-        
-
-
         <!-- use jssor.slider.debug.js instead for debug -->
-
-
-
-
-
 
         <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden; visibility: hidden;">
             <!-- Loading Screen -->
@@ -53,13 +33,9 @@
                 <div style="position:absolute;display:block;background:url('media/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
             </div>
 
-
-
-                      
-
             <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
 
-            {% for image in images_carrousel  %}
+                {% for image in images_carrousel  %}
 
                 <div data-p="225.00" style="display:none;">
                     <img data-u="image" src="{% static image.get__absolute_url %}" />
@@ -69,11 +45,9 @@
                     <div style="position: absolute; top: 300px; left: 30px; width: 480px; height: 120px; font-size: 30px; color: #ffffff; line-height: 38px;">{{ image.caption }}
                     </div>
 
-
-
                 </div>
 
-            {% endfor %}
+                {% endfor %}
 
                 <div data-p="225.00" style="display: none;">
                     <img data-u="image" src="media/purple.jpg" />
@@ -90,9 +64,6 @@
                 
             </div> 
 
-
-
-
             <!-- Bullet Navigator -->
 
             <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
@@ -103,8 +74,6 @@
 
 
             </div>
-
-
 
             <!-- Arrow Navigator -->
             <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2">
@@ -123,26 +92,19 @@
             
         </div>
 
-
         <!-- #endregion Jssor Slider End -->
-
 
     </section>
 
-
-
-
-
-
-
     <section id="sights" class="row text-banner">
+
         <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
 
         <p>{{presentation_equipe_dirigente.texte}}</p>
 
         <section id="activities" class="row activity-section">
 
-        {%for dirigent in dirigents_eglise %}
+            {%for dirigent in dirigents_eglise %}
             
 
             <div class="activity-element col-md-4 wow fadeInLeft">
@@ -151,9 +113,7 @@
                 <p>{{dirigent.role}}</p>
             </div> 
 
-        {%endfor%}
-
-
+            {%endfor%}
 
             <div class="activity-element col-md-1 col-md-offset-11 wow fadeInLeft animated animated down-button2" id="bouton_down">
 
@@ -165,35 +125,17 @@
 
     </section>
 
-
-
-
-
-
-    
-
     <section class="row">
         <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
         </div>
     </section>
-
-
-
-
 
     <section id="contact-us" class="row contact-us wow fadeInDown">
         <h1>Contactez nous</h1>
         <h3>{{adresses.num_rue}} {{adresses.type_rue}} {{adresses.nom_rue}} </h3>
         <p> {{adresses.code_postale }} {{adresses.ville}}</p>
         <p>{{adresses.pays }} </p>
-       
+
     </section>
 
-
 </div>
-
-
-
-
-
-

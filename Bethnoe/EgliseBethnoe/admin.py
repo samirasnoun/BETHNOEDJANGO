@@ -22,8 +22,6 @@ class ImageCarrousel(admin.ModelAdmin):
 class DirigentEgliseBethnoe(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'mail', 'role')
 
-
-
 @admin.register(AdresseSimple)
 class AdresseSimple(admin.ModelAdmin):
 	list_display = ('num_rue', 'type_rue', 'nom_rue', 'code_postale', 'ville' , 'pays')
@@ -31,9 +29,3 @@ class AdresseSimple(admin.ModelAdmin):
 @admin.register(TextDirigentEgliseBethnoe)
 class ClassName(admin.ModelAdmin):
 	list_display =('titre','texte')
-
-
-
-
-
-

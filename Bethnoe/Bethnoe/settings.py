@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 """
 Django settings for Bethnoe project.
 
@@ -33,6 +34,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,13 +48,16 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'Bethnoe.urls'
@@ -116,6 +121,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('fr', 'Français'),
+   
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+print(LOCALE_PATHS)
+
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -138,18 +155,15 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 
 STATICFILES_DIRS = (
+
     os.path.join(BASE_DIR , "media"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "js"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "css"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "fonts"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "Scripts"),
-     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "img"),
-
-
+    os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "img"),
+    
 )
-
-
-
 
 CKEDITOR_JQUERY_URL = 'http://127.0.0.1:8000/static/jquery-2.1.1.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"

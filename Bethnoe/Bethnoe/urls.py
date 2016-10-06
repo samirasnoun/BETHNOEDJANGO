@@ -26,6 +26,7 @@ urlpatterns = [
 
 
     url(r'^', include('EgliseBethnoe.urls', namespace='EgliseBethnoe')),
+    url(r'^', include('BibleEnKabyle.urls', namespace='BibleEnKabyle')),
 
 
 
