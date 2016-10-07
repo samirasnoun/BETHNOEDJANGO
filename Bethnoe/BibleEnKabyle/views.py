@@ -2,23 +2,35 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from models import  ChapitreBible , LivreBible
+from models import  ChapitreBible , LivreBible, Chapitre , Livre
 
-livres_avec_chapitres = {}
+livres_avec_chapitres_left, livres_avec_chapitres_right = {}, {}
 
-livres = []
 def BibleEnKabyleView(request):
-	livs = LivreBible.objects.all()
-	for liv in livs :
-		print ";;;;;;;;;;;;;;"
-		print liv.titre
-		chap = ChapitreBible.objects.filter(livre=liv)
+	livs_right = LivreBible.objects.filter(type_na='NV')
+	for liv in livs_right :
+		print "right :" + liv.titre
+		chap_r = ChapitreBible.objects.filter(livre=liv)
 		cc = []
-		livres.append(liv)
-		for c in chap:
+		for c in chap_r:
 			cc.append(c)
-			print c.id
-		livres_avec_chapitres[liv] = cc
+		livres_avec_chapitres_right[liv] = cc
 
-	print "test"
-	return render_to_response('BibleEnKabyle.html' , { "livres_avec_chapitres": livres_avec_chapitres, "livres": livres } )
+
+
+	livs_left = LivreBible.objects.filter(type_na='AC')
+	for liv_l in livs_left :
+		print "left :" + liv_l.titre
+		chap_l = ChapitreBible.objects.filter(livre=liv_l)
+		cc_l = []
+		for c_l in chap_l:
+			cc_l.append(c_l)
+		livres_avec_chapitres_left[liv_l] = cc_l
+
+
+
+	return render_to_response('BibleEnKabyle.html' , { 
+		"livres_avec_chapitres_right": livres_avec_chapitres_right, 
+		"livres_avec_chapitres_left": livres_avec_chapitres_left, 
+		 } )
+

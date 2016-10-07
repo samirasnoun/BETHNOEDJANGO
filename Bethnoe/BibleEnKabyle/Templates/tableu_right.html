@@ -1,88 +1,58 @@
-      <div class="col-md-6">  <!--******************** moitié tableau Principale -->
+      <div class="col-md-6  center-block">
+
         <h1> <span class="label label-default label-primary  center-block">Nouveau testament</span></h1>
         <br>
         <br>
+        {% for livre_r, chapitres_r in livres_avec_chapitres_right.items %}
+
         <div class="col-md-12">
 
           <div class="col-md-12">
-            <div class="col-md-12">
 
-              <h3>MATTHIEU<span class="label label-default"></span></h3>
-
-            </div>
-
-            <div class="list-group active col-md-10">
-              <a href="#" class="list-group-item">
-                Cras justo odio
-              </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
+            <h3><span class="label label-default">{{ livre_r.titre }}</span></h3>
 
           </div>
 
-
-          <div class="col-md-12">
-            <div class="col-md-12">
-
-              <h3>Example heading <span class="label label-default">New</span></h3>
-
-            </div>
-
-            <div class="list-group active col-md-10">
-              <a href="#" class="list-group-item">
-                Cras justo odio
-              </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
-
-          </div>
+          <div class="list-group active col-md-10">
 
 
-          <div class="col-md-12">
-            <div class="col-md-12">
 
-              <h3>Example heading <span class="label label-default">New</span></h3>
-
-            </div>
-
-            <div class="list-group active col-md-10">
-              <a href="#" class="list-group-item">
-                Cras justo odio
-              </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
-
-          </div>
+            {% for chapitre_r in chapitres_r %}
+            
 
 
-          <div class="col-md-12">
-            <div class="col-md-12">
 
-              <h3>Example heading <span class="label label-default">New</span></h3>
+            <a href="#" class="list-group-item">{{ chapitre_r.titre }}</a>
 
-            </div>
+       
 
-            <div class="list-group active col-md-10">
-              <a href="#" class="list-group-item">
-                Cras justo odio
-              </a>
-              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item">Morbi leo risus</a>
-              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item">Vestibulum at eros</a>
-            </div>
+            {% endfor %}
+
+
 
           </div>
 
         </div>
 
-      </div>  <!-- fin ******************** mitié tableau Principale -->
+        {% endfor %}
+
+                  <div class="col-md-12">
+            <div class="col-md-12">
+
+              <h3>Nouveau testament <span class="label label-default">Livre 1</span></h3>
+
+            </div>
+
+            <div class="list-group active col-md-10">
+              <a href="#" class="list-group-item">
+                Cras justo odio
+              </a>
+              <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+              <a href="#" class="list-group-item">Morbi leo risus</a>
+              <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+              <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
+
+          </div>
+
+      </div>

@@ -6,8 +6,16 @@ class ChapitreBibleInline(admin.TabularInline):
 
 @admin.register(LivreBible)
 class LivreBibleAdmin(admin.ModelAdmin):
-	list_display = ('titre',)
+	list_display = ('type_na' ,'titre',)
 
 @admin.register(ChapitreBible)
 class ChapitreBibleAdmin(admin.ModelAdmin):
-	list_display = ( 'type_na' ,'livre', 'titre' )
+	list_display = ( 'livre', 'titre' )
+
+# @admin.register(Livre)
+# class LivreBibleAdmin(admin.ModelAdmin):
+# 	list_display = ('type_na' , 'titre', )
+
+# @admin.register(Chapitre)
+# class ChapitreBibleAdmin(admin.ModelAdmin):
+# 	list_display = (  'titre' , )
