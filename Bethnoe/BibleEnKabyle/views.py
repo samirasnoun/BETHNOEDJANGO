@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from models import  ChapitreBible , LivreBible, Chapitre , Livre
+from models import  ChapitreBible , LivreBible
 
 livres_avec_chapitres_left, livres_avec_chapitres_right = {}, {}
 
@@ -16,8 +16,6 @@ def BibleEnKabyleView(request):
 			cc.append(c)
 		livres_avec_chapitres_right[liv] = cc
 
-
-
 	livs_left = LivreBible.objects.filter(type_na='AC')
 	for liv_l in livs_left :
 		print "left :" + liv_l.titre
@@ -27,10 +25,18 @@ def BibleEnKabyleView(request):
 			cc_l.append(c_l)
 		livres_avec_chapitres_left[liv_l] = cc_l
 
-
-
 	return render_to_response('BibleEnKabyle.html' , { 
 		"livres_avec_chapitres_right": livres_avec_chapitres_right, 
 		"livres_avec_chapitres_left": livres_avec_chapitres_left, 
 		 } )
 
+def BibleEnKabyleLectureView(request, slug):
+	print ChapitreBible.objects.filter(slug=slug)
+	print slug
+	print 'ee'
+
+	return render_to_response('BibleEnKabyle_lecture.html', {"chapitre": ChapitreBible.objects.filter(slug=slug),} )
+
+
+
+	

@@ -11,11 +11,5 @@ class LivreBibleAdmin(admin.ModelAdmin):
 @admin.register(ChapitreBible)
 class ChapitreBibleAdmin(admin.ModelAdmin):
 	list_display = ( 'livre', 'titre' )
+	prepopulated_fields = {"slug": ("titre",)}
 
-# @admin.register(Livre)
-# class LivreBibleAdmin(admin.ModelAdmin):
-# 	list_display = ('type_na' , 'titre', )
-
-# @admin.register(Chapitre)
-# class ChapitreBibleAdmin(admin.ModelAdmin):
-# 	list_display = (  'titre' , )
