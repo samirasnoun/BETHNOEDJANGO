@@ -31,11 +31,43 @@ def BibleEnKabyleView(request):
 		 } )
 
 def BibleEnKabyleLectureView(request, slug):
-	print ChapitreBible.objects.filter(slug=slug)
-	print slug
-	print 'ee'
+	res = ChapitreBible.objects.filter(slug=slug)
+	chapitres = []
+	for chapi in  res:
+		chapitres.append(chapi)
 
-	return render_to_response('BibleEnKabyle_lecture.html', {"chapitre": ChapitreBible.objects.filter(slug=slug),} )
+	res_all = ChapitreBible.objects.filter(livre=chapitres[0].livre)
+	chapitres_all = []
+	for chapi_a in  res_all:
+		chapitres_all.append(chapi_a)
+
+	current = chapitres_all.index(chapitres[0])
+	prec = ""
+	suiv = ""
+
+	if( current > 0 ):
+		prec = chapitres_all[current-1]
+
+	if( current+1 < len(chapitres_all) ):
+		suiv = chapitres_all[int(current+1)]
+
+	return render_to_response(
+		'BibleEnKabyle_lecture.html', 
+		{"chapitre": chapitres[0], 
+		"chapitres_all": chapitres_all, 
+		"current": current, 
+		"prec": prec,
+		"suiv": suiv, } 
+		)
+
+
+
+def BibleEnKabyleEcouteView(request, slug):
+
+	return render_to_response(
+		'BibleEnKabyle_ecoute.html', 
+
+		)
 
 
 

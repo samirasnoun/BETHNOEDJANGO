@@ -20,6 +20,7 @@ class ChapitreBible(models.Model):
 	titre = models.CharField(max_length=250, blank=True)
 	livre = models.ForeignKey(LivreBible, on_delete=models.CASCADE)
 	slug = models.SlugField(max_length=50, default="")
+	audio = models
 
 	def __unicode__(self):
 		return self.titre  

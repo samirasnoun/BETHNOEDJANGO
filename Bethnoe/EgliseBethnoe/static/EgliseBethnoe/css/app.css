@@ -621,3 +621,12 @@ audio#audio_lecteur {
 .up-button {
     text-align: right;
 }
+
+section.row.text_chapitre_bible {
+    min-height: 250px;
+}
+
+
+a#active {
+    background: gainsboro;
+}

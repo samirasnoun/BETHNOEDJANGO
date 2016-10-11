@@ -162,6 +162,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "fonts"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "Scripts"),
     os.path.join(BASE_DIR , "EgliseBethnoe", "static", "EgliseBethnoe", "img"),
+    os.path.join(BASE_DIR , "BibleEnKabyle", "static", "BibleEnKabyle", "js"),
+
+
     
 )
 
