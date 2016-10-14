@@ -7,6 +7,7 @@ class ChapitreBibleInline(admin.TabularInline):
 @admin.register(LivreBible)
 class LivreBibleAdmin(admin.ModelAdmin):
 	list_display = ('type_na' ,'titre',)
+	prepopulated_fields = {"slug": ("titre",)}
 
 @admin.register(ChapitreBible)
 class ChapitreBibleAdmin(admin.ModelAdmin):
