@@ -1,13 +1,21 @@
 # -*- coding: utf8 -*-
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
+from django.views.decorators.csrf import csrf_protect
 from django.http import Http404
 from django.http import HttpResponse
 from models import  ChapitreBible , LivreBible
 
 livres_avec_chapitres_left, livres_avec_chapitres_right = {}, {}
 
-def BibleEnKabyleView(request):
-	livs_right = LivreBible.objects.filter(type_na='NV')
+@csrf_protect
+def BibleEnKabyleView(request, ecoute_lecture):
+	if(request.method == 'POST'): 
+		livs_right = LivreBible.objects.filter(type_na='NV')
+	else :
+		livs_right = LivreBible.objects.filter(type_na='NV')
+
+
+	
 	for liv in livs_right :
 		print "right :" + liv.titre
 		chap_r = ChapitreBible.objects.filter(livre=liv)
@@ -24,10 +32,13 @@ def BibleEnKabyleView(request):
 		for c_l in chap_l:
 			cc_l.append(c_l)
 		livres_avec_chapitres_left[liv_l] = cc_l
+		if(ecoute_lecture=='lecture'):
+			ecoute_lecture = ''
 
-	return render_to_response('BibleEnKabyle.html' , { 
+	return render(request ,'BibleEnKabyle.html' , { 
 		"livres_avec_chapitres_right": livres_avec_chapitres_right, 
 		"livres_avec_chapitres_left": livres_avec_chapitres_left, 
+		"ecoute_lecture": ecoute_lecture,
 		 } )
 
 def BibleEnKabyleLectureView(request, slug):
@@ -57,15 +68,41 @@ def BibleEnKabyleLectureView(request, slug):
 		"chapitres_all": chapitres_all, 
 		"current": current, 
 		"prec": prec,
-		"suiv": suiv, } 
+		"suiv": suiv, 
+		} 
 		)
 
 
 
 def BibleEnKabyleEcouteView(request, slug):
+	chapitre_en_lecture = ChapitreBible.objects.get(slug=slug)
+
+	chapitres = list(ChapitreBible.objects.filter(livre=chapitre_en_lecture.livre))
+	# chapitre = []
+	# if len(chapitre_en_lecture) > 0 :	
+	#     for chapi_a in  chapitre_en_lecture:
+	# 	    chapitre.append(chapi_a)
+
+	current = chapitres.index(chapitre_en_lecture)
+	prec = ""
+	suiv = ""
+
+	if( current > 0 ):
+		prec = chapitres[current-1]
+
+	if( current+1 < len(chapitres) ):
+		suiv = chapitres[int(current+1)]
+
 
 	return render_to_response(
 		'BibleEnKabyle_ecoute.html', 
+		{ "chapitre": chapitre_en_lecture, 
+		"chapitres": chapitres, 
+		"current": current, 
+		"prec": prec,
+		"suiv": suiv, 
+
+		}
 
 		)
 

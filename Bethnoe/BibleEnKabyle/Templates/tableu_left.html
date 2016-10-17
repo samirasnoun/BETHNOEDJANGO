@@ -9,15 +9,23 @@
 
           <div class="col-md-12">
 
-            <h3><span class="label label-default">{{ livre_l.titre }}</span></h3>
+            <h3><span class="label label-default">{{ livre_l.titre|upper }}</span></h3>
 
           </div>
 
           <div class="list-group active col-md-10">
 
-            {% for chapitre_l in chapitres_l %}      
+            {% for chapitre_l in chapitres_l %}   
 
-            <a href="BibleEnKabyle_lecture/{{ chapitre_l.slug }}" class="list-group-item">{{ chapitre_l.titre }}</a>   
+            {% if not ecoute_lecture %}   
+
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre_l.slug %}" class="list-group-item">{{ chapitre_l.titre|upper }}</a>   
+
+            {% else %}
+
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre_l.slug %}" class="list-group-item">{{ chapitre_l.titre|upper }}</a>            
+
+            {% endif %}
 
             {% endfor %}
 

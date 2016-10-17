@@ -22,9 +22,6 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  
-
-
-
     url(r'^', include('EgliseBethnoe.urls', namespace='EgliseBethnoe')),
     url(r'^', include('BibleEnKabyle.urls', namespace='BibleEnKabyle')),
 

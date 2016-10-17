@@ -18,12 +18,16 @@
          <div class="row chapitre-x">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
 
-                <h3>Titre : <span class="label label-primary">{{chapitre.livre.titre}}</span></h3>
+                <h3>Titre : <span class="label label-primary">{{chapitre.livre.titre|upper}}</span></h3>
 
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <h3>Chapitre : <span class="label label-primary">{{chapitre.titre}}</span></h3>
+                <h3>Chapitre : 
+                <a  href="{% url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre.slug %}">
+                <span class="label label-primary">{{chapitre.titre|upper}}</span> 
+                </a>
+                </h3> 
             </div>
 
             <div class="col-md-6 text-center">
@@ -32,7 +36,7 @@
 
                                 
                 {% if prec %}
-                <li><a href="/BibleEnKabyle_lecture/{{ prec.slug }}">Précédent</a></li>
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=prec.slug %}">Précédent</a></li>
                 {% else %}
                 <li class="disabled"><a>Précédent</a></li>
                 {% endif %}
@@ -44,9 +48,9 @@
 
                 {% if forloop.counter0 == current %}            
 
-                <li><a href="/BibleEnKabyle_lecture/{{ chap.slug }}" id="active">{{forloop.counter0}}</a></li>                           
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chap.slug %}" id="active">{{forloop.counter0}}</a></li>                           
                 {% else %}
-                <li><a href="/BibleEnKabyle_lecture/{{ chap.slug }}">{{forloop.counter0}}</a></li>
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chap.slug %}">{{forloop.counter0}}</a></li>
                 {% endif %}
 
                 {% endfor %}
@@ -54,7 +58,7 @@
 
 
                 {% if suiv %}
-                <li><a href="/BibleEnKabyle_lecture/{{ suiv.slug }}">Suivant</a></li>
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=suiv.slug %}">Suivant</a></li>
                 {% else %}
                 <li class="disabled"><a>Suivant</li>
                 {% endif %}
