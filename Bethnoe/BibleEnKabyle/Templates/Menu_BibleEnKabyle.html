@@ -2,8 +2,15 @@
 
       <div class="col-md-6"> 
 
-        <h3>Lire la bible en <span class="label label-default">Kabyle</span></h3>
+      {% if ecoute_lecture %}
 
+        <h3>Ecouter la bible en <span class="label label-default">Kabyle</span></h3>
+
+{% else %}
+
+ <h3>Lire la bible en <span class="label label-default">Kabyle</span></h3>
+
+{% endif %}
       </div>
 
       <div class="col-md-3" id="button-ecouterlabible-en-kabyle">
@@ -15,10 +22,6 @@
            <button type="button"  class="btn btn-default btn-lg col-lg-12">
 
              {% endif %}
-
-
-
-
 
              Ecouter la bible en kabyle</button> </a>
 
@@ -33,7 +36,6 @@
               <button type="button" class="btn btn-default btn-lg col-lg-12 disabled">Lire la bible en kabyle</button>
               {%endif%}
 
-
             </a>
 
           </div>
@@ -47,36 +49,6 @@
           <br>
           <br>
           <p>
-            <div class="col-md-12">
-
-
-            <form action="{% url 'BibleEnKabyle:BibleEnKabyle' ecoute_lecture='lecture' %}" method="post">
-
-                <div class="col-md-4">
-                  <div class="input-group-lg">
-                    <input type="text" id ="id_text_recherche" name="text_recherche" class="form-control" placeholder="Saisir le nom ici ...">
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="input-group-button">
-                    <span class="input-group btn-group-lg">
-                      <!-- Forms  -->
-                      
-                      <button class="btn btn-primary" type="button submit">Rechercher</button>
-                      
-
-
-
-                    </span>
-                  </div>
-                </div><!-- /input-group -->
-                {% csrf_token %}
-              </form> 
-
-
-
-            </div><!-- /.col-lg-6 -->
 
             <br>
             <br><br>

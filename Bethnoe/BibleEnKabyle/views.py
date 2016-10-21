@@ -17,22 +17,10 @@ def BibleEnKabyleView(request, ecoute_lecture):
 		form = Recherche(request.POST)
 		if form.is_valid():
 			text_recherche = form.cleaned_data['text_recherche']
-			print "1 " + text_recherche
-		else:
-
-			print "2 " 
-			
-
-		
-		
 		livs_right = LivreBible.objects.filter(type_na='NV')
-		print "4 " + text_recherche
 	else :
-		print "3"
-		
 		livs_right = LivreBible.objects.filter(type_na='NV')
-
-
+		form = Recherche()
 	
 	for liv in livs_right :
 		print "right :" + liv.titre
@@ -44,9 +32,6 @@ def BibleEnKabyleView(request, ecoute_lecture):
 
 	livs_left = LivreBible.objects.filter(type_na='AC')
 
-
-	print "5 " + text_recherche
-	
 	for liv_l in livs_left :
 		print "left :" + liv_l.titre
 		chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(titre__contains=text_recherche)
@@ -62,9 +47,10 @@ def BibleEnKabyleView(request, ecoute_lecture):
 		"livres_avec_chapitres_right": livres_avec_chapitres_right, 
 		"livres_avec_chapitres_left": livres_avec_chapitres_left, 
 		"ecoute_lecture": ecoute_lecture,
-		
+		"form": form,		
 		 } )
 
+@csrf_protect
 def BibleEnKabyleLectureView(request, slug):
 	res = ChapitreBible.objects.filter(slug=slug)
 	chapitres = []
@@ -93,21 +79,23 @@ def BibleEnKabyleLectureView(request, slug):
 		"current": current, 
 		"prec": prec,
 		"suiv": suiv, 
+		"ecoute_lecture": 'ecoute',
+
 		} 
 		)
 
 
 
+@csrf_protect
 def BibleEnKabyleEcouteView(request, slug):
 	chapitre_en_lecture = ChapitreBible.objects.get(slug=slug)
 
 	chapitres = list(ChapitreBible.objects.filter(livre=chapitre_en_lecture.livre))
-	# chapitre = []
-	# if len(chapitre_en_lecture) > 0 :	
-	#     for chapi_a in  chapitre_en_lecture:
-	# 	    chapitre.append(chapi_a)
+
+	print(type(chapitres))
 
 	current = chapitres.index(chapitre_en_lecture)
+
 	prec = ""
 	suiv = ""
 
@@ -121,10 +109,11 @@ def BibleEnKabyleEcouteView(request, slug):
 	return render_to_response(
 		'BibleEnKabyle_ecoute.html', 
 		{ "chapitre": chapitre_en_lecture, 
-		"chapitres": chapitres, 
+		"chapitres_all": chapitres, 
 		"current": current, 
 		"prec": prec,
 		"suiv": suiv, 
+		"ecoute_lecture": '',
 
 		}
 

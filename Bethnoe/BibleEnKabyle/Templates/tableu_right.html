@@ -5,11 +5,13 @@
         <br>
         {% for livre_r, chapitres_r in livres_avec_chapitres_right.items %}
 
+        {% if chapitres_r %}
+
         <div class="col-md-12">
 
           <div class="col-md-12">
 
-            <h3><span class="label label-default" >{{ livre_r.titre|upper }}</span></h3>
+          <h3><span class="label label-default" >{{ livre_r.titre|upper }}</span></h3>
 
           </div>
 
@@ -43,6 +45,11 @@
           </div>
 
         </div>
+
+        {% endif %}
+
+
+
 
         {% endfor %}
 

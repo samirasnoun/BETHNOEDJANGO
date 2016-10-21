@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from models import * 
+from models import *  
 
 class ChapitreBibleInline(admin.TabularInline):
     model = ChapitreBible   
@@ -11,6 +11,6 @@ class LivreBibleAdmin(admin.ModelAdmin):
 
 @admin.register(ChapitreBible)
 class ChapitreBibleAdmin(admin.ModelAdmin):
-	list_display = ( 'livre', 'titre' )
+	list_display = ( 'livre', 'titre', 'audio' )
 	prepopulated_fields = {"slug": ("titre",)}
 

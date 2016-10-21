@@ -5,6 +5,36 @@
   <section class="row bibleenkabyle">
     {% include "Menu_BibleEnKabyle.html" %}
 
+
+
+                    <div class="col-md-12">
+
+
+              <form action="{% url 'BibleEnKabyle:BibleEnKabyle' ecoute_lecture='lecture' %}" method="post">
+
+                <div class="col-md-4">
+                  <div class="input-group-lg">
+                    <input type="text" id ="id_text_recherche" name="text_recherche" class="form-control" placeholder="Saisir le nom ici ...">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="input-group-button">
+                    <span class="input-group btn-group-lg">
+                      <!-- Forms  -->
+                      
+                      <button class="btn btn-primary" type="button submit">Rechercher</button>
+                      
+                    </span>
+                  </div>
+                </div><!-- /input-group -->
+                {% csrf_token %}
+              </form> 
+
+            </div><!-- /.col-lg-6 -->
+
+
+
     <br>
     <br>
     <br>
