@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'EgliseBethnoe',
     'BibleEnKabyle',
+    'EtudesBibliques',
     'ckeditor',
      
 ]

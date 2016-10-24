@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  
     url(r'^', include('EgliseBethnoe.urls', namespace='EgliseBethnoe')),
     url(r'^', include('BibleEnKabyle.urls', namespace='BibleEnKabyle')),
+    url(r'^', include('EtudesBibliques.urls', namespace='EtudesBibliques')),
 
 
 

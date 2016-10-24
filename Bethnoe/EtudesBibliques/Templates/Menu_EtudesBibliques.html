@@ -1,0 +1,72 @@
+<br>
+<br>
+<br>
+<br>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1 ">
+
+                        <img class="img-responsive logo" src="/media/site-logo-white-70pct.png" alt="Rocky Mountain Outdoors Logo" />
+                    </div>
+
+
+                    <!-- --------------------pavé bleu------------------------------ -->
+
+
+
+                    
+                    <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe">
+
+                    {% if etude %}
+
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+
+                          <div class="input-group-button">
+
+                              <a href="{% url 'EtudesBibliques:EtudesBibliques' %}"><span class="input-group btn-group-lg">
+                                <button class="btn btn-primary" type="button">Retour</button>
+                            </span> </a>
+                        </div>
+                    </div><!-- /input-group -->
+
+                    {% endif %}
+
+
+
+                        <div class="col-md-9" id="text_egliseBethnoe_3">
+
+                            {{intro.titre}}
+
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+
+
+                        <div class="col-md-10 col-md-offset-1 text-center">
+
+                            <p>
+
+                                {{intro.content|safe|truncatechars_html:230}} 
+                            </p>
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <!-- --------------------pavé bleu------------------------------ -->
+
+
+
+
+
+
+                </div>
+            </div>

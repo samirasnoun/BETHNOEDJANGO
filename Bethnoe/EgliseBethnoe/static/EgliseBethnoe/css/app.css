@@ -343,7 +343,7 @@ div#text_egliseBethnoe_partie2 {
     color: #26394a;
     text-orientation: sideways;
 
-        min-height: 1400px;
+    min-height: 1400px;
     background-repeat: repeat;
 }
 
@@ -356,7 +356,7 @@ div#text_egliseBethnoe {
 }
 
 .col-md-9.col-md-offset-1.menu_eglisebethnoe {
-    background: url("images/yvoire-eglise-croix.jpg");
+    background: url("/media/yvoire-eglise-croix.jpg");
     color: black;
     /* background: url("images/yvoire-eglise-croix.jpg"); */
     min-height: 150px;
