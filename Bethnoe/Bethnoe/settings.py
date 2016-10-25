@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'EgliseBethnoe',
     'BibleEnKabyle',
     'EtudesBibliques',
+    'EnseignementsBibliques',
     'ckeditor',
      
 ]

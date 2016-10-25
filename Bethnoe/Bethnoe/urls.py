@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^', include('EgliseBethnoe.urls', namespace='EgliseBethnoe')),
     url(r'^', include('BibleEnKabyle.urls', namespace='BibleEnKabyle')),
     url(r'^', include('EtudesBibliques.urls', namespace='EtudesBibliques')),
-
+    url(r'^', include('EnseignementsBibliques.urls', namespace='EnseignementsBibliques')),
 
 
     #url(r'^publisher-polls/', include('polls.urls', namespace='publisher-polls')),
