@@ -1,10 +1,7 @@
 
-
-
-
 <div class="container-fluid">
     <section class="row egliseBN">
-        <div class="fill-screen" style="background-image: url(/images/yvoire-eglise-croix.jpg)">
+        <div class="fill-screen" style="background-image: url(/media/yvoire-eglise-croix.jpg)">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-1 ">
@@ -52,6 +49,9 @@
 
 
 
+
+
+
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
 
 
                         </div>
-ss
+                        ss
 
                         <div class="col-md-1">
 
@@ -99,6 +99,10 @@ ss
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    {% for auteur in auteurs %}
+                                    <li><a href=".{{auteur.slug}}" data-toggle="collapse">{{auteur}}</a></li>
+
+                                    {% endfor %}
                                     <li><a href=".auteur1" data-toggle="collapse">Auteur 1</a></li>
                                     <li><a href=".auteur2" data-toggle="collapse">Auteur 2</a></li>
                                     <li><a href=".auteur3" data-toggle="collapse">Auteur 3</a></li>
@@ -116,6 +120,12 @@ ss
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                                {% for theme in themes %}
+                                <li><a href=".{{theme.slug}}" data-toggle="collapse">{{theme.titre}}</a></li>
+
+                                {% endfor %}
+
                                 <li><a href=".theme1" data-toggle="collapse">Thème 1</a></li>
                                 <li><a href=".theme2" data-toggle="collapse">Thème 2</a></li>
                                 <li><a href=".theme3" data-toggle="collapse">Thème 3</a></li>
@@ -139,44 +149,31 @@ ss
 
 
 
-                    <div class="collapse in auteur1 theme2">
+
+
+
+{% for enseignementBiblique in  enseignementsBibliques %}
+                    <div class="collapse in {{enseignementBiblique.auteur.slug}} {{enseignementBiblique.theme.slug}}">
                         <div class="row article"> 
                          <br>
                          <br>
-
-
                          <div class="col-md-12" id="article"> 
-                            <a href="/EnseignementsBibliques_video.html"><h4>Fondements video Auteur 1 theme2</h4></a> 
+                            <a href="/EnseignementsBibliques_video.html"><h4>{{enseignementBiblique.titre}}</h4></a> 
                             <br>
-                            
-
-                            
                         </div>
 
                         <div class="col-md-2" id="article"> 
-
-
-
-
-                         <img id="logo" src="./images/logo.jpg" align="absmiddle">
+                         <img id="logo" src="/media/logo.jpg" align="absmiddle">
                      </div>
-
-
-
                      <div class="col-md-10" >
-
-
-
-
-
-                         some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+                         {{enseignementBiblique.content|safe|truncatechars_html:230}}  
                      </div>
                  </div>
              </div>
-
-
              <br>
-             <br>    
+             <br>
+{% endfor %}
+
 
 
 
@@ -199,7 +196,7 @@ ss
 
 
 
-                     <img id="logo" src="./images/logo.jpg" align="absmiddle">
+                     <img id="logo" src="/media/logo.jpg" align="absmiddle">
                  </div>
 
 
@@ -238,7 +235,7 @@ ss
 
 
 
-                 <img id="logo" src="./images/logo.jpg" align="absmiddle">
+                 <img id="logo" src="/media/logo.jpg" align="absmiddle">
              </div>
 
 
@@ -264,7 +261,7 @@ ss
                 <br>
             </div>
             <div class="col-md-2" id="article"> 
-             <img id="logo" src="./images/logo.jpg" align="absmiddle">
+             <img id="logo" src="/media/logo.jpg" align="absmiddle">
          </div>
          <div class="col-md-10" >
              some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
@@ -275,72 +272,72 @@ ss
 
 
 
-<div class="collapse in auteur3 theme1">
- <br>
- <br>
- <div class="row article">   
-    <div class="col-md-2" id="article">   
-        <img id="logo" src="./images/logo.jpg" align="absmiddle">
-    </div>
-    <div class="col-md-10" >
-        <b>improrte quoi</b>
+ <div class="collapse in auteur3 theme1">
+     <br>
+     <br>
+     <div class="row article">   
+        <div class="col-md-2" id="article">   
+            <img id="logo" src="/media/logo.jpg" align="absmiddle">
+        </div>
+        <div class="col-md-10" >
+            <b>improrte quoi</b>
 
-        <br> 
-        some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+            <br> 
+            some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+        </div>
     </div>
-</div>
 </div>
 
 
 
 
 <div class="collapse in auteur2 theme3">
-<br>
-<br>    
-<div class="row article">   
-    <div class="col-md-2" id="article">   
-        <img id="logo" src="./images/logo.jpg" align="absmiddle">
-    </div>
-    <div class="col-md-10" >
-        <b>improrte quoi</b>
+    <br>
+    <br>    
+    <div class="row article">   
+        <div class="col-md-2" id="article">   
+            <img id="logo" src="/media/logo.jpg" align="absmiddle">
+        </div>
+        <div class="col-md-10" >
+            <b>improrte quoi</b>
 
-        <br> 
-        some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+            <br> 
+            some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+        </div>
     </div>
-</div>
 </div>
 
 
 <div class="collapse in auteur1 theme2">
-<br>
-<br>    
-<div class="row article">   
-    <div class="col-md-2" id="article">   
-        <img id="logo" src="./images/logo.jpg" align="absmiddle">
-    </div>
-    <div class="col-md-10" >
-        <b>improrte quoi</b>
+    <br>
+    <br>    
+    <div class="row article">   
+        <div class="col-md-2" id="article">   
+            <img id="logo" src="/media/logo.jpg" align="absmiddle">
+        </div>
+        <div class="col-md-10" >
+            <b>improrte quoi</b>
 
-        <br> 
-        some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+            <br> 
+            some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+        </div>
     </div>
-</div>
 </div>
 
 <div class="collapse in auteur1 theme2">
-<br>
-<br>    
-<div class="row article">   
-    <div class="col-md-2" id="article">   
-        <img id="logo" src="./images/logo.jpg" align="absmiddle">
-    </div>
-    <div class="col-md-10" >
-        <b>improrte quoi</b>
+    <br>
+    <br>    
+    <div class="row article">   
+        <div class="col-md-2" id="article">   
+            <img id="logo" src="/media/logo.jpg" align="absmiddle">
+        </div>
+        <div class="col-md-10" >
+            <b>improrte quoi</b>
 
-        <br> 
-        some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+            <br> 
+            some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  some text ou n improrte quoi  
+        </div>
     </div>
-</div>
 </div>
 <br>
 <br>    

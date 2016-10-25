@@ -6,13 +6,14 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 def media_upload_files(instance, filename):
-	return 'Testament_{0}/Livre_{1}/Chapitre_{2}'.format(instance.livre.type_na, instance.livre.slug, instance.slug)
+	return 'Media_EnseignementsBibliques_{0}/Auteur_{1}/theme_{2}/{3}'.format(instance.type_media, instance.auteur.slug, instance.theme.slug, instance.slug)
 
 
 class Auteur(models.Model):
 	nom = models.CharField(max_length=250, blank=True)
 	prenom = models.CharField(max_length=250, blank=True)
 	slug = models.SlugField(max_length=50,)
+	
 	def __unicode__(self):
 		return self.nom + " " + self.prenom  
 	def __str__(self):
