@@ -19,13 +19,13 @@
                     <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
                     preload="auto" width="500" max-height="500" poster="./img/c-fruit.png"
                     data-setup='{}' margin='auto'>
-                    <source src="/media/{{ES.media}}" >
+                    <source src="/media/{{ES.media}}" type="video/mp4" >
                         <p class="vjs-no-js">
-                         Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
-                     </p>
-                 </video>
-                 </div>
-             <div class="col-md-12">
+                           Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
+                       </p>
+                   </video>
+               </div>
+               <div class="col-md-12">
                 <br>
                 <br>
                 <p>
@@ -48,42 +48,39 @@
         <!---------------------------Contenu du même type---------------------->
         <div class="col-md-12">
 
-            <h2>
+            <h3>
                 Contenu du même type
-            </h2>
+            </h3>
+            <br>
+            
 
         </div>
 
-        <div class="col-md-12 pave1">
-
+        <div class="col-md-12">
             {% for es in enseignementsBibliques %}
+
             <div class="col-md-3 col-lg-3 col-md-offset-0 col-lg-offset-0">
 
-                <video id="really-cool-video-1" class="video-js vjs-default-skin vjs-big-play-centered" controls
-                preload="auto" width="150" height="150" poster="./img/c-fruit.png"
+                <video id="really-cool-video-" class="video-js vjs-default-skin vjs-big-play-centered"  poster="/media/{{es.image}}" controls
+                preload="auto" width="200px" height="200px" poster=""
                 data-setup='{}'>
                 <source src="/media/{{es.media}}" type="video/mp4">
-                  <source src="really-cool-video.webm" type="video/webm">
-                    320x240.ogg
-
-
                     <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a web browser
-                        that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                    </p>
-                </video>
-            </div>
+                       Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
+                   </p>
 
+           </div>
 
-            {% endfor %}
-        </div>
-        <!---------------------------Contenu du même type---------------------->
-    </div>
+           {% endfor %}
+       </div>
+       <!---------------------------Contenu du même type---------------------->
+   </div>
 </div>
 
 </div>
 
 <script>
+
     videojs('really-cool-video', {}, function() {
         var player = this;
         player.relatedCarousel([
@@ -91,4 +88,7 @@
           { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 2 title' }
           ]);
     });
+
+
+
 </script>

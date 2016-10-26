@@ -22,7 +22,7 @@ def EnseignementsBibliques(request):
 
 @csrf_protect 
 def EnseignementsBibliquesDetailView(request, slug):
-	enseignementsBibliques = list(EnseignementBiblique.objects.all())[:8]
+	enseignementsBibliques = list(EnseignementBiblique.objects.all())[:5]
 	enseignementBiblique = EnseignementBiblique.objects.get(slug=slug)
 	print enseignementBiblique 
 	print "-------------------"

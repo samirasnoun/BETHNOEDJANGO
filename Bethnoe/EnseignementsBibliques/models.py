@@ -4,7 +4,11 @@ from django.db import models
 from ckeditor.fields import RichTextField
 import os
 
-# Create your models here.
+
+
+
+
+
 
 def media_upload_files(instance, filename):
 	filename, file_extension = os.path.splitext(filename)
@@ -39,9 +43,12 @@ class EnseignementBiblique(models.Model):
 	titre = models.CharField(max_length=250, blank=True)	
 	slug = models.SlugField(max_length=50,)
 	media = models.FileField(upload_to=media_upload_files)
+	image = models.FileField(upload_to=media_upload_files, default='')
+	
 	titre_media = models.CharField(max_length=250, blank=True)
 	auteur = models.ForeignKey(Auteur, blank=True,  on_delete=models.CASCADE)
 	theme = models.ForeignKey(Theme, blank=True,  on_delete=models.CASCADE)
+
 	def __unicode__(self):
 		return self.titre  
 	def __str__(self):
