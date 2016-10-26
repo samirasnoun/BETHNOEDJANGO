@@ -2,11 +2,13 @@
 from __future__ import unicode_literals
 from django.db import models
 from ckeditor.fields import RichTextField
+import os
 
 # Create your models here.
 
 def media_upload_files(instance, filename):
-	return 'Media_EnseignementsBibliques_{0}/Auteur_{1}/theme_{2}/{3}'.format(instance.type_media, instance.auteur.slug, instance.theme.slug, instance.slug)
+	filename, file_extension = os.path.splitext(filename)
+	return 'Media_EnseignementsBibliques_{0}/Auteur_{1}/theme_{2}/{3}{4}'.format(instance.type_media, instance.auteur.slug, instance.theme.slug, instance.slug, file_extension)
 
 
 class Auteur(models.Model):

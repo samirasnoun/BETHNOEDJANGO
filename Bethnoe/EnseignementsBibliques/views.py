@@ -23,11 +23,15 @@ def EnseignementsBibliques(request):
 @csrf_protect 
 def EnseignementsBibliquesDetailView(request, slug):
 	enseignementsBibliques = list(EnseignementBiblique.objects.all())
+	enseignementBiblique = EnseignementBiblique.objects.get(slug=slug)
+	print enseignementBiblique
+	
 	auteurs = list(Auteur.objects.all())
 	themes = list(Theme.objects.all())
 	
-	return render(request ,'EnseignementsBibliques.html' , { 
+	return render(request ,'EnseignementsBibliques_Video.html' , { 
 		'enseignementsBibliques': enseignementsBibliques,
+		'enseignementBiblique': enseignementBiblique,
 		'auteurs': auteurs,
 		'themes': themes,
 		
