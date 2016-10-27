@@ -1,7 +1,56 @@
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 ">
+        </div>
+        <!-- --------------------pavé bleu------------------------------ -->
+        <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe">
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="input-group-button">
+                  <a href="{% url 'EnseignementsBibliques:EnseignementsBibliques' %}"><span class="input-group btn-group-lg">
+                    <button class="btn btn-primary" type="button">Retour</button>
+                </span> </a>
+            </div>
+        </div><!-- /input-group -->
+
+
+        <div class="col-md-9" id="text_egliseBethnoe_3">
+            A Movie in the Park: Kung Fu Panda                            
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <p>
+                some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte 
+            </p>
+        </div>
+    </div>
+    <!-- --------------------pavé bleu------------------------------ -->
+</div>
+</div>
+
+
+
+
 <div class="container-fluid eglisebethnoecontainer22">
     <div class="row">
         <div class="col-md-1">
         </div>
+
+
+
+
+
         <div class="col-md-9 col-md-offset-1  container_cadre">
 
             <div class="col-md-1">
@@ -21,11 +70,11 @@
                     data-setup='{}' margin='auto'>
                     <source src="/media/{{ES.media}}" type="video/mp4" >
                         <p class="vjs-no-js">
-                           Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
-                       </p>
-                   </video>
-               </div>
-               <div class="col-md-12">
+                         Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
+                     </p>
+                 </video>
+             </div>
+             <div class="col-md-12">
                 <br>
                 <br>
                 <p>
@@ -38,7 +87,7 @@
 
             <br>
             <br>
-            <br>
+            <br> 
 
             <div class="col-md-12">
 
@@ -52,29 +101,136 @@
                 Contenu du même type
             </h3>
             <br>
-            
-
         </div>
 
-        <div class="col-md-12">
-            {% for es in enseignementsBibliques %}
 
-            <div class="col-md-3 col-lg-3 col-md-offset-0 col-lg-offset-0">
 
-                <video id="really-cool-video-" class="video-js vjs-default-skin vjs-big-play-centered"  poster="/media/{{es.image}}" controls
-                preload="auto" width="200px" height="200px" poster=""
-                data-setup='{}'>
-                <source src="/media/{{es.media}}" type="video/mp4">
-                    <p class="vjs-no-js">
-                       Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
-                   </p>
 
-           </div>
 
-           {% endfor %}
-       </div>
-       <!---------------------------Contenu du même type---------------------->
-   </div>
+
+
+
+        <div class="col-md-12">            
+         <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            {% for es in enseignementsBibliques  %}
+            {% if forloop.counter0 == 0 %}
+            <li data-target="#myCarousel" data-slide-to="{{forloop.counter0}}" class="active"></li>
+            {% else %}
+            <li data-target="#myCarousel" data-slide-to="{{forloop.counter0}}" ></li>
+            {% endif %}           
+            {% endfor %}
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">    
+
+            {% for es in enseignementsBibliques %}    
+            {% if forloop.counter0 == 0 %}
+
+            <div class="item active">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}" height="50"> </a>
+          </div>
+          {% else %}
+
+          <div class="item">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}"  height="50"> </a>
+          </div>
+          {% endif %}
+
+          {% endfor %}
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="wrapper">
+            <h1>Responsive Carousel</h1>
+            
+
+            <p>This example shows how to implement a responsive carousel. Resize the browser window to see the effect.</p>
+
+            <div class="jcarousel-wrapper">
+                <div class="jcarousel">
+                    <ul>
+
+
+                         {% for es in enseignementsBibliques %}  
+                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
+                         {% endfor %}  
+
+                                                  {% for es in enseignementsBibliques %}  
+                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
+                         {% endfor %}  
+
+                                                  {% for es in enseignementsBibliques %}  
+                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
+                         {% endfor %}  
+
+                         
+
+
+
+                    </ul>
+                </div>
+
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                <p class="jcarousel-pagination"></p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---------------------------Contenu du même type---------------------->
+</div>
+
+
+
 </div>
 
 </div>
@@ -92,3 +248,31 @@
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
