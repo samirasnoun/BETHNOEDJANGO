@@ -99,7 +99,7 @@
                         <div class="row article"> 
 
                            <div class="col-md-12" id="article"> 
-                            <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=enseignementBiblique.slug%}"><h4>{{enseignementBiblique.titre}}</h4></a> 
+                            <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=enseignementBiblique.slug%}"><h4>{{enseignementBiblique.titre}} par  {{enseignementBiblique.auteur }}   :  {{enseignementBiblique.theme}}</h4></a> 
                             
                         </div>
 
@@ -109,7 +109,13 @@
                        <div class="col-md-10" >
                            {{enseignementBiblique.content|safe|truncatechars_html:230}}  
                        </div>
+
+
                    </div>
+
+                        <div  class="col-md-10" >
+                           
+                       </div>
                </div>
                <br>
                <br>

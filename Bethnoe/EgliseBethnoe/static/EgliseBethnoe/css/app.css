@@ -630,3 +630,14 @@ section.row.text_chapitre_bible {
 a#active {
     background: gainsboro;
 }
+
+img#image_carousel {
+    height: 250px;
+}
+
+
+div#fond_eglise_bethnoe {
+    padding-top: 12vh;
+}
+
+

@@ -29,3 +29,33 @@ class AdresseSimple(admin.ModelAdmin):
 @admin.register(TextDirigentEgliseBethnoe)
 class ClassName(admin.ModelAdmin):
 	list_display =('titre','texte')
+
+
+@admin.register(IndexEgliseBethnoe)
+class IndexEgliseBethnoeAdmin(admin.ModelAdmin):
+	list_display=('title1', 'title2', 'video_url',)
+
+
+@admin.register(ImageEvenement)
+class ImageEvenement(admin.ModelAdmin):
+	list_display=('image',)
+
+class ImagesInline(admin.TabularInline):
+    model = Album.images.through
+
+@admin.register(Album)
+class Album(admin.ModelAdmin):
+	list_display=('name','slug')
+	prepopulated_fields = {
+    "slug": ("name",)
+    }
+	inlines = [
+        ImagesInline,
+    ]
+
+
+
+
+
+
+        

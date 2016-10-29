@@ -1,3 +1,4 @@
+# -*- coding: utf8 -*-
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
@@ -5,6 +6,7 @@ from django.contrib import admin
 from fields import ThumbnailImageField  
 import uuid
 import data
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Image(models.Model):    
@@ -101,9 +103,9 @@ class Annonce(models.Model):
         self.arg = arg 
 
 class Post(models.Model):
-    title = models.CharField        ('title', max_length=64)
+    title = models.CharField('title', max_length=64)
     slug = models.SlugField(max_length=64)
-    content = models.TextField        ('content')
+    content = models.TextField('content')
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
@@ -118,4 +120,56 @@ class Post(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return {'post_slug': self.slug}
+
+def audio_upload_files(instance, filename):
+    return 'Logo_index_eglisebethnoe/{0}'.format(filename,)
+
+class IndexEgliseBethnoe(models.Model):
+    title1 = models.CharField('title du haut a gauche', max_length=64)
+    title2 = models.CharField('titre du bas au milieu', max_length=64)
+    content = RichTextField()
+    video_url = models.URLField('Url de la video de présentation de l\'église' , )
+    logo = models.FileField('Logo ',upload_to=audio_upload_files)
+    fond_ecran = models.FileField('Fond d ecran', upload_to=audio_upload_files)
+
+
+
+
+
+
+
+
+
+def images_upload_files(instance, filename):
+    return 'Evenements_EgliseBethnoe/{0}'.format(filename,)
+
+
+class ImageEvenement(models.Model):
+    image = models.FileField('Photo ',upload_to=audio_upload_files)
+    def __unicode__(self):
+        return self.image.name  
+    def __str__(self):
+        return self.image.name
+
+
+class Album(models.Model):
+    name = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=150,)
+    images = models.ManyToManyField(
+        ImageEvenement,
+        through='PhotoDe',
+        through_fields=('album', 'image_evenement'),
+    )  
+class PhotoDe(models.Model):
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
+
+
+
+
+
+
+
+
+
         

@@ -3,9 +3,6 @@
 <br>
 <br>
 
-
-
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-1 ">
@@ -39,17 +36,10 @@
 </div>
 </div>
 
-
-
-
 <div class="container-fluid eglisebethnoecontainer22">
     <div class="row">
         <div class="col-md-1">
         </div>
-
-
-
-
 
         <div class="col-md-9 col-md-offset-1  container_cadre">
 
@@ -66,7 +56,7 @@
                 </div>
                 <div class="col-md-12 col-lg-12 text-center">
                     <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
-                    preload="auto" width="500" max-height="500" poster="./img/c-fruit.png"
+                    preload="auto" width="500" max-height="500" poster="/media/{{ES.image}}"
                     data-setup='{}' margin='auto'>
                     <source src="/media/{{ES.media}}" type="video/mp4" >
                         <p class="vjs-no-js">
@@ -110,31 +100,34 @@
 
 
 
-        <div class="col-md-12">            
-         <div id="myCarousel" class="carousel slide" data-ride="carousel">
+{% if same_auteur %}
+
+
+        <div class="col-md-4">            
+         <div id="myCarousel1" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
-            {% for es in enseignementsBibliques  %}
+            {% for es in same_auteur  %}
             {% if forloop.counter0 == 0 %}
-            <li data-target="#myCarousel" data-slide-to="{{forloop.counter0}}" class="active"></li>
+            <li data-target="#myCarousel1" data-slide-to="{{forloop.counter0}}" class="active"></li>
             {% else %}
-            <li data-target="#myCarousel" data-slide-to="{{forloop.counter0}}" ></li>
+            <li data-target="#myCarousel1" data-slide-to="{{forloop.counter0}}" ></li>
             {% endif %}           
             {% endfor %}
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">    
 
-            {% for es in enseignementsBibliques %}    
+            {% for es in same_auteur %}    
             {% if forloop.counter0 == 0 %}
 
             <div class="item active">
-              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}" height="50"> </a>
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}" height="50px"> </a>
           </div>
           {% else %}
 
           <div class="item">
-              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}"  height="50"> </a>
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}"  height="50px"> </a>
           </div>
           {% endif %}
 
@@ -142,17 +135,71 @@
       </div>
 
       <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <a class="right carousel-control" href="#myCarousel1" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
 </div>
 </div>
 
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% if same_theme %}
+        <div class="col-md-4">            
+         <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            {% for es in same_theme  %}
+            {% if forloop.counter0 == 0 %}
+            <li data-target="#myCarousel2" data-slide-to="{{forloop.counter0}}" class="active"></li>
+            {% else %}
+            <li data-target="#myCarousel2" data-slide-to="{{forloop.counter0}}" ></li>
+            {% endif %}           
+            {% endfor %}
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">    
+
+            {% for es in same_theme %}    
+            {% if forloop.counter0 == 0 %}
+
+            <div class="item active">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}" height="50px"> </a>
+          </div>
+          {% else %}
+
+          <div class="item">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}"  height="50px"> </a>
+          </div>
+          {% endif %}
+
+          {% endfor %}
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel2" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel2" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
+{% endif %}
 
 
 
@@ -165,54 +212,52 @@
 
 
 
-        <div class="wrapper">
-            <h1>Responsive Carousel</h1>
-            
+{% if same_auteur_same_theme %}
 
-            <p>This example shows how to implement a responsive carousel. Resize the browser window to see the effect.</p>
+        <div class="col-md-4" >            
+         <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            {% for es in same_auteur_same_theme  %}
+            {% if forloop.counter0 == 0 %}
+            <li data-target="#myCarousel3" data-slide-to="{{forloop.counter0}}" class="active"></li>
+            {% else %}
+            <li data-target="#myCarousel3" data-slide-to="{{forloop.counter0}}" ></li>
+            {% endif %}           
+            {% endfor %}
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">    
 
-            <div class="jcarousel-wrapper">
-                <div class="jcarousel">
-                    <ul>
+            {% for es in same_auteur_same_theme %}    
+            {% if forloop.counter0 == 0 %}
 
+            <div class="item active">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}" height="50px"> </a>
+          </div>
+          {% else %}
 
-                         {% for es in enseignementsBibliques %}  
-                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
-                         {% endfor %}  
+          <div class="item">
+              <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block" id="image_carousel" src="/media/{{es.image}}" alt="{{es.titre}}"  height="50px"> </a>
+          </div>
+          {% endif %}
 
-                                                  {% for es in enseignementsBibliques %}  
-                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
-                         {% endfor %}  
+          {% endfor %}
+      </div>
 
-                                                  {% for es in enseignementsBibliques %}  
-                        <li><img src="/media/{{es.image}}" alt="Image 1"></li>
-                         {% endfor %}  
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel3" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel3" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+</div>
 
-                         
-
-
-
-                    </ul>
-                </div>
-
-                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
-
-                <p class="jcarousel-pagination"></p>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
+{% endif %}
 
 
 
@@ -240,7 +285,20 @@
     videojs('really-cool-video', {}, function() {
         var player = this;
         player.relatedCarousel([
-          { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 1 title' },
+
+            {% for es in same_auteur_same_theme  %}
+
+
+
+
+          { imageSrc: "/media/{{es.image}}", url: "/media/{{es.media}}", title: "{{es.image}}" },
+
+
+          {% endfor %}
+
+
+
+
           { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 2 title' }
           ]);
     });

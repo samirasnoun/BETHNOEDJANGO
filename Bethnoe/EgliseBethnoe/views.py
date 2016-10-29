@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe
+from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe, IndexEgliseBethnoe
 
 def IndexView(request):
     images_context = []
@@ -55,3 +55,21 @@ def IndexView(request):
         "dirigents_eglise": dirigents_eglise, 
         "adresses": adresses[0], 
         "presentation_equipe_dirigente": presentation_equipe_dirigente[0] } )
+
+
+def IndexEgliseBethnoeView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+
+
+
+    return render_to_response(
+
+        'index_eglisebethnoe.html', 
+
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+
+        
+        } 
+
+        )
