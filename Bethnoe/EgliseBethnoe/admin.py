@@ -38,7 +38,10 @@ class IndexEgliseBethnoeAdmin(admin.ModelAdmin):
 
 @admin.register(ImageEvenement)
 class ImageEvenement(admin.ModelAdmin):
-	list_display=('image',)
+	list_display=('id','image','titre_image','slug')
+	prepopulated_fields = {
+    "slug": ("titre_image",)
+    }
 
 class ImagesInline(admin.TabularInline):
     model = Album.images.through
@@ -53,9 +56,11 @@ class Album(admin.ModelAdmin):
         ImagesInline,
     ]
 
+@admin.register(Evenement)
+class Evenement(admin.ModelAdmin):
+    list_display = ('titre','album')
+    prepopulated_fields = {
+    "slug": ("titre",)
+    }
 
 
-
-
-
-        

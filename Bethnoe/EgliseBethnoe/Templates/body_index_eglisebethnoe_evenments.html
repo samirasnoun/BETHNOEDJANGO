@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <section class="row egliseBN">
+        <div class="fill-screen" style="background-image: url(/images/yvoire-eglise-croix.jpg)">
+            {% include "menu_index_eglisebethnoe.html" %}
+
+
+            <div class="container-fluid eglisebethnoecontainer22">
+
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-9 col-md-offset-1  container_cadre">
+                        <div class="col-md-1">
+                        </div>
+
+                        <div class="col-md-10 container_form">
+                            <form>
+
+                                <div class="col-md-4 col-md-offset-1">
+                                    <div class="checkbox">
+                                        <label>
+                                          <input id="{{ type_evenements.0.0 }}" type="checkbox" class="sujet" name="coupon_question1" checked>{{type_evenements.0.1}}
+                                      </label>
+                                  </div>
+
+                                  <div class="checkbox">
+                                    <label>
+                                      <input id="{{type_evenements.1.0 }}" type="checkbox" class="sujet" name="coupon_question2"   checked>{{ type_evenements.1.1 }}
+                                  </label>
+                              </div>
+
+                          </div>
+                          <div class="col-md-4 col-md-offset-2">
+
+                              <div class="checkbox checkbox-primary">
+                                <label>
+                                  <input id="{{type_evenements.2.0 }}" type="checkbox" class="sujet" name="coupon_question3"  checked>{{type_evenements.2.1 }}
+                              </label>
+                          </div>
+
+                          <div class="checkbox coupon_question" name="coupon_question">
+                            <label>
+                              <input id="{{type_evenements.3.0 }}" type="checkbox" class="sujet" name="coupon_question" checked>{{type_evenements.3.1 }}
+                          </label>
+                      </div>
+
+                  </div>
+
+              </form>
+
+
+          </div>
+          <div class="col-md-1">
+
+          </div>
+
+
+
+          <div class="col-md-10 col-xs-offset-1 text content mCustomScrollbar  custom"> 
+
+            {% for  ev in evenements %}
+
+            <div class="col_{{ev.type_evenments}}">
+                <br>
+                <br>
+                <a href="{% url 'EgliseBethnoe:IndexEgliseBethnoeEvenementsDetail' ev.slug %}">
+
+                    <div class="row article">   
+                        <div class="col-md-2" id="article">   
+                            <img id="logo" src="/media/{{ ev.first }}" align="absmiddle">
+                        </div>
+                        <div class="col-md-10" >
+                            <b>{{ev.titre }}</b>
+
+                            <br> 
+                            {{ev.content|safe}} 
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+
+
+            <br>
+            <br>    
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+</section>
+
+</div>

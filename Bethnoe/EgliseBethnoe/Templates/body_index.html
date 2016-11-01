@@ -1,4 +1,4 @@
-{% load staticfiles %} 
+{% load staticfiles %}  
 
 <div class="container-fluid">
     <section class="row title-row">
@@ -20,6 +20,10 @@
     <br>
     <br>
     
+
+
+
+
     <section id="EgliseBethnoe" class="row fadeInUp egliseb">
 
         <!-- use jssor.slider.debug.js instead for debug -->
@@ -27,10 +31,6 @@
         <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden; visibility: hidden;">
             <!-- Loading Screen -->
 
-            <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-                <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-                <div style="position:absolute;display:block;background:url('media/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
-            </div>
 
             <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
 
@@ -49,17 +49,22 @@
                 {% endfor %}
 
                 <div data-p="225.00" style="display: none;">
+
                     <img data-u="image" src="media/purple.jpg" />
-                    <div style="position: absolute; top: 30px; left: 30px; width: 480px; height: 120px; font-size: 50px; color: #ffffff; line-height: 60px;">Titre 1</div>
+                    
+                    <div style="position: absolute; top: 30px; left: 30px; width: 480px; height: 120px; font-size: 50px; color: #ffffff; line-height: 60px;">Titre 243</div>
+                    
                     <div style="position: absolute; top: 300px; left: 30px; width: 480px; height: 120px; font-size: 30px; color: #ffffff; line-height: 38px;">Contenu du texte 1, mn super site 
                     </div>
+
+
                 </div>
 
                 <div data-p="225.00" data-po="80% 55%" style="display:none;">
                     <img data-u="image" src="media/blue.jpg" />
                 </div>
 
-                <a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider XXL</a>
+                
                 
             </div> 
 
@@ -95,6 +100,9 @@
 
     </section>
 
+
+
+
     <section id="sights" class="row text-banner">
 
         <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
@@ -124,10 +132,16 @@
 
     </section>
 
+
+
+
     <section class="row">
         <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
         </div>
     </section>
+
+
+
 
     <section id="contact-us" class="row contact-us wow fadeInDown">
         <h1>Contactez nous</h1>

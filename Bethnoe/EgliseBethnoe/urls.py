@@ -6,9 +6,12 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', views.IndexView, name="index"),
-    url(r'EgliseBethnoe/', views.IndexEgliseBethnoeView, name="indexEgliseBethnoe"),
+    url(r'EgliseBethnoe/$', views.IndexEgliseBethnoeView, name="indexEgliseBethnoe"),
+
+    url(r'EgliseBethnoe/evenements/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoeEvenementsDetailView, name="IndexEgliseBethnoeEvenementsDetail"),
+
     url(r'EgliseBethnoe.html', views.IndexView, name="index"),
-    # url(r'^adminEgliseBethnoe/', include(adminEgliseBethnoe.urls)),   
+    url(r'EgliseBethnoe/evenements/$', views.IndexEgliseBethnoeEvenementsView, name="IndexEgliseBethnoeEvenements"),
     url(r'^admin/', admin.site.urls),   
 ]
 

@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe, IndexEgliseBethnoe
+from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe, IndexEgliseBethnoe, Evenement
 
 def IndexView(request):
     images_context = []
@@ -14,7 +14,7 @@ def IndexView(request):
     except Image.DoesNotExist:
         raise Http404
 
-    images_carrousel = []
+    images_carrousel = [] 
     try:
         images = ImageCarrousel.objects.all()
         for m in images:
@@ -59,17 +59,38 @@ def IndexView(request):
 
 def IndexEgliseBethnoeView(request):
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
-
-
-
     return render_to_response(
-
-        'index_eglisebethnoe.html', 
-
+        'index_eglisebethnoe.html',
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
-
-        
+        "evenements": "",         
         } 
-
         )
+
+def IndexEgliseBethnoeEvenementsView(request):
+    evenements = list(Evenement.objects.all())
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render_to_response(
+        'index_eglisebethnoe_evenments.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "evenements": evenements, 
+        'type_evenements': Evenement.TYPES_EVENEMENTS
+        } 
+        )
+
+
+def IndexEgliseBethnoeEvenementsDetailView(request, slug):
+    evenement = Evenement.objects.get(slug=slug)
+    images = evenement.images
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render_to_response(
+        'index_eglisebethnoe_evenments_detail.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "evenement": evenement, 
+        "evenements": "", 
+        'images': images
+        } 
+        )
+ 

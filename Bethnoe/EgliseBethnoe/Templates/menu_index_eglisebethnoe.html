@@ -1,63 +1,83 @@
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-1 ">
+            <div class="row">
+                <div class="col-md-1 ">
+                  <img class="img-responsive logo" src="/media/{{index_eglise_bethnoe.logo}}" alt="Rocky Mountain Outdoors Logo" />
+                </div>
+                <!-- --------------------pavé bleu------------------------------ -->
+                <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe">      
 
-                        <img class="img-responsive logo" src="/media/{{index_eglise_bethnoe.logo}}" alt="Rocky Mountain Outdoors Logo" />
-                    </div>
+                <div class="col-md-9" id="text_egliseBethnoe_3">
+
+                  {% if evenements %}
+                  <div class="col-md-2">
+
+                   <a href="/EgliseBethnoe/" >
+                     <button type="button"  class="btn btn-default btn-lg col-lg-12">
+                       Retour</button> 
+                     </a>
+
+                   </div>
+
+                   {% elif evenement %}
+
+                   <div class="col-md-2">
+
+                   <a href="/EgliseBethnoe/evenements/" >
+                     <button type="button"  class="btn btn-default btn-lg col-lg-12">
+                       Retour</button> 
+                     </a>
+
+                   </div>                  
+
+                   {% else %}
+
+                   {{index_eglise_bethnoe.title1}}
+
+                   {% endif %}
 
 
-                    <!-- --------------------pavé bleu------------------------------ -->
-                    <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe">
-                        
+
+                 </div>
+
+                 <div class="col-md-3" id="text_egliseBethnoe">
+                  <table id="liens-eglisebethnoe" style="width:100%" cellpadding="10">
+                    <tr>
+                      <td> <a id="liens-detailles" href="/EgliseBethnoe/evenements/">Evenements
 
 
-                        <div class="col-md-9" id="text_egliseBethnoe_3">
+                      </a>  </td>
 
-                            {{index_eglise_bethnoe.title1}}
-                            
-                        </div>
-                        <div class="col-md-3" id="text_egliseBethnoe">
-                            <table id="liens-eglisebethnoe" style="width:100%" cellpadding="10">
-                              <tr>
-                                <td> <a id="liens-detailles" href="/EgliseBethnoeEvenements.html">Evenements
+                    </tr>
+                    <tr>
+                     <td> <a id="liens-detailles" href="#page1">Espaces membres</a>  </td>
 
+                   </tr>
+                   <tr>
+                    <td> <a id="liens-detailles" href="#page1">Confession de foi</a>  </td>
 
-                                </a>  </td>
+                  </tr>
 
-                            </tr>
-                            <tr>
-                             <td> <a id="liens-detailles" href="#page1">Espaces membres</a>  </td>
+                  <tr>
 
-                         </tr>
-                         <tr>
-                          <td> <a id="liens-detailles" href="#page1">Confession de foi</a>  </td>
+                    <td> <a id="liens-detailles" href="">Contact</a>
 
-                      </tr>
+                    </td>
 
-                      <tr>
-
-                          <td> <a id="liens-detailles" href="">Contact</a>
-                              
-                          </td>
-                          
-                      </tr>
-                  </table>
+                  </tr>
+                </table>
               </div>
 
               <div class="col-md-12" id="text_egliseBethnoe_4">
 
                 {{index_eglise_bethnoe.title2}}
-                
+
+              </div>
+
             </div>
+            <!-- --------------------pavé bleu------------------------------ -->
 
 
 
 
+          </div>
         </div>
-        <!-- --------------------pavé bleu------------------------------ -->
-
-
-
-        
-    </div>
-</div>

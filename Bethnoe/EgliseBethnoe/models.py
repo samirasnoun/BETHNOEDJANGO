@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from fields import ThumbnailImageField  
 import uuid
-import data
+import data 
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -132,25 +132,17 @@ class IndexEgliseBethnoe(models.Model):
     logo = models.FileField('Logo ',upload_to=audio_upload_files)
     fond_ecran = models.FileField('Fond d ecran', upload_to=audio_upload_files)
 
-
-
-
-
-
-
-
-
 def images_upload_files(instance, filename):
     return 'Evenements_EgliseBethnoe/{0}'.format(filename,)
 
-
 class ImageEvenement(models.Model):
     image = models.FileField('Photo ',upload_to=audio_upload_files)
+    titre_image = models.CharField(max_length=128)
+    slug = models.SlugField(max_length=150,)
     def __unicode__(self):
-        return self.image.name  
+        return self.slug  
     def __str__(self):
-        return self.image.name
-
+        return self.slug
 
 class Album(models.Model):
     name = models.CharField(max_length=128)
@@ -159,16 +151,42 @@ class Album(models.Model):
         ImageEvenement,
         through='PhotoDe',
         through_fields=('album', 'image_evenement'),
-    )  
+    )
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug
+
+
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
 
 
 
-
-
-
+class Evenement(models.Model):
+    titre = models.CharField(max_length=128)
+    content = RichTextField()
+    slug = models.SlugField(max_length=150,)
+    album =  models.OneToOneField(
+        Album,
+        on_delete=models.CASCADE,
+    )
+    TYPES_EVENEMENTS = (
+        ('CF', 'Communication fraternelle'),
+        ('MR', 'Mariages'),
+        ('BE', 'Bâtême d\'eau'),
+        ('GD', 'Guérisons et délivrance'),
+        )
+    type_evenments = models.CharField(max_length=2, choices=TYPES_EVENEMENTS, default='CF')
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug
+    def first(self):
+        return list(self.album.images.all())[0].image
+    def images(self):
+        return list(self.album.images.all())
 
 
 
