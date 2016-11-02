@@ -12,6 +12,8 @@ urlpatterns = [
 
     url(r'EgliseBethnoe.html', views.IndexView, name="index"),
     url(r'EgliseBethnoe/evenements/$', views.IndexEgliseBethnoeEvenementsView, name="IndexEgliseBethnoeEvenements"),
+    url(r'EgliseBethnoe/espacemembers/$', views.IndexEgliseBethnoeEspaceMembersView, name="IndexEgliseBethnoeEspaceMembers"),
+    
     url(r'^admin/', admin.site.urls),   
 ]
 

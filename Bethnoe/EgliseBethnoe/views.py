@@ -94,3 +94,18 @@ def IndexEgliseBethnoeEvenementsDetailView(request, slug):
         } 
         )
  
+
+
+
+
+
+
+def IndexEgliseBethnoeEspaceMembersView(request):   
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render_to_response(
+        'index_eglisebethnoe_espace_members.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        } 
+        )
+ 

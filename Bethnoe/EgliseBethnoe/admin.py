@@ -64,3 +64,9 @@ class Evenement(admin.ModelAdmin):
     }
 
 
+@admin.register(CulteHebdo)
+class CulteHebdo(admin.ModelAdmin):
+    list_display=('title','slug', 'video_url')
+    prepopulated_fields = {
+    "slug": ("title",)
+    }

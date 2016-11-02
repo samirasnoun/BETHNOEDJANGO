@@ -190,4 +190,9 @@ class Evenement(models.Model):
 
 
 
-        
+class CulteHebdo(models.Model):
+    title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
+    content = RichTextField()
+    video_url = models.URLField('Url de la video du culte hebdomadaire' , )
+    slug = models.SlugField(max_length=150,)
+    

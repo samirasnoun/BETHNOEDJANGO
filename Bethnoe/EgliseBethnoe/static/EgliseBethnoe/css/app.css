@@ -290,7 +290,7 @@ article p {
 
 
 section#EgliseBethnoe {
- margin-top: 300px;
+     margin-top: 13vh;
       
 
 
@@ -303,7 +303,7 @@ section#EgliseBethnoe {
 
 
 section.row.egliseBN {
-    padding-top: 80px;
+    padding-top: 10vh;
 }
 
 img.img-responsive.logo {
@@ -356,7 +356,7 @@ div#text_egliseBethnoe {
 }
 
 .col-md-9.col-md-offset-1.menu_eglisebethnoe {
-    background: url("/media/yvoire-eglise-croix.jpg");
+    background-color: rgba(174, 176, 175, 0.4);
     color: black;
     /* background: url("images/yvoire-eglise-croix.jpg"); */
     min-height: 150px;
@@ -462,9 +462,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top.cbp-af-header {
 }
 
 div#text_egliseBethnoe_3 {
-    margin-top: 0px;
-    font-size: medium;
-    color: #ffcc00;
+margin-top: 0px;
+    font-size: x-large;
+    color: white;
+    font-family: fantasy;
 }
 
 .row.article {
