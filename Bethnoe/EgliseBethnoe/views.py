@@ -3,6 +3,8 @@ from django.shortcuts import render, render_to_response, get_object_or_404, get_
 from django.http import Http404
 from django.http import HttpResponse
 from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe, IndexEgliseBethnoe, Evenement
+from django.contrib.auth.decorators import login_required
+
 
 def IndexView(request):
     images_context = []
@@ -99,11 +101,20 @@ def IndexEgliseBethnoeEvenementsDetailView(request, slug):
 
 
 
-
+@login_required(login_url='/accounts/login/')
 def IndexEgliseBethnoeEspaceMembersView(request):   
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
     return render_to_response(
         'index_eglisebethnoe_espace_members.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        } 
+        )
+ 
+def IndexForumView(request):   
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render_to_response(
+        'index_forum.html', 
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         } 

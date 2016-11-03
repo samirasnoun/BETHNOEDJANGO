@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid" id="fond_eglise_bethnoe"  style="background-image: url(/media/{{index_eglise_bethnoe.fond_ecran}});">
   <section class="row egliseBN">
-    <div class="fill-screen" style="background-image: url(/images/yvoire-eglise-croix.jpg)">
+ 
 
       {% include "menu_index_eglisebethnoe.html" %}
 
@@ -44,20 +44,47 @@
           <div class="carousel-inner" role="listbox">    
 
             {% for es in images %}    
+
             {% if forloop.counter0 == 0 %}
 
             <div class="item active">
               <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block img-rounded" id="image_carousel_evenement" src="/media/{{es.image}}" alt="{{es.titre_image}}"> </a>
-            </div>
+            
             {% else %}
 
             <div class="item">
               <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=es.slug %}"> <img class="img-responsive center-block img-rounded" id="image_carousel_evenement" src="/media/{{es.image}}" alt="{{es.titre_image}}"> </a>
-            </div>
+              
+
+
+
+
+
             {% endif %}
+
+              <div class="container">
+
+                 <div class="carousel-caption" id="egliseBethnoe">
+                 <h1>{{es.titre_image}}</h1>
+                 <p>{{evenement.titre}}</p>
+                 <p><a class="btn btn-lg btn-primary" href="/media/{{es.image}}" target="_blank" role="button">Zoom</a></p>
+                </div>
+          </div>   
+
+
+            </div>
 
             {% endfor %}
           </div>
+
+
+
+
+
+
+
+
+
 
           <!-- Left and right controls -->
           <a class="left carousel-control" href="#myCarousel1" role="button" data-slide="prev">
@@ -99,7 +126,7 @@
 
 
 
-  </div>
+
 </section>
 
 </div>

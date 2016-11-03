@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'EgliseBethnoe/evenements/$', views.IndexEgliseBethnoeEvenementsView, name="IndexEgliseBethnoeEvenements"),
     url(r'EgliseBethnoe/espacemembers/$', views.IndexEgliseBethnoeEspaceMembersView, name="IndexEgliseBethnoeEspaceMembers"),
     
+    url(r'EgliseBethnoe/forum/', views.IndexForumView, name="IndexForum"),
+
+
     url(r'^admin/', admin.site.urls),   
 ]
 
@@ -21,3 +24,5 @@ urlpatterns = [
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

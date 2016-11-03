@@ -27,7 +27,7 @@
         <br>
         <br>
         <div class="col-md-10 col-md-offset-1 text-center">
-            <p>
+            <p id="text_enseignement_biblique">
                 some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte 
             </p>
         </div>
@@ -103,7 +103,8 @@
 {% if same_auteur %}
 
 
-        <div class="col-md-4">            
+        <div class="col-md-4">
+        <h4>Même auteur</h4>            
          <div id="myCarousel1" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -144,6 +145,10 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<br>
+<br>
+<br>
 </div>
 
 {% endif %}
@@ -157,7 +162,8 @@
 
 
 {% if same_theme %}
-        <div class="col-md-4">            
+        <div class="col-md-4">  
+         <h4>Même thème</h4>           
          <div id="myCarousel2" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
@@ -214,7 +220,8 @@
 
 {% if same_auteur_same_theme %}
 
-        <div class="col-md-4" >            
+        <div class="col-md-4" >  
+         <h4>Même auteur, même thème</h4>           
          <div id="myCarousel3" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">

@@ -1,139 +1,132 @@
 {% load staticfiles %}  
 
-<div class="container-fluid">
+<div class="container-fluid"> 
 
-
-
+<div class="col-md-12 text-center">
     
 
 
 
-
-    <section id="EgliseBethnoe" class="row fadeInUp egliseb">
-
-        <!-- use jssor.slider.debug.js instead for debug -->
-
-        <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden; visibility: hidden;">
-            <!-- Loading Screen -->
+    <section id="EgliseBethnoe" class="col-md-10 col-md-offset-1">
 
 
-            <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+     <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        {% for image in images_carrousel  %}
+        {% if forloop.counter0 == 0 %}
+        <li data-target="#myCarousel1" data-slide-to="{{forloop.counter0}}" class="active"></li>
+        {% else %}
+        <li data-target="#myCarousel1" data-slide-to="{{forloop.counter0}}" ></li>
+        {% endif %}           
+        {% endfor %}
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">    
 
-                {% for image in images_carrousel  %}
+        {% for image in images_carrousel %}    
 
-                <div data-p="225.00" style="display:none;">
-                    <img data-u="image" src="{% static image.get__absolute_url %}" />
+        {% if forloop.counter0 == 0 %}
+        <div class="item active">
 
-                    <div style="position: absolute; top: 30px; left: 30px;  height: 120px; font-size: 50px; color: #ffffff; line-height: 60px;">{{ image.title }}</div>
+            {% else %}
 
-                    <div style="position: absolute; top: 300px; left: 30px; width: 480px; height: 120px; font-size: 30px; color: #ffffff; line-height: 38px;">{{ image.caption }}
-                    </div>
+            <div class="item">
 
+                {% endif %}
+
+                <a href="{% static image.get__absolute_url %}" target="_blanck">  <img class="img-responsive center-block" id="image_carousel_index" src="{% static image.get__absolute_url %}" alt="{{image.title}}"       > </a>
+
+                <div class="carousel-caption">
+                <h3>{{image.title}}</h3>
+                    <p> {{image.caption}} </p>
                 </div>
-
-                {% endfor %}
-
-                <div data-p="225.00" style="display: none;">
-
-                    <img data-u="image" src="media/purple.jpg" />
-                    
-                    <div style="position: absolute; top: 30px; left: 30px; width: 480px; height: 120px; font-size: 50px; color: #ffffff; line-height: 60px;">Titre 243</div>
-                    
-                    <div style="position: absolute; top: 300px; left: 30px; width: 480px; height: 120px; font-size: 30px; color: #ffffff; line-height: 38px;">Contenu du texte 1, mn super site 
-                    </div>
-
-
-                </div>
-
-                <div data-p="225.00" data-po="80% 55%" style="display:none;">
-                    <img data-u="image" src="media/blue.jpg" />
-                </div>
-
-                
-                
-            </div> 
-
-            <!-- Bullet Navigator -->
-
-            <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
-
-                <!-- bullet navigator item prototype -->
-
-                <div data-u="prototype" style="width:16px;height:16px;"></div>
-
-
             </div>
 
-            <!-- Arrow Navigator -->
-            <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2">
+            {% endfor %}
 
-            </span>
 
-            <span data-u="arrowright" class="jssora22r" style="top:0px;right:12px;width:40px;height:58px;" data-autocenter="2">
-
-            </span>
-
-            <div class="down-button">
-                <a class="btn" href="#equipe">
-                    <i class="fa fa-arrow-circle-down fa-4x"></i>
-                </a>
-            </div>
-            
         </div>
 
-        <!-- #endregion Jssor Slider End -->
-
-    </section>
-
-
-
-
-    <section id="sights" class="row text-banner">
-
-        <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
-
-        <p>{{presentation_equipe_dirigente.texte}}</p>
-
-        <section id="activities" class="row activity-section">
-
-            {%for dirigent in dirigents_eglise %}
-            
-
-            <div class="activity-element col-md-4 wow fadeInLeft">
-                <img src="{% static dirigent.photo.get__absolute_url %}" />
-                <h3>{{dirigent.nom}} {{dirigent.prenom}}</h3>
-                <p>{{dirigent.role}}</p>
-            </div> 
-
-            {%endfor%}
-
-            <div class="activity-element col-md-1 col-md-offset-11 wow fadeInLeft animated animated down-button2" id="bouton_down">
-
-                <a class="btn" href="#contact">
-                    <i class="fa fa-arrow-circle-down fa-4x"></i>
-                </a>
-            </div>
-        </section>
-
-    </section>
+        <!-- Left and right controls -->
+        <a class="left carousel-control index" href="#myCarousel1" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control index" href="#myCarousel1" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 
 
 
 
-    <section class="row">
-        <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
+
+
+
+
+
+
+
+
+</section>
+
+
+
+</div>
+
+
+
+
+
+
+<section id="sights" class="row text-banner">
+
+    <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
+
+    <p>{{presentation_equipe_dirigente.texte}}</p>
+
+    <section id="activities" class="row activity-section">
+
+        {%for dirigent in dirigents_eglise %}
+
+
+        <div class="activity-element col-md-4 wow fadeInLeft">
+            <img src="{% static dirigent.photo.get__absolute_url %}" />
+            <h3>{{dirigent.nom}} {{dirigent.prenom}}</h3>
+            <p>{{dirigent.role}}</p>
+        </div> 
+
+        {%endfor%}
+
+        <div class="activity-element col-md-1 col-md-offset-11 wow fadeInLeft animated animated down-button2" id="bouton_down">
+
+            <a class="btn" href="#contact">
+                <i class="fa fa-arrow-circle-down fa-4x"></i>
+            </a>
         </div>
     </section>
 
+</section>
 
 
 
-    <section id="contact-us" class="row contact-us wow fadeInDown">
-        <h1>Contactez nous</h1>
-        <h3>{{adresses.num_rue}} {{adresses.type_rue}} {{adresses.nom_rue}} </h3>
-        <p> {{adresses.code_postale }} {{adresses.ville}}</p>
-        <p>{{adresses.pays }} </p>
 
-    </section>
+<section class="row">
+    <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
+    </div>
+</section>
+
+
+
+
+<section id="contact-us" class="row contact-us wow fadeInDown">
+    <h1>Contactez nous</h1>
+    <h3>{{adresses.num_rue}} {{adresses.type_rue}} {{adresses.nom_rue}} </h3>
+    <p> {{adresses.code_postale }} {{adresses.ville}}</p>
+    <p>{{adresses.pays }} </p>
+
+</section>
 
 </div>
