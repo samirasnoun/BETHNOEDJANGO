@@ -303,7 +303,7 @@ section#EgliseBethnoe {
 
 
 section.row.egliseBN {
-    padding-top: 10vh;
+    padding-top: 1vh;
 }
 
 img.img-responsive.logo {
@@ -697,4 +697,17 @@ a#liste_lecture {
 
 ul#playlist {
     min-height: 50vh;
+}
+
+
+
+div#post_detail {
+    color: aliceblue;
+}
+
+div#poste_area {
+    background-color: #a7a4b6;
+    min-height: 75px;
+    border-radius: 9px;
+    padding: 3px;
 }

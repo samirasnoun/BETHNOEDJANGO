@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from . import views
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^$', views.IndexView, name="index"),
     url(r'EgliseBethnoe/$', views.IndexEgliseBethnoeView, name="indexEgliseBethnoe"),
@@ -17,7 +18,9 @@ urlpatterns = [
     url(r'EgliseBethnoe/forum/', views.IndexForumView, name="IndexForum"),
     url(r'EgliseBethnoe/Louanges/$', views.LouangesView, name="Louange"),
     url(r'EgliseBethnoe/Louanges/(?P<slug>[\w-]+)/$', views.LouangesLectureView, name="louange_lecture"),
-
+    url(r'EgliseBethnoe/Posts/$', views.PostsView, name="Post"),
+    url(r'EgliseBethnoe/Prieres/$', views.PrieresView, name="Priere"),
+    url(r'EgliseBethnoe/confession-de-foie/$', views.ConfessionFoieView, name="confessionfoie"),
 
 
     url(r'^admin/', admin.site.urls),   

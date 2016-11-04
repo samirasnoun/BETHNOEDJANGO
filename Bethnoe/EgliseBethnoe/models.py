@@ -102,12 +102,18 @@ class Annonce(models.Model):
         super(Annonce, self).__init__()
         self.arg = arg 
 
+
+def image_post_upload_files(instance, filename):
+    filename, file_extension = os.path.splitext(filename)
+    return 'POSTS/{0}{1}'.format(instance.slug, file_extension)
+
 class Post(models.Model):
     title = models.CharField('title', max_length=64)
     slug = models.SlugField(max_length=64)
     content = models.TextField('content')
+    content_rich = RichTextField(default="")
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
-
+    image = models.FileField('Image de l\'nnonce ',upload_to=image_post_upload_files)
     class Meta:
         permissions = (
                     ('view_post', 'Can view post'),
@@ -117,11 +123,13 @@ class Post(models.Model):
     def __unicode__(self):
         return self.title
 
+        
+
     @models.permalink
     def get_absolute_url(self):
         return {'post_slug': self.slug}
 
-def audio_upload_files(instance, filename):
+def logo_upload_files(instance, filename):
     return 'Logo_index_eglisebethnoe/{0}'.format(filename,)
 
 class IndexEgliseBethnoe(models.Model):
@@ -129,12 +137,8 @@ class IndexEgliseBethnoe(models.Model):
     title2 = models.CharField('titre du bas au milieu', max_length=64)
     content = RichTextField()
     video_url = models.URLField('Url de la video de présentation de l\'église' , )
-    logo = models.FileField('Logo ',upload_to=audio_upload_files)
-    fond_ecran = models.FileField('Fond d ecran', upload_to=audio_upload_files)
-
-
-
-
+    logo = models.FileField('Logo ',upload_to=logo_upload_files)
+    fond_ecran = models.FileField('Fond d ecran', upload_to=logo_upload_files)
 
 
 
@@ -142,7 +146,7 @@ def images_upload_files(instance, filename):
     return 'Evenements_EgliseBethnoe/{0}'.format(filename,)
 
 class ImageEvenement(models.Model):
-    image = models.FileField('Photo ',upload_to=audio_upload_files)
+    image = models.FileField('Photo ',upload_to=images_upload_files)
     titre_image = models.CharField(max_length=128)
     slug = models.SlugField(max_length=150,)
     def __unicode__(self):
@@ -166,14 +170,6 @@ class Album(models.Model):
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
-
-
-
-
-
-
-
-
 
 class Evenement(models.Model):
     titre = models.CharField(max_length=128)
@@ -204,9 +200,6 @@ class CulteHebdo(models.Model):
     content = RichTextField()
     video_url = models.URLField('Url de la video du culte hebdomadaire' , )
     slug = models.SlugField(max_length=150,)
-
-
-
 
 def audio_upload_files(instance, filename):
     filename, file_extension = os.path.splitext(filename)
@@ -249,12 +242,30 @@ class AudioDuCD(models.Model):
         related_name="liste_lecture",
     )
 
+def image_priere_upload_files(instance, filename):
+    filename, file_extension = os.path.splitext(filename)
+    return 'Prieres/{0}{1}'.format(instance.slug, file_extension)
 
+class Priere(models.Model):
+    title = models.CharField('title', max_length=64)
+    slug = models.SlugField(max_length=64)
+    content = models.TextField('content')    
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    image = models.FileField('Image de l\'nnonce ',upload_to=image_priere_upload_files)
+    class Meta:
+        permissions = (
+                    ('view_post', 'Can view post'),
+        )
+        get_latest_by = 'created_at'
 
+    def __unicode__(self):
+        return self.title
 
-
-
-
+class ConfessionDeFoie(models.Model):
+    title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
+    content = RichTextField()
+    logo = models.FileField('Logo ',upload_to=logo_upload_files)
+    slug = models.SlugField(max_length=150,)
 
 
 

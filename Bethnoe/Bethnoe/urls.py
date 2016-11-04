@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-
+from django.contrib.auth import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,7 +26,9 @@ urlpatterns = [
     url(r'^', include('BibleEnKabyle.urls', namespace='BibleEnKabyle')),
     url(r'^', include('EtudesBibliques.urls', namespace='EtudesBibliques')),
     url(r'^', include('EnseignementsBibliques.urls', namespace='EnseignementsBibliques')),
-
+    url(r'accounts/login/', views.login, name="login"),
+    url(r'accounts/resetpassword/', views.password_reset, name="password_reset"),
+    url(r'^resetpassword/passwordsent/', views.password_reset_done, name='password_reset_done'),
 
     #url(r'^publisher-polls/', include('polls.urls', namespace='publisher-polls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

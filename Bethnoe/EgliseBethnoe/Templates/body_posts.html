@@ -1,0 +1,47 @@
+<div class="container-fluid" id="fond_eglise_bethnoe"  style="background-image: url(/media/{{index_eglise_bethnoe.fond_ecran}});">
+    <section class="row egliseBN" >
+    
+
+                
+                
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-9 col-md-offset-1  container_cadre">
+
+          <div class="col-md-10 col-xs-offset-1"> 
+
+            {% for  ev in posts %}
+
+            <div class="col_{{ev.type_evenments}}">
+                <br>
+                <br>
+                <a href="/media/{{ ev.image }}">
+
+                    <div class="row article" id="poste_area">   
+
+                        <div class="col-md-2" id="article">   
+                            <img id="logo" src="/media/{{ ev.image }}" align="absmiddle">
+                        </div>
+                        <div class="col-md-10" id="post_detail">
+                            <b>{{ev.title }}</b>
+
+                            <br> 
+                            {{ev.content|safe}} 
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+
+            <br>
+            <br>    
+
+        </div>
+
+    </div>
+
+</section>
+
+</div>

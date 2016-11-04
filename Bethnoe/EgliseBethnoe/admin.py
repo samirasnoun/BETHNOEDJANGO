@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import * 
+from models import *  
 
 # Register your models here.
 # @admin.register(Image)
@@ -94,7 +94,29 @@ class CDAdmin(admin.ModelAdmin):
     ]
 
 
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display=('title', 'slug','image',)
+    prepopulated_fields = {
+    
+    "slug": ("title",), 
 
+    }
 
+@admin.register(Priere)
+class PriereAdmin(admin.ModelAdmin):
+    list_display=('title', 'slug','image',)
+    prepopulated_fields = {
+    
+    "slug": ("title",), 
 
+    }
 
+@admin.register(ConfessionDeFoie)
+class PriereAdmin(admin.ModelAdmin):
+    list_display=('title', 'slug','logo',)
+    prepopulated_fields = {
+    
+    "slug": ("title",), 
+
+    }

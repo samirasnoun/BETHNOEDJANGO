@@ -2,7 +2,7 @@
 from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from django.http import Http404
 from django.http import HttpResponse
-from EgliseBethnoe.models import FondEcran, ImageCarrousel, DirigentEgliseBethnoe, AdresseSimple, TextDirigentEgliseBethnoe, IndexEgliseBethnoe, Evenement, CD
+from EgliseBethnoe.models import *
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 
@@ -99,11 +99,7 @@ def IndexEgliseBethnoeEvenementsDetailView(request, slug):
         )
  
 
-
-
-
-
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def IndexEgliseBethnoeEspaceMembersView(request):   
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
     return render(request,
@@ -112,6 +108,7 @@ def IndexEgliseBethnoeEspaceMembersView(request):
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         } 
         )
+
 @csrf_protect 
 def IndexForumView(request):   
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
@@ -134,9 +131,6 @@ def LouangesView(request):
         } 
         )
 
-
-
-
 @csrf_protect
 def LouangesLectureView(request, slug):
     cd = CD.objects.get(slug=slug)
@@ -151,4 +145,45 @@ def LouangesLectureView(request, slug):
         "cd": cd,
         "audios": audios,
         }
+        )
+
+
+@csrf_protect
+def PostsView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    posts = list(Post.objects.all())
+    return render(request,
+        'index_posts.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "posts": posts,
+        } 
+        )
+
+
+
+@csrf_protect
+def PrieresView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    prieres = list(Priere.objects.all())
+    return render(request,
+        'index_prieres.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "prieres": prieres,
+        } 
+        )
+
+
+
+@csrf_protect
+def ConfessionFoieView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    prieres = list(Priere.objects.all())
+    return render(request,
+        'index_prieres.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "prieres": prieres,
+        } 
         )
