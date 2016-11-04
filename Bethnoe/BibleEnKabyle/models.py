@@ -26,7 +26,6 @@ class ChapitreBible(models.Model):
 	livre = models.ForeignKey(LivreBible, on_delete=models.CASCADE)
 	slug = models.SlugField(max_length=50,)
 	audio = models.FileField(upload_to=audio_upload_files)
-
 	def __unicode__(self):
 		return self.titre  
 	def __str__(self):

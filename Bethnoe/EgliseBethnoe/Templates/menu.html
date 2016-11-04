@@ -18,6 +18,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/EgliseBethnoe/">Eglise Bethnoe</a></li>
@@ -25,17 +26,36 @@
                     <li><a href="/BibleEnKabyle/lecture/">Bible en Kabyle</a></li>
                     <li><a href="/EtudesBibliques/">Etudes bibliques</a></li>
                     <li><a href="/EnseignementsBibliques/">Enseignements bibliques</a></li>
-                    <li><a id="contact_us" href="#contact-us">Louanges</a></li>
-                    <li><a id="forum" href="EgliseBethnoe/forum/">Forum</a></li>
-                    <li><a id="" href="#contact-us">Liens</a></li>
+                    <li><a href="EgliseBethnoe/Louanges/">Louanges</a></li>
+                    <li><a href="EgliseBethnoe/forum/">Forum</a></li>
+                    <li><a href="#contact-us">Liens</a></li>
+
+                    {% if user.is_authenticated %}
+
+
+                    <li> <button type="button" class="btn btn-default navbar-btn" href="/account/login">{{ user.username }}</button></li>
+
+                    {% else %}
+
+                    <li> <button type="button" class="btn btn-default navbar-btn" href="/account/login">Se connecter</button></li>
+
+                 {% endif %}
+
 
                 </ul>
+                
 
             </div><!-- /.navbar-collapse -->
 
         </div><!-- /.container-fluid -->
 
     </nav>
+
+
+
+
+
+
 
 </header>
 

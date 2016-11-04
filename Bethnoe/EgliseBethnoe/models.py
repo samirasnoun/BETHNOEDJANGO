@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from fields import ThumbnailImageField  
 import uuid
-import data 
+import data , os
 from ckeditor.fields import RichTextField
 
 # Create your models here.
@@ -132,6 +132,12 @@ class IndexEgliseBethnoe(models.Model):
     logo = models.FileField('Logo ',upload_to=audio_upload_files)
     fond_ecran = models.FileField('Fond d ecran', upload_to=audio_upload_files)
 
+
+
+
+
+
+
 def images_upload_files(instance, filename):
     return 'Evenements_EgliseBethnoe/{0}'.format(filename,)
 
@@ -157,10 +163,15 @@ class Album(models.Model):
     def __str__(self):
         return self.slug
 
-
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
+
+
+
+
+
+
 
 
 
@@ -188,11 +199,62 @@ class Evenement(models.Model):
     def images(self):
         return list(self.album.images.all())
 
-
-
 class CulteHebdo(models.Model):
     title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
     content = RichTextField()
     video_url = models.URLField('Url de la video du culte hebdomadaire' , )
     slug = models.SlugField(max_length=150,)
-    
+
+
+
+
+def audio_upload_files(instance, filename):
+    filename, file_extension = os.path.splitext(filename)
+    return 'LOUANGES/{0}{1}'.format(instance.slug, file_extension)
+
+
+class Audio(models.Model):
+    titre = models.CharField("Titre du CD, Titre du fichier",  max_length=250, blank=True)
+    audio = models.FileField(upload_to=audio_upload_files)
+    slug = models.SlugField(max_length=150,)
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug
+
+class CD(models.Model):
+    titre = models.CharField("Titre du louange (nom du CD)",max_length=250, blank=True)
+    slug = models.SlugField("Slug (Généré automatiquement)",max_length=50,)
+    audios = models.ManyToManyField(
+        Audio,
+        through='AudioDuCD',
+        through_fields=('cd', 'audio_cd'),
+        related_name="liste",
+    )
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug
+    def __unicode__(self):
+        return self.titre  
+    def __str__(self):
+        return self.titre
+
+class AudioDuCD(models.Model):
+    cd = models.ForeignKey(CD, on_delete=models.CASCADE)
+    audio_cd = models.ForeignKey(Audio, on_delete=models.CASCADE)
+    Contient = models.ForeignKey(
+        Audio,
+        on_delete=models.CASCADE,
+        related_name="liste_lecture",
+    )
+
+
+
+
+
+
+
+
+
+

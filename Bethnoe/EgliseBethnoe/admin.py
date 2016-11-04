@@ -70,3 +70,31 @@ class CulteHebdo(admin.ModelAdmin):
     prepopulated_fields = {
     "slug": ("title",)
     }
+
+@admin.register(Audio)
+class AudioAdmin(admin.ModelAdmin):
+    list_display=('titre','audio','slug',)
+    prepopulated_fields = {
+    "slug": ("titre",)
+    }
+
+class AudioInline(admin.TabularInline):
+    model = CD.audios.through
+
+@admin.register(CD)
+class CDAdmin(admin.ModelAdmin):
+    list_display=('titre','slug')
+    prepopulated_fields = {
+    
+    "slug": ("titre",), 
+
+    }
+    inlines = [
+        AudioInline,
+    ]
+
+
+
+
+
+

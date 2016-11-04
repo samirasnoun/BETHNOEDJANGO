@@ -685,3 +685,16 @@ a.right.carousel-control.index {
     width: 0%;
     color: #337ab7;
 }
+
+
+li.list-group-item.list-group-item-info.active {
+    color: white;
+}
+
+a#liste_lecture {
+    color: white;
+}
+
+ul#playlist {
+    min-height: 50vh;
+}

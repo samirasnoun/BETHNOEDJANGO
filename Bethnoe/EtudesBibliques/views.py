@@ -2,12 +2,8 @@
 from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_protect
 from models import EtudeBiblique, IntrofuctionEtudeBiblique
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
-
-
-
-
-
 
 @csrf_protect
 def EtudesBibliquesView(request):

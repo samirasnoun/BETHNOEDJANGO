@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url 
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -15,6 +15,9 @@ urlpatterns = [
     url(r'EgliseBethnoe/espacemembers/$', views.IndexEgliseBethnoeEspaceMembersView, name="IndexEgliseBethnoeEspaceMembers"),
     
     url(r'EgliseBethnoe/forum/', views.IndexForumView, name="IndexForum"),
+    url(r'EgliseBethnoe/Louanges/$', views.LouangesView, name="Louange"),
+    url(r'EgliseBethnoe/Louanges/(?P<slug>[\w-]+)/$', views.LouangesLectureView, name="louange_lecture"),
+
 
 
     url(r'^admin/', admin.site.urls),   
