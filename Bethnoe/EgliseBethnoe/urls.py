@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'EgliseBethnoe/Posts/$', views.PostsView, name="Post"),
     url(r'EgliseBethnoe/Prieres/$', views.PrieresView, name="Priere"),
     url(r'EgliseBethnoe/confession-de-foie/$', views.ConfessionFoieView, name="confessionfoie"),
-
+    url(r'EgliseBethnoe/liens/$', views.ChapitreLiensView, name="liens"),
 
     url(r'^admin/', admin.site.urls),   
 ]

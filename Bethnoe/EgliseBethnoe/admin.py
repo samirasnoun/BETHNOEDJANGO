@@ -8,6 +8,11 @@ from models import *
 #     list_display = ('title', 'photo')
 #     search_fields = ('title',)
 
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    list_display=('title','photo',)
+
 @admin.register(FondEcran)
 class FondEcranAdmin(admin.ModelAdmin):
     list_display = ('title', 'photo', 'afficher', 'caption')
@@ -18,9 +23,11 @@ class ImageCarrousel(admin.ModelAdmin):
     list_display = ('title', 'photo', 'afficher', 'caption')
     search_fields = ('title',)
 
+
 @admin.register(DirigentEgliseBethnoe)
 class DirigentEgliseBethnoe(admin.ModelAdmin):
-    list_display = ('nom', 'prenom', 'mail', 'role')
+    list_display = ('nom',  'role')
+
 
 @admin.register(AdresseSimple)
 class AdresseSimple(admin.ModelAdmin):
@@ -120,3 +127,28 @@ class PriereAdmin(admin.ModelAdmin):
     "slug": ("title",), 
 
     }
+
+
+@admin.register(Lien_c)
+class LienAdmin(admin.ModelAdmin):
+    list_display=('title','slug', 'url')
+    prepopulated_fields = {
+    "slug": ("title",)
+    }
+
+class LienInline(admin.TabularInline):
+    model = Chapitre_Lien.lien.through
+
+
+@admin.register(Chapitre_Lien)
+class ChapitreLienAdmin(admin.ModelAdmin):
+    list_display=('title','slug')
+    prepopulated_fields = {    
+    "slug": ("title",), 
+    }
+    inlines = [
+        LienInline,
+    ]
+
+
+

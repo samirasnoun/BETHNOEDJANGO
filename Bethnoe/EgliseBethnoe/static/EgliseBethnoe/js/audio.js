@@ -2,6 +2,7 @@
  var playlist;
  var tracks;
  var current;
+var waitTime = 150;
 
  init();
 
@@ -45,5 +46,18 @@ function run(link, player){
   par = link.parent();
   par.addClass('active').siblings().removeClass('active');
   audio[0].load();
-  audio[0].play();
+  setTimeout();
+
+
+setTimeout(function () {      
+  // Resume play if the element if is paused.
+  if (audio[0].paused) {
+    audio[0].play();
+    
+  }
+}, waitTime);
+
+
+  
+
 }

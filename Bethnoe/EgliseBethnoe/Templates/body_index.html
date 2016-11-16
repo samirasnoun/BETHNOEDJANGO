@@ -4,11 +4,7 @@
 
 <div class="col-md-12 text-center">
     
-
-
-
     <section id="EgliseBethnoe" class="col-md-10 col-md-offset-1">
-
 
      <div id="myCarousel1" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
@@ -45,7 +41,6 @@
 
             {% endfor %}
 
-
         </div>
 
         <!-- Left and right controls -->
@@ -59,20 +54,11 @@
         </a>
     </div>
 
-
-
-
-
-
-
-
-
-
-
+            <a class="btn" href="#text-dir">
+                <i class="fa fa-arrow-circle-down fa-4x"></i>
+            </a>
 
 </section>
-
-
 
 </div>
 
@@ -80,23 +66,30 @@
 
 
 
-
 <section id="sights" class="row text-banner">
 
+
+
+
+
+
+
     <h3 id="equipe">{{presentation_equipe_dirigente.titre}}</h3>
+ <div id="text-dir"></div>
 
     <p>{{presentation_equipe_dirigente.texte}}</p>
-
+   
     <section id="activities" class="row activity-section">
 
         {%for dirigent in dirigents_eglise %}
-
+        <a href="{{dirigent.lien}}">
 
         <div class="activity-element col-md-4 wow fadeInLeft">
             <img src="{% static dirigent.photo.get__absolute_url %}" />
             <h3>{{dirigent.nom}} {{dirigent.prenom}}</h3>
             <p>{{dirigent.role}}</p>
         </div> 
+           </a>
 
         {%endfor%}
 
@@ -110,16 +103,10 @@
 
 </section>
 
-
-
-
 <section class="row">
     <div class="fill-screen fixed-attachment" style="background-image: url({% static fond2.get__absolute_url %})">
     </div>
 </section>
-
-
-
 
 <section id="contact-us" class="row contact-us wow fadeInDown">
     <h1>Contactez nous</h1>

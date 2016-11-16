@@ -135,10 +135,6 @@ def LouangesView(request):
 def LouangesLectureView(request, slug):
     cd = CD.objects.get(slug=slug)
     audios = list(cd.audios.all())
-
-    print type(cd)
-    print "!!!!!!!!!!!!!"
-    print type(audios)
     return render(request,
         'index_louanges_lecture.html',
         {
@@ -187,3 +183,21 @@ def ConfessionFoieView(request):
         "prieres": prieres,
         } 
         )
+
+
+@csrf_protect
+def ChapitreLiensView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    chapite_lien = list(Chapitre_Lien.objects.all())[0]
+    liens = list(Lien_c.objects.all())
+
+    return render(request,
+        'index_liens.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe,
+        "chapite_lien": chapite_lien,  
+        "liens": liens,
+        } 
+        )
+
+

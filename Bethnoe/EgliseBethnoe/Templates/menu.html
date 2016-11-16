@@ -26,9 +26,9 @@
                     <li><a href="/BibleEnKabyle/lecture/">Bible en Kabyle</a></li>
                     <li><a href="/EtudesBibliques/">Etudes bibliques</a></li>
                     <li><a href="/EnseignementsBibliques/">Enseignements bibliques</a></li>
-                    <li><a href="EgliseBethnoe/Louanges/">Louanges</a></li>
-                    <li><a href="EgliseBethnoe/forum/">Forum</a></li>
-                    <li><a href="#contact-us">Liens</a></li>
+                    <li><a href="/EgliseBethnoe/Louanges/">Louanges</a></li>
+                    <li><a href="/EgliseBethnoe/forum/">Forum</a></li>
+                    <li><a href="/EgliseBethnoe/liens/">Liens</a></li>
 
                     {% if user.is_authenticated %}
 
@@ -37,7 +37,8 @@
 
                     {% else %}
 
-                    <li> <button type="button" class="btn btn-default navbar-btn" href="/account/login">Se connecter</button></li>
+                    <li> <a href="/accounts/login"> Login </a></li>
+
 
                  {% endif %}
 

@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf8 -*- 
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
@@ -52,10 +52,9 @@ class DirigentEgliseBethnoe(models.Model):
         
         default='',
     )    
-    nom = models.CharField(max_length=150, blank=True)
-    prenom = models.CharField(max_length=150, blank=True)
-    mail = models.EmailField(max_length=150, blank=True)
-    role = models.CharField(max_length=250, blank=True)
+    nom = models.CharField('Nom de la section du site à mettre en valeur ', max_length=150, blank=True)
+    role = models.CharField('Sous texte', max_length=250, blank=True)
+    lien = models.URLField('Url sur laquelle pointe le role' , )
 
 
 class TextDirigentEgliseBethnoe(models.Model):
@@ -145,6 +144,11 @@ class IndexEgliseBethnoe(models.Model):
 def images_upload_files(instance, filename):
     return 'Evenements_EgliseBethnoe/{0}'.format(filename,)
 
+
+
+
+
+
 class ImageEvenement(models.Model):
     image = models.FileField('Photo ',upload_to=images_upload_files)
     titre_image = models.CharField(max_length=128)
@@ -170,6 +174,12 @@ class Album(models.Model):
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
+
+
+
+
+
+
 
 class Evenement(models.Model):
     titre = models.CharField(max_length=128)
@@ -206,6 +216,9 @@ def audio_upload_files(instance, filename):
     return 'LOUANGES/{0}{1}'.format(instance.slug, file_extension)
 
 
+
+
+
 class Audio(models.Model):
     titre = models.CharField("Titre du CD, Titre du fichier",  max_length=250, blank=True)
     audio = models.FileField(upload_to=audio_upload_files)
@@ -228,10 +241,6 @@ class CD(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
-    def __unicode__(self):
-        return self.titre  
-    def __str__(self):
-        return self.titre
 
 class AudioDuCD(models.Model):
     cd = models.ForeignKey(CD, on_delete=models.CASCADE)
@@ -241,6 +250,9 @@ class AudioDuCD(models.Model):
         on_delete=models.CASCADE,
         related_name="liste_lecture",
     )
+
+
+
 
 def image_priere_upload_files(instance, filename):
     filename, file_extension = os.path.splitext(filename)
@@ -266,6 +278,45 @@ class ConfessionDeFoie(models.Model):
     content = RichTextField()
     logo = models.FileField('Logo ',upload_to=logo_upload_files)
     slug = models.SlugField(max_length=150,)
+
+
+
+
+
+
+class Lien_c(models.Model):
+    title = models.CharField('Texte du bouton', max_length=64)
+    slug = models.SlugField(max_length=150,)
+    url = models.URLField('Url du lien' , )
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug
+
+class Chapitre_Lien(models.Model):
+    title = models.CharField('Titre', max_length=64)
+    slug = models.SlugField(max_length=50,)
+    content = RichTextField()
+    lien = models.ManyToManyField(
+        Lien_c,
+        through='LienDe',
+        through_fields=('chapitre_lien', 'url_p'),
+    )
+    def __unicode__(self):
+        return self.slug  
+    def __str__(self):
+        return self.slug    
+
+class LienDe(models.Model):
+    chapitre_lien = models.ForeignKey(Chapitre_Lien, on_delete=models.CASCADE)
+    url_p = models.ForeignKey(Lien_c, on_delete=models.CASCADE)
+
+    lie_a = models.ForeignKey(
+        Lien_c,
+        on_delete=models.CASCADE,
+        related_name="lien_chapitre",
+    )
+
 
 
 
