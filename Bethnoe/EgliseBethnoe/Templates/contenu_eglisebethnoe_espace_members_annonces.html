@@ -10,7 +10,7 @@
             {% for  ev in posts %}
 
 
-                <a href="/media/{{ ev.image }}">
+                <a href="{% url 'EgliseBethnoe:IndexEgliseBethnoePostsDetail' ev.slug %}">
 
                     <div class="row article" id="poste_area">   
 

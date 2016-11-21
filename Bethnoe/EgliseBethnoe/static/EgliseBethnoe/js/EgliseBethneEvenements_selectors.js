@@ -32,3 +32,9 @@ $(".auteur").on("click", function() {
 		$(sujet).hide();
 
 });
+
+
+$('*[id*=id_]').each(function() {
+    $(this).on('input', function(e) { $('ul.errorlist').hide(); });
+});
+

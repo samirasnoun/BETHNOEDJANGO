@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'accounts/login/', views.login, name="login"),
     url(r'accounts/resetpassword/', views.password_reset, name="password_reset"),
     url(r'^resetpassword/passwordsent/', views.password_reset_done, name='password_reset_done'),
-    url(r'^resetpassword/profile/', views.profile, name='profile'),
+
 
     #url(r'^publisher-polls/', include('polls.urls', namespace='publisher-polls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

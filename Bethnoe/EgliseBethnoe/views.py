@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from EgliseBethnoe.models import *
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
+from django.http import HttpResponseRedirect
+
+from forms import * 
 
 @csrf_protect
 def IndexView(request):
@@ -81,7 +84,7 @@ def IndexEgliseBethnoeEvenementsView(request):
         "evenements": evenements, 
         'type_evenements': Evenement.TYPES_EVENEMENTS
         } 
-        )
+        ) 
 
 @csrf_protect
 def IndexEgliseBethnoeEvenementsDetailView(request, slug):
@@ -98,6 +101,25 @@ def IndexEgliseBethnoeEvenementsDetailView(request, slug):
         } 
         )
  
+
+
+@csrf_protect
+def IndexEgliseBethnoePostsDetailView(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render(request,
+        'index_eglisebethnoe_posts_detail.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "post": post, 
+        "evenements": "", 
+
+        } 
+        )
+  
+
+
 
 @login_required(login_url='accounts/login/')
 def IndexEgliseBethnoeEspaceMembersView(request):   
@@ -200,4 +222,18 @@ def ChapitreLiensView(request):
         } 
         )
 
+@csrf_protect
+def AddUser(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)            
+            return HttpResponseRedirect('/accounts/login/')
+        else:
+            render(request, 'registration/adduser.html', {'form': form})
 
+
+    else:
+        form = UserForm() 
+
+    return render(request, 'registration/adduser.html', {'form': form}) 

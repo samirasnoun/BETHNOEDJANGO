@@ -711,3 +711,8 @@ div#poste_area {
     border-radius: 9px;
     padding: 3px;
 }
+
+ul.errorlist {
+    color: red;
+    list-style-position: inside;
+}

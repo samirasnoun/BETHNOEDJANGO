@@ -173,3 +173,5 @@ STATICFILES_DIRS = (
 
 CKEDITOR_JQUERY_URL = 'http://127.0.0.1:8000/static/jquery-2.1.1.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+LOGIN_REDIRECT_URL = '/'
