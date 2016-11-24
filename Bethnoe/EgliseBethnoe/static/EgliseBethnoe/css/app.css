@@ -716,3 +716,24 @@ ul.errorlist {
     color: red;
     list-style-position: inside;
 }
+
+
+.container_post {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.col-md-9.col-md-offset-2.container_cadre {
+    /* background: url(./images/site-logo-white-70pct.png); */
+    background-color: rgba(174, 176, 175, 0.4);
+    min-height: 1000px;
+    top: 30px;
+    border-radius: 10px;
+}
+
+div#contenu-confession-foie {
+    background-color: rgba(174, 176, 175, 0.4);
+        color: white;
+}

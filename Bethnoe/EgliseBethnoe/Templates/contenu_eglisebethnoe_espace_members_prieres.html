@@ -7,10 +7,10 @@
 <div class="col-md-12">
 
 
-            {% for  ev in prieres %}
+            {% for  ev in prieres %} 
 
 
-                <a href="/media/{{ ev.image }}">
+                <a href="{% url 'EgliseBethnoe:IndexEgliseBethnoePrieresDetail' ev.slug %}">
 
                     <div class="row article" id="poste_area">   
 

@@ -69,7 +69,8 @@ def IndexEgliseBethnoeView(request):
         'index_eglisebethnoe.html',
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
-        "evenements": "",         
+        "evenements": "",  
+        "accueil": "true",       
         } 
         )
 
@@ -194,17 +195,7 @@ def PrieresView(request):
 
 
 
-@csrf_protect
-def ConfessionFoieView(request):
-    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
-    prieres = list(Priere.objects.all())
-    return render(request,
-        'index_prieres.html', 
-        {
-        "index_eglise_bethnoe": index_eglise_bethnoe, 
-        "prieres": prieres,
-        } 
-        )
+
 
 
 @csrf_protect
@@ -237,3 +228,71 @@ def AddUser(request):
         form = UserForm() 
 
     return render(request, 'registration/adduser.html', {'form': form}) 
+
+
+
+
+
+
+
+
+@csrf_protect
+def IndexEgliseBethnoePriereDetailView(request, slug):
+    priere = Priere.objects.get(slug=slug); 
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render(request,
+        'index_eglisebethnoe_prieres_detail.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "priere": priere, 
+        } 
+        )
+
+
+def IndexEgliseBethnoeConfessionFoieView(request):
+    
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    confession = list(ConfessionDeFoie.objects.all())[0]
+    return render(request,
+        'index_eglisebethnoe_prieres_detail.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "confession": confession, 
+        } 
+        )
+
+
+
+def contact(request): 
+    
+    if request.method == 'POST':
+        form = Contact2Form(request.POST)
+        if form.is_valid():
+            nom = form.cleaned_data['nameField']
+            prenom = form.cleaned_data['firstNameField']
+            email = form.cleaned_data['emailField']
+            telephone = form.cleaned_data['phoneField']
+            description = form.cleaned_data['descField']
+
+            #send_mail('Feedback from your site, topic: %s' % topic,message, sender,['samir.asnoun@gmail.com'])
+            #mail_managers(topic + " from " + sender, message, fail_silently=False, connection=None, html_message=None)
+            
+            if nom and prenom and email:
+                try:
+                    
+                    mail_admins("from " + prenom + "  " + nom, "nom" +  nom + "\nprenom = " + prenom + "\ndescription = " + description + "\nphone=" +  telephone + "\nemail = "  + email , fail_silently=False, connection=None, html_message=None)
+                    form.save()  
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+                
+                return render_to_response('thanks.html' , {'prenom': prenom} )            
+            else:
+                return render(request, "index_contact.html", {'form': form })
+        else:
+            
+
+            return render(request, "index_contact.html", {'form': form })
+    else:
+        
+        form = ContactForm()
+        return render(request, "index_contact.html", {'form': form })

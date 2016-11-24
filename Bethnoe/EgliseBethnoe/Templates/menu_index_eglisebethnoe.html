@@ -8,7 +8,8 @@
 
                 <div class="col-md-9" id="text_egliseBethnoe_3">
 
-                  {% if evenements %}
+                  {% if not accueil  %}
+
                   <div class="col-md-2">
 
                    <a href="/EgliseBethnoe/" >
@@ -18,16 +19,7 @@
 
                    </div>
 
-                   {% elif evenement %}
-
-                   <div class="col-md-2">
-
-                   <a href="/EgliseBethnoe/evenements/" >
-                     <button type="button"  class="btn btn-default btn-lg col-lg-12">
-                       Retour</button> 
-                     </a>
-
-                   </div>                  
+                 
 
                    {% else %}
 
@@ -49,17 +41,17 @@
 
                     </tr>
                     <tr>
-                     <td> <a id="liens-detailles" href="EgliseBethnoe/espacemembers/">Espaces membres</a>  </td>
+                     <td> <a id="liens-detailles" href="/EgliseBethnoe/espacemembers/">Espaces membres</a>  </td>
 
                    </tr>
                    <tr>
-                    <td> <a id="liens-detailles" href="EgliseBethnoe/confession-de-foie/">Confession de foi</a>  </td>
+                    <td> <a id="liens-detailles" href="/EgliseBethnoe/confession-de-foie/">Confession de foi</a>  </td>
 
                   </tr>
 
                   <tr>
 
-                    <td> <a id="liens-detailles" href="">Contact</a>
+                    <td> <a id="liens-detailles" href="/EgliseBethnoe/contact/">Contact</a>
 
                     </td>
 
