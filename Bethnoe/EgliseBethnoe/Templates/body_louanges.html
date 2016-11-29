@@ -1,46 +1,35 @@
        
 <div class="container-fluid" id="fond_eglise_bethnoe"  style="background-image: url(/media/{{index_eglise_bethnoe.fond_ecran}});">
-
-
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="input-group-button">
-                  <a href="{% url 'EgliseBethnoe:Louange' %}"><span class="input-group btn-group-lg">
-                    <button class="btn btn-primary" type="button">Retour</button>
-                </span> </a>
-            </div>
-        </div><!-- /input-group -->
-
-        <br>
-        <br>
-
-<div class="col-lg-12 col-md-12 col-sm-12">
-
-<h1>{{cd.titre}} </h1>
-
-</div>
-
-
-</hr>
-
-
-<div>
+    <div class="col-lg-12 col-md-12 col-sm-12">
+    <br>
+    <br>
+      <div class="input-group-button">
+          <a href="{% url 'EgliseBethnoe:Louange' %}"><span class="input-group btn-group-lg">
+            <button class="btn btn-primary" type="button">Retour</button>
+        </span> </a>
+    </div>
+</div><!-- /input-group -->
 <br>
+<br>
+<div class="col-lg-12 col-md-12 col-sm-12">
+    <h1>{{cd.titre}} </h1>
+</div>
+</hr>
+<div>
+    <br>
+    <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
+        
+        <source src="/media/{{audios.0.audio}}">
 
-        <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg">
-            <source src="http://127.0.0.1:8000/media/LOUANGES/titre-2.mp3">
-                Votre naviguateur ne supporte pas le HTML 5.
+
+            Votre naviguateur ne supporte pas le HTML 5.
         </audio>
-
         <ul class="list-group" id="playlist">
-
-            
             {% for m in audios %}
             <li class="list-group-item list-group-item-info">
                 <a href="/media/{{m.audio}}">{{m.titre}}</a>
             </li>
             {% endfor %}
-
-
         </ul>
-
+    </div>
 </div>

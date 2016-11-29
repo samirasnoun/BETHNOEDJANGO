@@ -27,6 +27,7 @@ class ContactForm(forms.Form):
     firstNameField = forms.CharField(label='Votre prénom', max_length=100)
     emailField = forms.EmailField(label='Votre email', required=True, validators=[validate_email])
     descField = forms.CharField(label='Votre message', widget=forms.Textarea())
+    phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$', error_message = ("Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."))
     def clean(self):
     	cleaned_data = super(ContactForm, self).clean()
     	nameField = cleaned_data.get("nameField")

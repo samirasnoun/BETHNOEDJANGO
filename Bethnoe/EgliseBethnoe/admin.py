@@ -119,6 +119,17 @@ class PriereAdmin(admin.ModelAdmin):
 
     }
 
+
+@admin.register(Ecoles)
+class PriereAdmin(admin.ModelAdmin):
+    list_display=('title', 'slug','image',)
+    prepopulated_fields = {
+    
+    "slug": ("title",), 
+
+    }
+
+
 @admin.register(ConfessionDeFoie)
 class PriereAdmin(admin.ModelAdmin):
     list_display=('title', 'slug','logo',)
@@ -152,3 +163,6 @@ class ChapitreLienAdmin(admin.ModelAdmin):
 
 
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display=('nom','prenom', 'email','telephone')

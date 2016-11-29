@@ -1,0 +1,29 @@
+<div class="container-fluid" id="fond_eglise_bethnoe"  style="background-image: url(/media/{{index_eglise_bethnoe.fond_ecran}});">
+  <section class="row egliseBN"> 
+  
+    {% include "menu_index_eglisebethnoe.html" %}
+
+    <div class="container-fluid" style="min-height:40vh;" >
+
+      <br>
+      <div class="col-sm-10 col-md-6 col-md-offset-1">
+
+        <br>
+
+        {{ecole.content|safe}}
+
+      </div>
+
+      <div class="col-sm-10 col-md-5 text-center" id="container_post" style="background-image: url('/media/{{ecole.image}}'); min-height: 70vh;     background-repeat: no-repeat;
+      background-size: cover; border-radius: 8px;
+      ">
+
+      <h1>{{ecole.title}}</h1>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<br>
+<br>

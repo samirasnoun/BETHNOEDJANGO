@@ -7,6 +7,7 @@ from fields import ThumbnailImageField
 import uuid
 import data , os
 from ckeditor.fields import RichTextField
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class Image(models.Model):    
@@ -261,7 +262,7 @@ def image_priere_upload_files(instance, filename):
 class Priere(models.Model):
     title = models.CharField('title', max_length=64)
     slug = models.SlugField(max_length=64)
-    content = models.TextField('content')    
+    content = RichTextField()   
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     image = models.FileField('Image de l\'nnonce ',upload_to=image_priere_upload_files)
     class Meta:
@@ -280,6 +281,39 @@ class ConfessionDeFoie(models.Model):
     slug = models.SlugField(max_length=150,)
 
 
+
+
+
+
+def image_ecoles_upload_files(instance, filename):
+    filename, file_extension = os.path.splitext(filename)
+    return 'EcolesDesEnfants/{0}{1}'.format(instance.slug, file_extension)
+
+class Ecoles(models.Model):
+    title = models.CharField('title', max_length=64)
+    slug = models.SlugField(max_length=64)
+    content = RichTextField() 
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    image = models.FileField('Image de l\'nnonce ',upload_to=image_ecoles_upload_files)
+    class Meta:
+        permissions = (
+                    ('view_post', 'Can view post'),
+        )
+        get_latest_by = 'created_at'
+
+    def __unicode__(self):
+        return self.title
+
+
+
+
+
+
+
+
+def image_louanges_upload_files(instance, filename):
+    filename, file_extension = os.path.splitext(filename)
+    return 'Louanges/{0}{1}'.format(instance.slug, file_extension)
 
 
 
@@ -320,3 +354,14 @@ class LienDe(models.Model):
 
 
 
+class Contact(models.Model):
+    nom = models.CharField(max_length=64)
+    prenom = models.CharField(max_length=64)
+    email = models.EmailField()
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+    telephone = models.CharField(validators=[phone_regex], blank=True,max_length=10)
+    description = RichTextField(default="")
+    def __unicode__(self):
+        return self.nom + " " + self.prenom  
+    def __str__(self):
+        return self.nom + "  " + self.prenom    

@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from django.contrib import admin
-
+ 
 
 urlpatterns = [
     url(r'^$', views.IndexView, name="index"),
@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'EgliseBethnoe/evenements/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoeEvenementsDetailView, name="IndexEgliseBethnoeEvenementsDetail"),
     url(r'EgliseBethnoe/posts/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoePostsDetailView, name="IndexEgliseBethnoePostsDetail"),
     url(r'EgliseBethnoe/piere/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoePriereDetailView, name="IndexEgliseBethnoePrieresDetail"),
-
+    url(r'EgliseBethnoe/Ecole-des-enfants/(?P<slug>[\w-]+)/$', views.EcoleDesEnfantsDetailView, name="EcoleDesEnfantsDetail"),
+    
     url(r'EgliseBethnoe.html', views.IndexView, name="index"),
     url(r'EgliseBethnoe/evenements/$', views.IndexEgliseBethnoeEvenementsView, name="IndexEgliseBethnoeEvenements"),
     url(r'EgliseBethnoe/espacemembers/$', views.IndexEgliseBethnoeEspaceMembersView, name="IndexEgliseBethnoeEspaceMembers"),
@@ -24,6 +25,7 @@ urlpatterns = [
     url(r'EgliseBethnoe/Louanges/(?P<slug>[\w-]+)/$', views.LouangesLectureView, name="louange_lecture"),
     url(r'EgliseBethnoe/Posts/$', views.PostsView, name="Post"),
     url(r'EgliseBethnoe/Prieres/$', views.PrieresView, name="Priere"),
+    url(r'EgliseBethnoe/Ecole-des-enfants/$', views.EcoleDesEnfantsView, name="EcoleDesEnfants"),
     url(r'EgliseBethnoe/liens/$', views.ChapitreLiensView, name="liens"),
     url(r'EgliseBethnoe/inscription/', views.AddUser, name="add_user"),
 

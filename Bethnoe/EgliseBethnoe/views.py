@@ -6,7 +6,6 @@ from EgliseBethnoe.models import *
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponseRedirect
-
 from forms import * 
 
 @csrf_protect
@@ -248,7 +247,7 @@ def IndexEgliseBethnoePriereDetailView(request, slug):
         } 
         )
 
-
+@csrf_protect
 def IndexEgliseBethnoeConfessionFoieView(request):
     
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
@@ -263,31 +262,38 @@ def IndexEgliseBethnoeConfessionFoieView(request):
 
 
 
+
+@csrf_protect
+def EcoleDesEnfantsDetailView(request, slug):
+    ecole = Ecoles.objects.get(slug=slug); 
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    return render(request,
+        'index_eglisebethnoe_ecoledesenfants_detail.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "ecole": ecole, 
+        } 
+        )
+
+@csrf_protect 
 def contact(request): 
     
     if request.method == 'POST':
-        form = Contact2Form(request.POST)
+        form = ContactForm(request.POST)
         if form.is_valid():
+            cont = Contact(nom=form.cleaned_data['nameField'], prenom=form.cleaned_data['firstNameField'],email = form.cleaned_data['emailField'],telephone = form.cleaned_data['phone_number'], description = form.cleaned_data['descField']  )
+            cont.save()
             nom = form.cleaned_data['nameField']
             prenom = form.cleaned_data['firstNameField']
             email = form.cleaned_data['emailField']
-            telephone = form.cleaned_data['phoneField']
+            telephone = form.cleaned_data['phone_number']
             description = form.cleaned_data['descField']
+            index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+            return render(request,'index_eglisebethnoe.html' , {'prenom': prenom} ) 
 
             #send_mail('Feedback from your site, topic: %s' % topic,message, sender,['samir.asnoun@gmail.com'])
             #mail_managers(topic + " from " + sender, message, fail_silently=False, connection=None, html_message=None)
             
-            if nom and prenom and email:
-                try:
-                    
-                    mail_admins("from " + prenom + "  " + nom, "nom" +  nom + "\nprenom = " + prenom + "\ndescription = " + description + "\nphone=" +  telephone + "\nemail = "  + email , fail_silently=False, connection=None, html_message=None)
-                    form.save()  
-                except BadHeaderError:
-                    return HttpResponse('Invalid header found.')
-                
-                return render_to_response('thanks.html' , {'prenom': prenom} )            
-            else:
-                return render(request, "index_contact.html", {'form': form })
         else:
             
 
@@ -296,3 +302,17 @@ def contact(request):
         
         form = ContactForm()
         return render(request, "index_contact.html", {'form': form })
+
+
+
+@csrf_protect
+def EcoleDesEnfantsView(request):
+    index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    ecoles = Ecoles.objects.all()
+    return render(request,
+        'index_eglisebethnoe_ecoledesenfants.html', 
+        {
+        "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "ecoles": ecoles, 
+        } 
+        )

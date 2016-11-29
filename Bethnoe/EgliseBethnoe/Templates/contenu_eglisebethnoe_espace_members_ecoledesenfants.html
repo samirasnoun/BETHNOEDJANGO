@@ -1,0 +1,41 @@
+<div class="col-md-12" id="culte_hebdo">  
+    <strong>Ecole des enfants</strong>             
+        
+
+</div>
+
+<div class="col-md-12">
+ 
+
+
+            {% for  ev in ecoles %} 
+
+
+                <a href="{% url 'EgliseBethnoe:EcoleDesEnfantsDetail' ev.slug %}">
+
+                    <div class="row article" id="poste_area">   
+
+                        <div class="col-md-2" id="article">   
+                            <img id="logo" src="/media/{{ ev.image }}" align="absmiddle">
+                        </div>
+                        <div class="col-md-10" id="post_detail">
+                            <b>{{ev.title }}</b>
+
+                            <br> 
+                            {{ev.content|safe}} 
+                        </div>
+
+                    </div>
+                </a>
+
+                <br>
+                
+       
+
+            {% endfor %}
+
+
+
+</div>
+    
+
