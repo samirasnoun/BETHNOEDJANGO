@@ -9,16 +9,16 @@ from models import *
 #     search_fields = ('title',)
 
 
-@admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
-    list_display=('title','photo',)
+#@admin.register(Image)
+#class ImageAdmin(admin.ModelAdmin):
+#    list_display=('title','photo',)
 
 @admin.register(FondEcran)
 class FondEcranAdmin(admin.ModelAdmin):
     list_display = ('title', 'photo', 'afficher', 'caption')
     search_fields = ('title',)
 
-@admin.register(ImageCarrousel)
+@admin.register(ImageCarrousel) 
 class ImageCarrousel(admin.ModelAdmin):
     list_display = ('title', 'photo', 'afficher', 'caption')
     search_fields = ('title',)
@@ -43,12 +43,12 @@ class IndexEgliseBethnoeAdmin(admin.ModelAdmin):
 	list_display=('title1', 'title2', 'video_url',)
 
 
-@admin.register(ImageEvenement)
-class ImageEvenement(admin.ModelAdmin):
-	list_display=('id','image','titre_image','slug')
-	prepopulated_fields = {
-    "slug": ("titre_image",)
-    }
+#@admin.register(ImageEvenement)
+#class ImageEvenement(admin.ModelAdmin):
+#	list_display=('id','image','titre_image','slug')
+#	prepopulated_fields = {
+#    "slug": ("titre_image",)
+#    }
 
 class ImagesInline(admin.TabularInline):
     model = Album.images.through

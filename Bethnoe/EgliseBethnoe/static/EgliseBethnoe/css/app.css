@@ -1,4 +1,5 @@
 body {
+        padding-top: 30px;
     position: relative;
     font-family: 'Open Sans', sans-serif;
     /*padding-top: 110px;*/
@@ -363,6 +364,7 @@ img.img-responsive.imageeglisebethnoe {
         padding: 20px;
         color: wheat;
         border-radius: 10px;
+        padding-top: 100px
     }
 
     .col-md-9.col-md-offset-1.container_cadre {

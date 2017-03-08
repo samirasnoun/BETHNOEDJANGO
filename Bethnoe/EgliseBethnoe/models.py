@@ -34,8 +34,8 @@ class FondEcran(Image):
     afficher = models.CharField(max_length=3, choices=AFFI_PAGE_ACCUEIL, default='oui')
     caption = models.CharField(max_length=250, blank=True)
     class Meta:
-        verbose_name = "Fond d ecran"
-        verbose_name_plural = "Fonds d ecrans"
+        verbose_name = "Page d'accueil : Fond d ecran"
+        verbose_name_plural = "Page d'accueil : Fonds d ecrans"
 
 
 class ImageCarrousel(Image):
@@ -45,6 +45,9 @@ class ImageCarrousel(Image):
     )
     afficher = models.CharField(max_length=3, choices=AFFI_PAGE_ACCUEIL, default='oui')
     caption = models.CharField(max_length=250, blank=True)
+    class Meta:
+        verbose_name = "Page d'accueil : image du carousel de la page d'accueil"
+        verbose_name_plural = "Page d'accueil : Images du carousel de la page d'accueil"    
 
 class DirigentEgliseBethnoe(models.Model):
     photo = models.OneToOneField(
@@ -56,12 +59,19 @@ class DirigentEgliseBethnoe(models.Model):
     nom = models.CharField('Nom de la section du site à mettre en valeur ', max_length=150, blank=True)
     role = models.CharField('Sous texte', max_length=250, blank=True)
     lien = models.URLField('Url sur laquelle pointe le role' , )
+    class Meta:
+        verbose_name="Page d'accueil : Liens - sections à mettre en valeurs "
+        verbose_name_plural="Page d'accueil : Liens - sections à mettre en valeurs "
+
+
 
 
 class TextDirigentEgliseBethnoe(models.Model):
     titre = models.CharField(max_length=50, blank=True)
     texte = models.CharField(max_length=250, blank=True)
-
+    class Meta:
+        verbose_name = "Page d'accueil : Texte des dirigents de l église"
+        verbose_name_plural = "Page d'accueil : Texte des dirigents de l église"
 
 class Adresse(models.Model):
     num_rue = models.IntegerField(blank=True)
@@ -75,8 +85,8 @@ class Adresse(models.Model):
     code_dep = models.CharField(max_length=150, choices=data.CODE_DEP_FRANCE, default='75')
 
     class Meta:
-        verbose_name = "Adresse de contact de l eglise"
-        verbose_name_plural = "Adresse de contact de l eglise"
+        verbose_name = "Page d'accueil : Adresse de contact de l eglise"
+        verbose_name_plural = "Page d'accueil : Adresse de contact de l eglise"
 
     
 class AdresseSimple(models.Model):
@@ -92,8 +102,8 @@ class AdresseSimple(models.Model):
     pays = models.CharField(max_length=150, default='France')
 
     class Meta:
-        verbose_name = "Adresse de contact de l eglise"
-        verbose_name_plural = "Adresse de contact de l eglise"
+        verbose_name = "Page d'accueil : Adresse de contact de l eglise"
+        verbose_name_plural = "Page d'accueil : Adresse de contact de l eglise"
 
 class Annonce(models.Model):
     """docstring for Annonce"""
@@ -119,6 +129,8 @@ class Post(models.Model):
                     ('view_post', 'Can view post'),
         )
         get_latest_by = 'created_at'
+        verbose_name="Eglise Bethnoe : Annonces (espace membres)"
+        verbose_name_plural="Eglise Bethnoe : Annonces (espace membres)"
 
     def __unicode__(self):
         return self.title
@@ -139,7 +151,9 @@ class IndexEgliseBethnoe(models.Model):
     video_url = models.URLField('Url de la video de présentation de l\'église' , )
     logo = models.FileField('Logo ',upload_to=logo_upload_files)
     fond_ecran = models.FileField('Fond d ecran', upload_to=logo_upload_files)
-
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Video de l'église Bethnoe"
+        verbose_name_plural = "Eglise Betnoe : Videos de l'église Bethnoe"
 
 
 def images_upload_files(instance, filename):
@@ -171,6 +185,13 @@ class Album(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Album pour evenements dans > Eglise Bethnoe > Evenements  "
+        verbose_name_plural = "Eglise Bethnoe : Albums pour evenements dans > Eglise Bethnoe > Evenements "
+
+
+
+
 
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
@@ -205,12 +226,21 @@ class Evenement(models.Model):
         return list(self.album.images.all())[0].image
     def images(self):
         return list(self.album.images.all())
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Evenements "
+        verbose_name_plural = "Eglise Bethnoe : Evenements "
+
+
 
 class CulteHebdo(models.Model):
     title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
     content = RichTextField()
     video_url = models.URLField('Url de la video du culte hebdomadaire' , )
     slug = models.SlugField(max_length=150,)
+
+    class Meta:
+        verbose_name="Eglise Bethnoe : Culte hebdomadaire"
+        verbose_name_plural="Eglise Bethnoe : Culte hebdomadaire "
 
 def audio_upload_files(instance, filename):
     filename, file_extension = os.path.splitext(filename)
@@ -228,6 +258,9 @@ class Audio(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
+    class Meta:
+        verbose_name="Louange : Fichiers mp3 ou autres ... "
+        verbose_name_plural="Louange : Fichiers mp3 ou autres ... "
 
 class CD(models.Model):
     titre = models.CharField("Titre du louange (nom du CD)",max_length=250, blank=True)
@@ -242,6 +275,12 @@ class CD(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
+    class Meta:
+        verbose_name="Louange : CD à composer "
+        verbose_name_plural="Louanges : CDs à composer"
+
+
+
 
 class AudioDuCD(models.Model):
     cd = models.ForeignKey(CD, on_delete=models.CASCADE)
@@ -274,11 +313,18 @@ class Priere(models.Model):
     def __unicode__(self):
         return self.title
 
-class ConfessionDeFoie(models.Model):
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Pririeres (Espace membres) "
+        verbose_name_plural = "Eglise Bethnoe :  Pririeres (Espace membres)  "       
+
+class ConfessionDeFoie(models.Model): 
     title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
     content = RichTextField()
     logo = models.FileField('Logo ',upload_to=logo_upload_files)
     slug = models.SlugField(max_length=150,)
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Confession de foie "
+        verbose_name_plural = "Eglise Bethnoe :  Confessions de foie "
 
 
 
@@ -304,7 +350,9 @@ class Ecoles(models.Model):
     def __unicode__(self):
         return self.title
 
-
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Ecole des enfants"
+        verbose_name_plural = "Eglise Bethnoe :Ecoles des enfants"
 
 
 
@@ -326,6 +374,11 @@ class Lien_c(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
+    class Meta:
+        verbose_name = "Lien : Lien"
+        verbose_name_plural = "Liens : Liens"
+
+
 
 class Chapitre_Lien(models.Model):
     title = models.CharField('Titre', max_length=64)
@@ -340,6 +393,9 @@ class Chapitre_Lien(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug    
+    class Meta:
+        verbose_name = "Lien : titre "
+        verbose_name_plural = "Liens : titre"
 
 class LienDe(models.Model):
     chapitre_lien = models.ForeignKey(Chapitre_Lien, on_delete=models.CASCADE)
@@ -365,3 +421,6 @@ class Contact(models.Model):
         return self.nom + " " + self.prenom  
     def __str__(self):
         return self.nom + "  " + self.prenom    
+    class Meta:
+        verbose_name="Eglise Bethnoe : Message reçu"
+        verbose_name_plural="Eglise Bethnoe : Messages reçus"
