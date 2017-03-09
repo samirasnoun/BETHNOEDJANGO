@@ -18,8 +18,4 @@ cache:
 install:
  - pip install --upgrade pip wheel
  - pip install "$DJANGO" "coverage==3.7.1" coveralls "mock>=1.0.1"
- - pip install .
- - pip install flake8
- - pip install isort
- - nvm install 6.9.5
- - npm install standard
+ - pip install -r Bethnoe/requirements.txt
