@@ -35,9 +35,9 @@ branches:
 install:
   - pip install --upgrade pip 
   - pip install -r Bethnoe/requirements.txt
-  - python manage.py makemigrations
-  - python manage.py migrate 
+  - python Bethnoe/manage.py makemigrations
+  - python Bethnoe/manage.py migrate 
 script:
-  - python manage.py test 
+  - python Bethnoe/manage.py test 
 
 
