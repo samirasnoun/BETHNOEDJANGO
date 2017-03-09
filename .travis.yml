@@ -34,7 +34,6 @@ branches:
   - master
 install:
   - pip install --upgrade pip 
-  - rm Bethnoe/db.sqlite3
   - pip install -r Bethnoe/requirements.txt
   - python manage.py makemigrations
   - python manage.py migrate 
