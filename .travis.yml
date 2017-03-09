@@ -19,3 +19,26 @@ install:
  - pip install --upgrade pip wheel
  - pip install "$DJANGO" "coverage==3.7.1" coveralls "mock>=1.0.1"
  - pip install -r Bethnoe/requirements.txt
+
+matrix:
+  exclude:
+    # Django 1.9+ no longer supports python 3.3
+    - python: "3.3"
+      env: DJANGO="Django<1.10"
+    - python: "3.3"
+      env: DJANGO="Django<1.11"
+    - python: "3.3"
+      env: DJANGO="Django==1.11b1"
+branches:
+ only:
+  - master
+install:
+  - pip install --upgrade pip 
+  - rm Bethnoe/db.sqlite3
+  - pip install -r Bethnoe/requirements.txt
+  - python manage.py makemigrations
+  - python manage.py migrate 
+script:
+  - python manage.py test 
+
+
