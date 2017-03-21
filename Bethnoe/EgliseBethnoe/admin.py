@@ -96,6 +96,7 @@ class CDAdmin(admin.ModelAdmin):
     "slug": ("titre",), 
 
     }
+    
     inlines = [
         AudioInline,
     ]

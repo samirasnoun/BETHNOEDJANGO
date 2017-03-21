@@ -747,3 +747,7 @@ label {
     padding: 13px;
     color: #254b6d;
 }
+
+a.navbar-left.logo-menu {
+    background: lawngreen;
+}

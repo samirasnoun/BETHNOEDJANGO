@@ -255,9 +255,9 @@ class Audio(models.Model):
     audio = models.FileField(upload_to=audio_upload_files)
     slug = models.SlugField(max_length=150,)
     def __unicode__(self):
-        return self.slug  
+        return unicode(self.slug) + "  " + unicode(self.titre) 
     def __str__(self):
-        return self.slug
+        return unicode(self.slug) + "  " + unicode(self.titre) 
     class Meta:
         verbose_name="Louange : Fichiers mp3 ou autres ... "
         verbose_name_plural="Louange : Fichiers mp3 ou autres ... "
@@ -272,9 +272,9 @@ class CD(models.Model):
         related_name="liste",
     )
     def __unicode__(self):
-        return self.slug  
+        return unicode(self.slug) or u''  
     def __str__(self):
-        return self.slug
+        return unicode(self.slug) or u''
     class Meta:
         verbose_name="Louange : CD à composer "
         verbose_name_plural="Louanges : CDs à composer"
@@ -290,6 +290,13 @@ class AudioDuCD(models.Model):
         on_delete=models.CASCADE,
         related_name="liste_lecture",
     )
+    def __unicode__(self):
+        return "" +  unicode(self.cd) + unicode(self.audio_cd) + unicode(self.Contient)   
+    def __str__(self):
+        return "" +  unicode(self.cd + self.audio_cd + self.Contient) 
+    class Meta:
+        verbose_name="Chanson audio "
+        verbose_name_plural="Chansons audios "
 
 
 
