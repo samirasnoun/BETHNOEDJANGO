@@ -3,6 +3,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404, get_
 from django.http import Http404
 from django.http import HttpResponse
 from EgliseBethnoe.models import *
+from EnseignementsBibliques.models import *
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponseRedirect
@@ -64,9 +65,29 @@ def IndexView(request):
 @csrf_protect
 def IndexEgliseBethnoeView(request):
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    
+    try:
+        section = Section.objects.get(onglet='EBTNE')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')   
+    """
+    ANGLET_SITE = (
+                ('EBTNE', 'Eglise Beyhnoe'),
+                ('EGPTR', 'Eglise partenaire'),
+                ('BLKBL', 'Bible en Kabyle'),
+                ('ETDBB', 'Etudes bibliques'),
+                ('ENSBI', 'Enseignements bibliques'),
+                ('LOUAN', 'Louanges'),
+                ('FORUM', 'Forum'),
+                ('LIENS', 'Liens'),
+    )"""
+
+
+
     return render(request,
         'index_eglisebethnoe.html',
         {
+        "section": section,
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         "evenements": "",  
         "accueil": "true",       
@@ -77,6 +98,22 @@ def IndexEgliseBethnoeView(request):
 def IndexEgliseBethnoeEvenementsView(request):
     evenements = list(Evenement.objects.all())
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    try:
+        section = Section.objects.get(onglet='EBTNE')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')   
+    """
+    ANGLET_SITE = (
+                ('EBTNE', 'Eglise Beyhnoe'),
+                ('EGPTR', 'Eglise partenaire'),
+                ('BLKBL', 'Bible en Kabyle'),
+                ('ETDBB', 'Etudes bibliques'),
+                ('ENSBI', 'Enseignements bibliques'),
+                ('LOUAN', 'Louanges'),
+                ('FORUM', 'Forum'),
+                ('LIENS', 'Liens'),
+    )"""
+
     return render(request,
         'index_eglisebethnoe_evenments.html', 
         {
@@ -91,9 +128,25 @@ def IndexEgliseBethnoeEvenementsDetailView(request, slug):
     evenement = Evenement.objects.get(slug=slug)
     images = evenement.images
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    try:
+        section = Section.objects.get(onglet='EBTNE')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')   
+    """
+    ANGLET_SITE = (
+                ('EBTNE', 'Eglise Beyhnoe'),
+                ('EGPTR', 'Eglise partenaire'),
+                ('BLKBL', 'Bible en Kabyle'),
+                ('ETDBB', 'Etudes bibliques'),
+                ('ENSBI', 'Enseignements bibliques'),
+                ('LOUAN', 'Louanges'),
+                ('FORUM', 'Forum'),
+                ('LIENS', 'Liens'),
+    )"""
     return render(request,
         'index_eglisebethnoe_evenments_detail.html', 
         {
+        "section": section,
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         "evenement": evenement, 
         "evenements": "", 
@@ -145,11 +198,18 @@ def IndexForumView(request):
 def LouangesView(request):
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
     cds = list(CD.objects.all())
+
+    try:
+        section = Section.objects.get(onglet='LOUAN')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')    
+
     return render(request,
         'index_louanges.html', 
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         "cds": cds,
+        'section': section,
         } 
         )
 
@@ -157,11 +217,16 @@ def LouangesView(request):
 def LouangesLectureView(request, slug):
     cd = CD.objects.get(slug=slug)
     audios = list(cd.audios.all())
+    try:
+        section = Section.objects.get(onglet='LOUAN')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png') 
     return render(request,
         'index_louanges_lecture.html',
         {
         "cd": cd,
         "audios": audios,
+        'section': section,
         }
         )
 
@@ -202,6 +267,10 @@ def ChapitreLiensView(request):
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
     chapite_lien = list(Chapitre_Lien.objects.all())[0]
     liens = list(Lien_c.objects.all())
+    try:
+        section = Section.objects.get(onglet='LIENS') 
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')    
 
     return render(request,
         'index_liens.html', 
@@ -209,6 +278,7 @@ def ChapitreLiensView(request):
         "index_eglise_bethnoe": index_eglise_bethnoe,
         "chapite_lien": chapite_lien,  
         "liens": liens,
+        "section": section,
         } 
         )
 
@@ -316,3 +386,6 @@ def EcoleDesEnfantsView(request):
         "ecoles": ecoles, 
         } 
         )
+
+
+

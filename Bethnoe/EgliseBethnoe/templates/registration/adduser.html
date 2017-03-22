@@ -1,25 +1,13 @@
 {% extends "base.html" %}
-
-
-
 {% block content %}
-
 {% include "menu.html" %}
-
 <br>
 <br>
 <br>
 <br>
 <div class="container-fluid">
-
 <form method="post" action=""  class="form-horizontal col-md-6">
-
-
-
 	{% csrf_token %}
-
-
-
 	{% for field in form %}
 	<div class="form-group col-md-12">
 
@@ -27,48 +15,32 @@
 		{{ field }}
 		<p class="text-warning">{{ field.errors }}</p>
 		
-
-
 	</div>   
 	{% endfor %}
 
 	<br>
 	<br>
 
-
 <div class="form-group col-md-12">
-	<input type="submit" class="btn btn-primary col-md-6 col-md-offset-6" value="Create new user account" />
+	<input type="submit" class="btn btn-primary col-md-6 col-md-offset-6" value="Créer un compte" />
 </div>
-
-
 
 </form>
 </div>
 
-
 <br>
 <br>
-
 
 <script type="text/javascript">
-	
+
 
 $('*[id*=id_]').each(function() {
     $(this).on('input', function(e) { $('ul.errorlist').hide(); });
 });
 
-
 </script>
 
-
-
-
-
-
-
 {% include "footer.html" %}
-
-
 
 {% endblock %}
 

@@ -1,0 +1,96 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid"  style="background-image: url(/media/{{section.media}}) ;     background-size: cover;">
+  <div class="row">
+    <div class="col-md-1 ">
+    </div>
+    <!-- --------------------pavé bleu------------------------------ -->
+    <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe">
+
+
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="input-group-button">
+          <a href="{% url 'EnseignementsBibliques:EglisesPartenaires' %}"><span class="input-group btn-group-lg">
+            <button class="btn btn-primary" type="button">Retour</button>
+          </span> </a>
+        </div>
+      </div><!-- /input-group -->
+
+
+      <div class="col-md-9" id="text_egliseBethnoe_3">
+        {{section.titre}}                            
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <p id="text_enseignement_biblique">
+          {{section.titre|safe|truncatechars_html:230}}
+        </p>
+      </div>
+    </div>
+    <!-- --------------------pavé bleu------------------------------ -->
+  </div>
+</div>
+
+<div class="container-fluid eglisebethnoecontainer22">
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-9 col-md-offset-1  container_cadre">
+
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-12">
+        <br>
+        <br>
+        <div class="col-md-12 text-center">
+          <h4>{{eglise.titre}}</h4>
+          <br>
+        </div>
+
+        <div class="col-md-12">
+          <br>
+          <div class="col-md-12">
+          <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-sm-6 col-xs-12">
+            <a href="#">
+             <img src="/media/{{eglise.media}}" class="thumbnail img-responsive">
+           </a>
+         </div>
+         </div>
+
+         <br>
+         <br>
+         <p>
+          {{eglise.content|safe}}
+        </p>
+
+      </div>
+      <br>
+      <br>
+
+      <br>
+      <br>
+      <br> 
+
+      <div class="col-md-12">
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+</div>
+
+

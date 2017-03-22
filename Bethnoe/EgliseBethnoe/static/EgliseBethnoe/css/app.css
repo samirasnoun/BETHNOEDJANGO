@@ -364,7 +364,7 @@ img.img-responsive.imageeglisebethnoe {
         padding: 20px;
         color: wheat;
         border-radius: 10px;
-        padding-top: 100px
+        padding-top: 10px
     }
 
     .col-md-9.col-md-offset-1.container_cadre {
@@ -408,6 +408,7 @@ img.img-responsive.imageeglisebethnoe {
         height: 70px;
         padding-left: 10px;
         padding-right: 10px;
+        max-width: 100px;
     }
 
     img#logo_header {

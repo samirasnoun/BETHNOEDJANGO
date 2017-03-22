@@ -3,7 +3,7 @@
 <br>
 <br>
 
-<div class="container-fluid">
+<div class="container-fluid"  style="background-image: url(/media/{{section.media}}) ;     background-size: cover;">
     <div class="row">
         <div class="col-md-1 ">
         </div>
@@ -21,14 +21,14 @@
 
 
         <div class="col-md-9" id="text_egliseBethnoe_3">
-            A Movie in the Park: Kung Fu Panda                            
+            {{section.titre}}                            
         </div>
         <br>
         <br>
         <br>
         <div class="col-md-10 col-md-offset-1 text-center">
             <p id="text_enseignement_biblique">
-                some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte quoi some text ou n improrte 
+                {{section.content}} 
             </p>
         </div>
     </div>
@@ -266,22 +266,8 @@
 
 {% endif %}
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!---------------------------Contenu du même type---------------------->
 </div>
-
-
 
 </div>
 
@@ -295,49 +281,11 @@
 
             {% for es in same_auteur_same_theme  %}
 
-
-
-
           { imageSrc: "/media/{{es.image}}", url: "/media/{{es.media}}", title: "{{es.image}}" },
 
+          {% endfor %}         
 
-          {% endfor %}
-
-
-
-
-          { imageSrc: '/images/Bethune_MdN2015_5.jpg', url: '/videos/SampleVideo_360x240_1mb.mp4', title: 'video 2 title' }
           ]);
     });
 
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

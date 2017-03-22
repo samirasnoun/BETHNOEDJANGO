@@ -23,3 +23,15 @@ class AuteurAdmin(admin.ModelAdmin):
 class ThemeAdmin(admin.ModelAdmin):
 	list_display = ('titre', 'slug',)
 	prepopulated_fields = {"slug": ("titre",)}
+
+
+@admin.register(Section)
+class ThemeAdmin(admin.ModelAdmin):
+	list_display = ('titre', 'content', 'media')
+
+@admin.register(EglisePartenaire)
+class EglisePartenaireAdmin(admin.ModelAdmin):
+	list_display = ('titre', 'slug', 'media', 'content')
+	prepopulated_fields = {"slug": ("titre",)}
+
+

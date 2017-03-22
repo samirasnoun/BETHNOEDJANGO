@@ -3,27 +3,17 @@
 <div class="container-fluid">
 
     <section class="row egliseBN">
-        <div class="fill-screen" style="background-image: url(/media/yvoire-eglise-croix.jpg)  ;   height: 1282px; 
+        <div class="fill-screen" style="background-image: url(/media/{{section.media}})  ;   height: 1282px; 
     background-repeat: space">
 
 {% include "Menu_EtudesBibliques.html" %}
-
-
-
 
             <div class="container-fluid eglisebethnoecontainer22">
 
                 <div class="row">
                     <div class="col-md-1">
-
-
-
-
                     </div>
                     <div class="col-md-9 col-md-offset-1  container_cadre">
-
-
-
 
                         <div class="col-md-1">
 
@@ -46,7 +36,7 @@
                                     <br>                           
                                 </div>
                                 <div class="col-md-2" id="article"> 
-                                    <img id="logo" src="/media/logo.jpg" align="absmiddle">
+                                    <img id="logo" src="/media/{{section.logo}}" align="absmiddle">
                                 </div>                        
                                 <div class="col-md-10" >
                                    {{etude.content|safe|truncatechars_html:230}} 

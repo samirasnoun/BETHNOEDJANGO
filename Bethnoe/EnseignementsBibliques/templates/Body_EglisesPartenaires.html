@@ -1,10 +1,8 @@
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-image: url(/media/{{section.media}}) ;     background-size: cover;">
+  <section class="row egliseBN">
 
-  <section class="row egliseBN" style="background-image: url(/media/{{section.media}}) ;     background-size: cover;">
-
-    <div class="fill-screen fond_eglise_bethnoe" >
-
+    <div class="fill-screen" style="max-height: 10px;">
 
       <div class="container-fluid">
         <div class="row">
@@ -29,69 +27,36 @@
         </div>
       </div>
 
-      
+      <div>
+      </div>
+    </div>
+
+
       <div class="container-fluid eglisebethnoecontainer22">
 
         <div class="row">
           <div class="col-md-1">
-
           </div>
-          <div class="col-md-9 col-md-offset-1  container_cadre">
+          <div class="col-md-9 col-md-offset-2  container_cadre">
             <div class="col-md-1">
-
-
             </div>
 
 
             <div class="col-md-1">
-
-
             </div>
 
             <div class="col-md-12">
 
-              <br>
-              <br>
-              <br>
-
               <div class="col-md-7">
-
-
               </div>
 
               <div class="col-md-2">
-
                 <div class="col-md-6 dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Auteurs
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    {% for auteur in auteurs %}
-                    <li><a href=".{{auteur.slug}}" data-toggle="collapse">{{auteur}}</a></li>
-
-                    {% endfor %}
-
-                  </ul>
                 </div>
-
               </div>
 
-
               <div class="col-md-2">
-
                 <div class="col-md-6 dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Thèmes
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-
-                    {% for theme in themes %}
-                    <li><a href=".{{theme.slug}}" data-toggle="collapse">{{theme.titre}}</a></li>
-
-                    {% endfor %}
-                  </ul>
                 </div>         
               </div>
 
@@ -101,20 +66,20 @@
             <div class="col-md-10 col-xs-offset-1 text content mCustomScrollbar  custom"> 
 
 
-              {% for enseignementBiblique in  enseignementsBibliques %}
+              {% for eglisePartenaire in  eglisePartenaires %}
               <div class="collapse in {{enseignementBiblique.auteur.slug}} {{enseignementBiblique.theme.slug}}">
                 <div class="row article"> 
 
                  <div class="col-md-12" id="article"> 
-                  <a href="{% url 'EnseignementsBibliques:EnseignementsBibliquesDetail' slug=enseignementBiblique.slug%}"><h4>{{enseignementBiblique.titre}} par  {{enseignementBiblique.auteur }}   :  {{enseignementBiblique.theme}}</h4></a> 
+                  <a href="{% url 'EnseignementsBibliques:EglisesPartenairesDetail' slug=eglisePartenaire.slug%}"><h4>{{eglisePartenaire.titre}} </h4></a> 
 
                 </div>
 
                 <div class="col-md-2" id="article"> 
-                 <img id="logo" src="/media/logo.jpg" align="absmiddle">
+                 <img id="logo" src="/media/{{eglisePartenaire.media}}" align="absmiddle">
                </div>
                <div class="col-md-10" >
-                 {{enseignementBiblique.content|safe|truncatechars_html:230}}  
+                 {{eglisePartenaire.content|safe|truncatechars_html:230}}  
                </div>
 
 
@@ -135,36 +100,12 @@
 
          </div>
 
-
-
        </div>
-
-
 
      </div>
 
    </div>
 
-
-   
-
-
-
- </div>
-
-
 </section>
 
-
-
 </div>
-
-
-
-
-
-
-
-
-
-

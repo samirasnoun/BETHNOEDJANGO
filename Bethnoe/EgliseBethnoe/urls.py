@@ -8,6 +8,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$', views.IndexView, name="index"),
     url(r'EgliseBethnoe/$', views.IndexEgliseBethnoeView, name="indexEgliseBethnoe"),
+    
+    
 
     url(r'EgliseBethnoe/evenements/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoeEvenementsDetailView, name="IndexEgliseBethnoeEvenementsDetail"),
     url(r'EgliseBethnoe/posts/(?P<slug>[\w-]+)/$', views.IndexEgliseBethnoePostsDetailView, name="IndexEgliseBethnoePostsDetail"),

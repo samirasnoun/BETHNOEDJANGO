@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
 
 {% include "menu.html" %}
@@ -10,8 +8,6 @@
 <br>
 <br>
 <br>
-
-
 
 {% if form.errors %}
 <p>Votre mots de passe ou login ne sont pas corrects</p>
@@ -22,15 +18,11 @@
 
 <div class="alert alert-info  col-md-6" >Vous n'avez pas les droits de voir cette page </div>
 
-
-
 {% else %}
 <div class="alert alert-info col-md-6" >Merci de vous connecter pour continuer</div>
 
 {% endif %}
 {% endif %}
-
-
 
 <div class="col-md-12">
     <form method="post" action="{% url 'login' %}" class="navbar-form navbar-left col-md-12">
@@ -60,18 +52,13 @@
             <input type="hidden" name="next" value="{{ next }}" class="form-control"/>
         </div>
 
-
-
     </form>
-
-
 
 </div>
 
 <div class="col-md-6">
 
 <a href="/EgliseBethnoe/inscription/">Créer un compte </a>
-    
 
 </div>
 
@@ -84,26 +71,11 @@
 <br>
 <br>
 <br>
-
-
-
-
-
-
-
 <br>
 <br>
 <br>
 <div style="height: 70vh"></div>
 
-
-
-
-
-
-
 {% include "footer.html" %}
-
-
 
 {% endblock %}
