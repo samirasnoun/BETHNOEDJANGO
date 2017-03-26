@@ -378,9 +378,9 @@ class Lien_c(models.Model):
     slug = models.SlugField(max_length=150,)
     url = models.URLField('Url du lien' , )
     def __unicode__(self):
-        return self.slug  
+        return "" + unicode(self.slug)  
     def __str__(self):
-        return self.slug
+        return "" + unicode(self.slug)
     class Meta:
         verbose_name = "Lien : Lien"
         verbose_name_plural = "Liens : Liens"
@@ -397,9 +397,9 @@ class Chapitre_Lien(models.Model):
         through_fields=('chapitre_lien', 'url_p'),
     )
     def __unicode__(self):
-        return self.slug  
+        return "" +  unicode(self.slug)  
     def __str__(self):
-        return self.slug    
+        return "" + unicode(self.slug)    
     class Meta:
         verbose_name = "Lien : titre "
         verbose_name_plural = "Liens : titre"

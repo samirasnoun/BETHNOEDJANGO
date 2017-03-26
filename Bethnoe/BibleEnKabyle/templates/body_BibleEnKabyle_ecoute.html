@@ -87,9 +87,9 @@ Ecouter la bible en kabyle
 
 <audio controls
 
-
     data-info-att=" Lire {{chapitre.livre.titre}} : {{ chapitre.titre }} "
-    data-info-att-link="{% url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre.slug %}">
+    data-info-att-link="{% url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre.slug %}"  autoplay="true">
+
     <source src="/media/{{chapitre.audio}}" type="audio/mpeg" />
 
 

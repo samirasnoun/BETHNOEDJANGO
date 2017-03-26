@@ -5,7 +5,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from models import  ChapitreBible , LivreBible
 from forms import Recherche
-from EnseignementsBibliques.models import *
+from EnseignementsBibliques.models import Section
 
 livres_avec_chapitres_left, livres_avec_chapitres_right = {}, {}
 
