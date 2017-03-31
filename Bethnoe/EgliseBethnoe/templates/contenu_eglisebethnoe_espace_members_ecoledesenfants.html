@@ -1,15 +1,10 @@
 <div class="col-md-12" id="culte_hebdo">  
-    <strong>Ecole des enfants</strong>             
-        
-
+    <strong>Ecole des enfants</strong>         
 </div>
 
 <div class="col-md-12">
  
-
-
             {% for  ev in ecoles %} 
-
 
                 <a href="{% url 'EgliseBethnoe:EcoleDesEnfantsDetail' ev.slug %}">
 
@@ -22,7 +17,9 @@
                             <b>{{ev.title }}</b>
 
                             <br> 
+                            <div id="contenu-ecole-des-enfants">
                             {{ev.content|safe}} 
+                            </div>
                         </div>
 
                     </div>
@@ -30,12 +27,6 @@
 
                 <br>
                 
-       
-
             {% endfor %}
 
-
-
 </div>
-    
-
