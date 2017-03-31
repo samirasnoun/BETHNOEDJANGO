@@ -7,8 +7,20 @@
     <br>
     
     <div class="col-md-9 col-md-offset-1 menu_eglisebethnoe text-center">
+    
 
-        <h2>Louanges disponnibles</h2>
+        <div id="text_egliseBethnoe_3">{{section.titre}}</div>
+
+              <div class="col-sm-10 col-md-10 col-md-offset-1 text-center" >
+
+        <br>
+
+
+        {{section.content|safe}}
+
+
+      </div>
+
         
     </div>
     
@@ -16,9 +28,12 @@
     <br>
     <br>
     
-    <div class="col-lg-9 col-md-9 col-sm-12 col-md-offset-1 col-lg-offset-1">
+    
         
-        <ul class="list-group" id="playlist">
+        <ul class="list-group col-lg-9 col-md-9 col-sm-12 col-md-offset-1 col-lg-offset-1" id="playlist">
+
+        <br>
+        <br>
             
             {% for cd in cds %}
             
@@ -30,6 +45,6 @@
             
         </ul>
 
-    </div>
+    
 
 </div>

@@ -83,7 +83,7 @@ def BibleEnKabyleLectureView(request, slug):
 
 	if( current+1 < len(chapitres_all) ):
 		suiv = chapitres_all[int(current+1)]
-
+ 
 	return render(request,
 		'BibleEnKabyle_lecture.html', 
 		{

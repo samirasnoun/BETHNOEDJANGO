@@ -323,7 +323,7 @@ def IndexEgliseBethnoeConfessionFoieView(request):
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
     confession = list(ConfessionDeFoie.objects.all())[0]
     return render(request,
-        'index_eglisebethnoe_prieres_detail.html', 
+        'index_eglisebethnoe_confession_detail.html', 
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
         "confession": confession, 

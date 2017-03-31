@@ -644,7 +644,7 @@ img#image_carousel {
 }
 
 img#image_carousel_index {
-    height: 80vh;
+    height: auto;
     border-radius: 14px;
 }
 
@@ -751,9 +751,7 @@ label {
     color: #254b6d;
 }
 
-a.navbar-left.logo-menu {
-    background: lawngreen;
-}
+
 
 div#fond_eglise_bethnoe {
     background-size: cover;
@@ -772,4 +770,49 @@ audio::-webkit-media-controls-enclosure {
 
 audio::-webkit-media-controls-panel {
     width: calc(100% + 30px); /* Adjust as needed */
+}
+
+
+
+
+
+
+.col-sm-10.col-md-10.col-md-offset-1.text-center {
+    color: rebeccapurple;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #cddc39;
+}
+
+
+
+
+
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #03A9F4;
+    background-color: transparent;
+}
+
+
+.navbar #nav > .active > a {
+    color: red;
+}
+
+img#id-logo {
+    background: rgba(27, 243, 7, 0.75);;
+    border-radius: 8px;
+    margin: 2px;
+    height: 50px;
+    width: auto;
+}
+
+
+.col-sm-8.col-md-12.text-bible-kabyle {
+    color: navajowhite;
+    background: rgba(57, 115, 57, 0.6);
+    background-blend-mode: exclusion;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
