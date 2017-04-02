@@ -367,7 +367,7 @@ img.img-responsive.imageeglisebethnoe {
         color: wheat;
         border-radius: 10px;
         padding-top: 10px;
-        
+        float:left;
     }
 
     .col-md-9.col-md-offset-1.container_cadre {
@@ -838,4 +838,6 @@ div#contenu-detail-ecole-des-enfants {
     float: left;
 }
 
-
+div#text-bible-en-kabyle {
+    margin-top: 200px;
+}
