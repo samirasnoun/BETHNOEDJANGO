@@ -2,6 +2,8 @@ body {
         padding-top: 30px;
     position: relative;
     font-family: 'Open Sans', sans-serif;
+
+
     /*padding-top: 110px;*/
 
 
@@ -364,13 +366,14 @@ img.img-responsive.imageeglisebethnoe {
         padding: 20px;
         color: wheat;
         border-radius: 10px;
-        padding-top: 10px
+        padding-top: 10px;
+        float:left;
     }
 
     .col-md-9.col-md-offset-1.container_cadre {
         /*background: url("./images/site-logo-white-70pct.png");*/
         background-color:rgba(174, 176, 175, 0.4);
-        min-height: 1000px;
+        /*min-height: 1000px;*/
         top: 30px;
         border-radius: 10px;
 
@@ -734,6 +737,7 @@ ul.errorlist {
     min-height: 1000px;
     top: 30px;
     border-radius: 10px;
+    float: left;
 }
 
 div#contenu-confession-foie {
@@ -815,6 +819,7 @@ img#id-logo {
     background-blend-mode: exclusion;
     border-radius: 10px;
     margin-bottom: 20px;
+    float: left;
 }
 
 div#contenu-detail-ecole-des-enfants {
