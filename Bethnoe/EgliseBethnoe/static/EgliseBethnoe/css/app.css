@@ -367,7 +367,7 @@ img.img-responsive.imageeglisebethnoe {
         color: wheat;
         border-radius: 10px;
         padding-top: 10px;
-        float:left;
+        
     }
 
     .col-md-9.col-md-offset-1.container_cadre {
@@ -511,6 +511,7 @@ input#permitted {
     max-height: 600px;
     overflow-x: hidden;
     margin-top: 15px;
+    float: left;
 }
 
 
@@ -829,4 +830,12 @@ div#contenu-detail-ecole-des-enfants {
     border-radius: 5px;
     padding: 10px;
 }
+
+
+
+
+.col-md-8.col-md-offset-1.text {
+    float: left;
+}
+
 
