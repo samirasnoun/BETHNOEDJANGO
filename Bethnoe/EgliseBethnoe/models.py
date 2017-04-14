@@ -172,6 +172,10 @@ class ImageEvenement(models.Model):
         return self.slug  
     def __str__(self):
         return self.slug
+    class Meta:
+        verbose_name = "Eglise Bethnoe : Evenements, Images des albums"
+        verbose_name_plural = "Eglise Betnoe : Evenements, Images des albums"
+
 
 class Album(models.Model):
     name = models.CharField(max_length=128)
@@ -186,8 +190,8 @@ class Album(models.Model):
     def __str__(self):
         return self.slug
     class Meta:
-        verbose_name = "Eglise Bethnoe : Album pour evenements dans > Eglise Bethnoe > Evenements  "
-        verbose_name_plural = "Eglise Bethnoe : Albums pour evenements dans > Eglise Bethnoe > Evenements "
+        verbose_name = "Eglise Bethnoe : Evenements, Album pour evenements dans > Eglise Bethnoe > Evenements  "
+        verbose_name_plural = "Eglise Bethnoe : Evenements, Albums pour evenements dans > Eglise Bethnoe > Evenements "
 
 
 
