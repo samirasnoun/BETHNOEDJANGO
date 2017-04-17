@@ -710,6 +710,7 @@ a#liste_lecture {
 
 ul#playlist {
     min-height: 50vh;
+    float: left;
 }
 
 
