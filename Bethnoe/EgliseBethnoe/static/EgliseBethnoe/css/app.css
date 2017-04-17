@@ -359,7 +359,7 @@ img.img-responsive.imageeglisebethnoe {
     }
 
     .col-md-9.col-md-offset-1.menu_eglisebethnoe {
-        background-color: rgba(174, 176, 175, 0.4);
+        background-color: rgba(174, 176, 175, 0.8);
         color: black;
         /* background: url("images/yvoire-eglise-croix.jpg"); */
         min-height: 150px;
@@ -367,15 +367,18 @@ img.img-responsive.imageeglisebethnoe {
         color: wheat;
         border-radius: 10px;
         padding-top: 10px;
+        color: rgba(174, 176, 175, 0.8);
+        color: #062f52;
         float:left;
     }
 
     .col-md-9.col-md-offset-1.container_cadre {
         /*background: url("./images/site-logo-white-70pct.png");*/
-        background-color:rgba(174, 176, 175, 0.4);
+        background-color:rgba(174, 176, 175, 0.8);
         /*min-height: 1000px;*/
         top: 30px;
         border-radius: 10px;
+
 
     }
 
@@ -412,6 +415,9 @@ img.img-responsive.imageeglisebethnoe {
         padding-left: 10px;
         padding-right: 10px;
         max-width: 100px;
+
+        background: lawngreen;
+    border-radius: 5px;
     }
 
     img#logo_header {
