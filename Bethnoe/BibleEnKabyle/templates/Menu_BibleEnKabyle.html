@@ -4,41 +4,44 @@
 
     {% if ecoute_lecture %}
 
-    <h3>Ecouter la bible en <span class="label label-default">Kabyle</span></h3>
+    <h3  class="col-md-6 col-xs-6" id="label-ecoute">Ecouter la bible en <span class="label label-default">Kabyle</span></h3>
 
     {% else %}
 
-    <h3>Lire la bible en <span class="label label-default">Kabyle</span></h3>
+    <h3 class="col-md-6 col-xs-6" id="label-lecture">Lire la bible en <span class="label label-default">Kabyle</span></h3>
 
     {% endif %}
   </div>
 
+  
   <div class="col-md-3 col-xs-12" id="button-ecouterlabible-en-kabyle">
 
    <a href="/BibleEnKabyle/ecoute/" >
      {% if ecoute_lecture %}
-     <button type="button"  class="btn btn-default btn-lg col-lg-12 col-xs-12 disabled">
+     <button type="button"  class="btn btn-default btn-lg col-lg-12 col-xs-12">
        {% else %}
-       <button type="button"  class="btn btn-default btn-lg col-lg-12 col-xs-12">
+    <button type="button"  class="btn btn-default btn-lg col-lg-12 col-xs-12">
 
          {% endif %}
 
          Ecouter la bible en kabyle</button> </a>
 
-       </div>
+  </div>
 
-       <div class="col-md-3 col-xs-12" id="button-ecouterlabible-en-kabyle">
+
+ <div class="col-md-3 col-xs-12" id="button-ecouterlabible-en-kabyle">
 
          <a href="/BibleEnKabyle/lecture/">
           {%if ecoute_lecture %}
           <button type="button" class="btn btn-default btn-lg col-lg-12 col-xs-12">Lire la bible en kabyle</button> 
           {% else %}
-          <button type="button" class="btn btn-default btn-lg col-lg-12 col-xs-12 disabled">Lire la bible en kabyle</button>
+          <button type="button" class="btn btn-default btn-lg col-lg-12 col-xs-12">Lire la bible en kabyle</button>
           {%endif%}
 
         </a>
 
-      </div>
+  </div>
+
 
     </div>
 

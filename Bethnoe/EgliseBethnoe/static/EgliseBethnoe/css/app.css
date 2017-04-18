@@ -848,3 +848,31 @@ div#contenu-detail-ecole-des-enfants {
 div#text-bible-en-kabyle {
     margin-top: 200px;
 }   
+
+
+
+
+
+h3#label-lecture {
+    color: rgba(76, 28, 28, 0.76);
+    background: #337ab7;
+    height: 33px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    /* float: right; */
+}
+
+
+h3#label-ecoute {
+    color: rgba(76, 28, 28, 0.76);
+    background: #5bc0de;
+    height: 33px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    /* float: right; */
+}
+
+
+

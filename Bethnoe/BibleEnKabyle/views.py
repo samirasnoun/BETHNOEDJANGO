@@ -19,28 +19,29 @@ def BibleEnKabyleView(request, ecoute_lecture):
 	text_recherche=""
 
 	if(request.method == 'POST'): 
-		#name__unaccent__icontains='Helen' 
+		
 		form = Recherche(request.POST)
 		if form.is_valid():
 			text_recherche = form.cleaned_data['text_recherche']
-		livs_right = LivreBible.objects.filter(type_na='NV')
 	else :
-		livs_right = LivreBible.objects.filter(type_na='NV')
 		form = Recherche()
 	
+	livs_right = LivreBible.objects.filter(type_na='NV')
 	for liv in livs_right :
-		print "right :" + liv.titre
-		chap_r = ChapitreBible.objects.filter(livre=liv).filter(titre__contains=text_recherche)
+		
+		"chap_r = ChapitreBible.objects.filter(livre=liv).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
+		chap_r = ChapitreBible.objects.filter(livre=liv).filter(content__icontains=text_recherche)
 		cc = []
 		for c in chap_r:
 			cc.append(c)
 		livres_avec_chapitres_right[liv] = cc
 
+	
 	livs_left = LivreBible.objects.filter(type_na='AC')
-
-	for liv_l in livs_left :
-		print "left :" + liv_l.titre
-		chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(titre__contains=text_recherche)
+	for liv_l in livs_left : 
+		
+		"chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
+		chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(content__icontains=text_recherche)
 		cc_l = []
 		for c_l in chap_l:
 			cc_l.append(c_l)
@@ -48,7 +49,8 @@ def BibleEnKabyleView(request, ecoute_lecture):
 
 		if(ecoute_lecture=='lecture'):
 			ecoute_lecture = ''
-
+ 
+ 
 
 	return render(request ,'BibleEnKabyle.html' , { 
 		"livres_avec_chapitres_right": livres_avec_chapitres_right, 
@@ -99,8 +101,8 @@ def BibleEnKabyleLectureView(request, slug):
 		)
 
 
-
-@csrf_protect
+ 
+@csrf_protect 
 def BibleEnKabyleEcouteView(request, slug):
 	try:
 		section = Section.objects.get(onglet='BLKBL')
@@ -110,9 +112,11 @@ def BibleEnKabyleEcouteView(request, slug):
 
 	chapitres = list(ChapitreBible.objects.filter(livre=chapitre_en_lecture.livre))
 
-	print(type(chapitres))
-
 	current = chapitres.index(chapitre_en_lecture)
+	audios = []
+
+
+
 
 	prec = ""
 	suiv = ""
@@ -133,6 +137,7 @@ def BibleEnKabyleEcouteView(request, slug):
 		"suiv": suiv, 
 		"ecoute_lecture": '',
 		"section": section,
+		"chapitres": chapitres,
 
 		}
 

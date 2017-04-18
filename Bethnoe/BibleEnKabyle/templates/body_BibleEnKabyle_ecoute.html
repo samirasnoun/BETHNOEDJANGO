@@ -9,7 +9,9 @@ Ecouter la bible en kabyle
 <br> 
 <div class="container-fluid" style="background-image: url(/media/{{section.media}})">
   <section class="row bibleenkabyle">
+
     {% include "Menu_BibleEnKabyle.html" %}
+
     <br>
     <br>
     <br>
@@ -18,9 +20,9 @@ Ecouter la bible en kabyle
 
 
         <p>
-           <br>
+         <br>
 
-           <div class="row chapitre-x">
+         <div class="row chapitre-x">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
 
                 <h3>Titre : <span class="label label-primary">{{chapitre.livre.titre|upper}}</span></h3>
@@ -30,50 +32,53 @@ Ecouter la bible en kabyle
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                 <h3>Chapitre : 
                     <a  href="{% url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre.slug %}">
-                        <span class="label label-primary">{{chapitre.titre|upper}}</span> 
+                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cliquer pour lire le chapitre">{{chapitre.titre|upper}}</button>
+
                     </a>
+
                 </h3> 
+
             </div>
 
             <div class="col-md-6 text-center">
-               <nav aria-label="Page navigation">
-                  <ul class="pagination  pagination-lg paging_amazigh">
+             <nav aria-label="Page navigation">
+              <ul class="pagination  pagination-lg paging_amazigh">
 
 
-                    {% if prec %}
-                    <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=prec.slug %}">Précédent</a></li>
-                    {% else %}
-                    <li class="disabled"><a>Précédent</a></li>
-                    {% endif %}
+                {% if prec %}
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=prec.slug %}">Précédent</a></li>
+                {% else %}
+                <li class="disabled"><a>Précédent</a></li>
+                {% endif %}
 
 
-                    {% for chap in chapitres_all %}
-
-
-
-                    {% if forloop.counter0 == current %}            
-
-                    <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}" id="active">{{forloop.counter0}}</a></li>                           
-                    {% else %}
-                    <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}">{{forloop.counter0}}</a></li>
-                    {% endif %}
-
-                    {% endfor %}
+                {% for chap in chapitres_all %}
 
 
 
-                    {% if suiv %}
-                    <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=suiv.slug %}">Suivant</a></li>
-                    {% else %}
-                    <li class="disabled"><a>Suivant</li>
-                    {% endif %}
+                {% if forloop.counter0 == current %}            
+
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}" id="active">{{forloop.counter0}}</a></li>                           
+                {% else %}
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}">{{forloop.counter0}}</a></li>
+                {% endif %}
+
+                {% endfor %}
 
 
-                </ul>
-            </nav>
 
-        </div>
+                {% if suiv %}
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=suiv.slug %}">Suivant</a></li>
+                {% else %}
+                <li class="disabled"><a>Suivant</li>
+                {% endif %}
+
+
+            </ul>
+        </nav>
+
     </div>
+</div>
 </p>
 
 </div>
@@ -85,19 +90,69 @@ Ecouter la bible en kabyle
 
 
 
-<audio controls
+
+
+
+
+<div>
+
+
+    
+
+
+
+
+    <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg" 
 
     data-info-att=" Lire {{chapitre.livre.titre}} : {{ chapitre.titre }} "
-    data-info-att-link="{% url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre.slug %}"  autoplay="true">
+    data-info-att-link="{% url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre.slug %}" 
+     autoplay="true">
+        
+        <source src="/media/{{chapitre.audio}}" />
 
-    <source src="/media/{{chapitre.audio}}" type="audio/mpeg" />
+            Votre naviguateur ne supporte pas le HTML 5. il faut le mettre à jour. 
+
+        </audio>
 
 
-</audio>
 
-       
+        <ul class="list-group col-xs-12" id="playlist">
+            
+            {% for m in chapitres %}
 
-    </div>
+            <li class="list-group-item list-group-item-info">
+                <a href="/media/{{m.audio}}">{{m}}</a>
+            </li>
+
+             {% endfor %}
+
+         </ul>
+
+
+
+
+
+        
+
+    
+</div>
+
+
+
+
+
+</div>
+
 
 </section>
 </div>
+
+
+
+
+
+
+
+
+
+

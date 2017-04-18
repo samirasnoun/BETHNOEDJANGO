@@ -3,13 +3,19 @@
 <br>
 <div class="container-fluid" style="background-image: url(/media/{{section.media}})">
   <section class="row bibleenkabyle">
+
     {% include "Menu_BibleEnKabyle.html" %}
+
     <br>
     <br>
     <br>
     <br>
 
     <div class="col-sm-8 col-md-12 ">
+
+    <script type="text/javascript">$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})</script>
 
 
         <p>
@@ -26,7 +32,8 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
                 <h3>Chapitre : 
                 <a  href="{% url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre.slug %}">
-                <span class="label label-primary">{{chapitre.titre|upper}}</span> 
+                
+                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cliquer pour écouter le chapitre">{{chapitre.titre|upper}}</button>
                 </a>
                 </h3> 
             </div>
