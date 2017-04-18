@@ -63,7 +63,7 @@ class EnseignementBiblique(models.Model):
 class Section(models.Model):
     
     ANGLET_SITE = (
-                ('EBTNE', 'Eglise Beyhnoe'),
+                ('EBTNE', 'Eglise Bethnoe'),
                 ('EGPTR', 'Eglise partenaire'),
                 ('BLKBL', 'Bible en Kabyle'),
                 ('ETDBB', 'Etudes bibliques'),
@@ -71,6 +71,9 @@ class Section(models.Model):
                 ('LOUAN', 'Louanges'),
                 ('FORUM', 'Forum'),
                 ('LIENS', 'Liens'),
+                ('ACUIL', 'Accueil'),
+                
+
     )
     onglet = models.CharField(max_length=6, choices=ANGLET_SITE, default='EBTNE')
     titre = models.CharField(max_length=250, blank=True)

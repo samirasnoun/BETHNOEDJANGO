@@ -15,15 +15,17 @@
     <h1>{{cd.titre}} </h1>
 </div>
 </hr>
+
 <div>
     <br>
     <audio id="audio" preload="auto" tabindex="0" controls="" type="audio/mpeg" autoplay="true">
         
         <source src="/media/{{audios.0.audio}}">
-
+ 
 
             Votre naviguateur ne supporte pas le HTML 5.
         </audio>
+
         <ul class="list-group col-xs-12" id="playlist">
             {% for m in audios %}
             <li class="list-group-item list-group-item-info">
@@ -31,5 +33,7 @@
             </li>
             {% endfor %}
         </ul>
+        
     </div>
+
 </div> 

@@ -53,6 +53,10 @@ def IndexView(request):
     except Exception as e:
         raise e    
 
+    try:
+        section = Section.objects.get(onglet='ACUIL')
+    except Section.DoesNotExist:
+        section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png') 
 
     return render(request,'index.html', 
         {"fond1": images_context[1], 
@@ -60,7 +64,9 @@ def IndexView(request):
         "images_carrousel": images_carrousel, 
         "dirigents_eglise": dirigents_eglise, 
         "adresses": adresses[0], 
-        "presentation_equipe_dirigente": presentation_equipe_dirigente[0] } )
+        "presentation_equipe_dirigente": presentation_equipe_dirigente[0], 
+        "section": section,
+        } )
 
 @csrf_protect
 def IndexEgliseBethnoeView(request):
