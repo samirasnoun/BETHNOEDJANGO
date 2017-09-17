@@ -22,4 +22,5 @@ class Migration(migrations.Migration):
                 ('video_url', models.URLField(verbose_name="Url de la video de pr\xe9sentation de l'\xe9glise")),
             ],
         ),
+        
     ]

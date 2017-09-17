@@ -31,7 +31,7 @@
 
                 {% endif %}
 
-                <a href="{% static image.get__absolute_url %}" target="_blanck">  <img class="img-responsive center-block" id="image_carousel_index" src="{% static image.get__absolute_url %}" alt="{{image.title}}"       > </a>
+                <a href="{{ image.lien }}" target="_blanck">  <img class="img-responsive center-block" id="image_carousel_index" src="{% static image.get__absolute_url %}" alt="{{image.title}}"       > </a>
 
                 <div class="carousel-caption">
                 <h3>{{image.title}}</h3>

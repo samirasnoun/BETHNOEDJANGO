@@ -15,12 +15,12 @@ from models import *
 
 @admin.register(FondEcran)
 class FondEcranAdmin(admin.ModelAdmin):
-    list_display = ('title', 'photo', 'afficher', 'caption')
+    list_display = ('title', 'photo', 'afficher', 'caption', 'lien')
     search_fields = ('title',)
 
 @admin.register(ImageCarrousel) 
 class ImageCarrousel(admin.ModelAdmin):
-    list_display = ('title', 'photo', 'afficher', 'caption')
+    list_display = ('title', 'photo', 'afficher', 'caption', 'lien')
     search_fields = ('title',)
 
 
@@ -40,8 +40,8 @@ class ClassName(admin.ModelAdmin):
 
 @admin.register(IndexEgliseBethnoe)
 class IndexEgliseBethnoeAdmin(admin.ModelAdmin):
-	list_display=('title1', 'title2', 'video_url',)
-
+    list_display=('title1', 'title2', 'video_url', )
+    exclude = ('video_url_espace_membres',)
 
 @admin.register(ImageEvenement)
 class ImageEvenement(admin.ModelAdmin):

@@ -11,7 +11,7 @@ from django.core.validators import RegexValidator
 
 # Create your models here.
 class Image(models.Model):    
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     photo =  ThumbnailImageField(upload_to='')       
     class Meta:
         ordering = ['title']
@@ -31,6 +31,7 @@ class FondEcran(Image):
                 ('oui', 'Afficher dans la page Home'),
                 ('non', 'Ne pas l afficher dans la page Home'),
     )
+    lien = models.URLField('Url sur laquelle pointe la photo' , default='./EgliseBethnoe/')
     afficher = models.CharField(max_length=3, choices=AFFI_PAGE_ACCUEIL, default='oui')
     caption = models.CharField(max_length=250, blank=True)
     class Meta:
@@ -45,6 +46,7 @@ class ImageCarrousel(Image):
     )
     afficher = models.CharField(max_length=3, choices=AFFI_PAGE_ACCUEIL, default='oui')
     caption = models.CharField(max_length=250, blank=True)
+    lien = models.URLField('Url sur laquelle pointe la photo' , default='./EgliseBethnoe/')
     class Meta:
         verbose_name = "Page d'accueil : image du carousel de la page d'accueil"
         verbose_name_plural = "Page d'accueil : Images du carousel de la page d'accueil"    
@@ -119,7 +121,7 @@ def image_post_upload_files(instance, filename):
 
 class Post(models.Model):
     title = models.CharField('title', max_length=64)
-    slug = models.SlugField(max_length=64)
+    slug = models.SlugField(max_length=64, unique=True)
     content = models.TextField('content')
     content_rich = RichTextField(default="")
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
@@ -149,6 +151,10 @@ class IndexEgliseBethnoe(models.Model):
     title2 = models.CharField('titre du bas au milieu', max_length=64)
     content = RichTextField()
     video_url = models.URLField('Url de la video de présentation de l\'église' , )
+    video_url_espace_membres = models.URLField('Url de la video de présentation de l\'église dans espace membres' , )
+    
+    content_espace_membres = RichTextField()
+
     logo = models.FileField('Logo ',upload_to=logo_upload_files)
     fond_ecran = models.FileField('Fond d ecran', upload_to=logo_upload_files)
     class Meta:
@@ -167,7 +173,7 @@ def images_upload_files(instance, filename):
 class ImageEvenement(models.Model):
     image = models.FileField('Photo ',upload_to=images_upload_files)
     titre_image = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150, unique=True)
     def __unicode__(self):
         return self.slug  
     def __str__(self):
@@ -179,7 +185,7 @@ class ImageEvenement(models.Model):
 
 class Album(models.Model):
     name = models.CharField(max_length=128)
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150, unique=True)
     images = models.ManyToManyField(
         ImageEvenement,
         through='PhotoDe',
@@ -194,23 +200,15 @@ class Album(models.Model):
         verbose_name_plural = "Eglise Bethnoe : Evenements, Albums pour evenements dans > Eglise Bethnoe > Evenements "
 
 
-
-
-
 class PhotoDe(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     image_evenement = models.ForeignKey(ImageEvenement, on_delete=models.CASCADE)
 
 
-
-
-
-
-
 class Evenement(models.Model):
     titre = models.CharField(max_length=128)
     content = RichTextField()
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150, unique=True)
     album =  models.OneToOneField(
         Album,
         on_delete=models.CASCADE,
@@ -240,11 +238,11 @@ class CulteHebdo(models.Model):
     title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
     content = RichTextField()
     video_url = models.URLField('Url de la video du culte hebdomadaire' , )
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150, unique=True)
 
     class Meta:
-        verbose_name="Eglise Bethnoe : Culte hebdomadaire"
-        verbose_name_plural="Eglise Bethnoe : Culte hebdomadaire "
+        verbose_name="Eglise Bethnoe : Culte hebdomadaire (lien youtube)"
+        verbose_name_plural="Eglise Bethnoe : Culte hebdomadaire  (lien youtube) "
 
 def audio_upload_files(instance, filename):
     filename, file_extension = os.path.splitext(filename)
@@ -268,7 +266,7 @@ class Audio(models.Model):
 
 class CD(models.Model):
     titre = models.CharField("Titre du louange (nom du CD)",max_length=250, blank=True)
-    slug = models.SlugField("Slug (Généré automatiquement)",max_length=50,)
+    slug = models.SlugField("Slug (Généré automatiquement)",max_length=50, unique=True)
     audios = models.ManyToManyField(
         Audio,
         through='AudioDuCD',
@@ -282,8 +280,6 @@ class CD(models.Model):
     class Meta:
         verbose_name="Louange : CD à composer "
         verbose_name_plural="Louanges : CDs à composer"
-
-
 
 
 class AudioDuCD(models.Model):
@@ -311,7 +307,7 @@ def image_priere_upload_files(instance, filename):
 
 class Priere(models.Model):
     title = models.CharField('title', max_length=64)
-    slug = models.SlugField(max_length=64)
+    slug = models.SlugField(max_length=64,  unique=True)
     content = RichTextField()   
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     image = models.FileField('Image de l\'nnonce ',upload_to=image_priere_upload_files)
@@ -332,7 +328,7 @@ class ConfessionDeFoie(models.Model):
     title = models.CharField('Titre Culte Hebdomadaire : ', max_length=64)
     content = RichTextField()
     logo = models.FileField('Logo ',upload_to=logo_upload_files)
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150,  unique=True)
     class Meta:
         verbose_name = "Eglise Bethnoe : Confession de foie "
         verbose_name_plural = "Eglise Bethnoe :  Confessions de foie "
@@ -348,7 +344,7 @@ def image_ecoles_upload_files(instance, filename):
 
 class Ecoles(models.Model):
     title = models.CharField('title', max_length=64)
-    slug = models.SlugField(max_length=64)
+    slug = models.SlugField(max_length=64,  unique=True)
     content = RichTextField() 
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     image = models.FileField('Image de l\'nnonce ',upload_to=image_ecoles_upload_files)
@@ -364,6 +360,10 @@ class Ecoles(models.Model):
     class Meta:
         verbose_name = "Eglise Bethnoe : Ecole des enfants"
         verbose_name_plural = "Eglise Bethnoe :Ecoles des enfants"
+        db_table = 'EgliseBethnoe_ecoles'
+        managed = False
+
+
 
 
 
@@ -379,7 +379,7 @@ def image_louanges_upload_files(instance, filename):
 
 class Lien_c(models.Model):
     title = models.CharField('Texte du bouton', max_length=64)
-    slug = models.SlugField(max_length=150,)
+    slug = models.SlugField(max_length=150, unique=True)
     url = models.URLField('Url du lien' , )
     def __unicode__(self):
         return "" + unicode(self.slug)  
@@ -393,7 +393,7 @@ class Lien_c(models.Model):
 
 class Chapitre_Lien(models.Model):
     title = models.CharField('Titre', max_length=64)
-    slug = models.SlugField(max_length=50,)
+    slug = models.SlugField(max_length=50,  unique=True)
     content = RichTextField()
     lien = models.ManyToManyField(
         Lien_c,

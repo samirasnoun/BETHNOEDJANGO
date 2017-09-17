@@ -17,13 +17,13 @@
 
             {% for chapitre_l in chapitres_l %}   
 
-            {% if not ecoute_lecture %}   
+            {% if ecoute_lecture == 'lecture' %}   
 
-            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre_l.slug %}" class="list-group-item">{{ chapitre_l.titre|upper }}</a>   
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre_l.slug %}" class="list-group-item  col-md-2" id="element-chapitre">{{ chapitre_l.titre|upper }}</a>   
 
-            {% else %}
+            {% elif ecoute_lecture == 'ecoute' %}
 
-            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre_l.slug %}" class="list-group-item">{{ chapitre_l.titre|upper }}</a>            
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre_l.slug %}" class="list-group-item  col-md-2" id="element-chapitre">{{ chapitre_l.titre|upper }}</a>            
 
             {% endif %}
 

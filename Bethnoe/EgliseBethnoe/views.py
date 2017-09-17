@@ -183,10 +183,12 @@ def IndexEgliseBethnoePostsDetailView(request, slug):
 @login_required(login_url='accounts/login/')
 def IndexEgliseBethnoeEspaceMembersView(request):   
     index_eglise_bethnoe = list(IndexEgliseBethnoe.objects.all())[0]
+    culteHebdo = list(CulteHebdo.objects.all())[0]
     return render(request,
-        'index_eglisebethnoe_espace_members.html', 
+        'index_eglisebethnoe_espace_members.html',  
         {
         "index_eglise_bethnoe": index_eglise_bethnoe, 
+        "culteHebdo": culteHebdo,
         } 
         )
 

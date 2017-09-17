@@ -88,14 +88,18 @@ class Section(models.Model):
 
 
 
-class EglisePartenaire(models.Model):
-	titre = models.CharField(max_length=250, blank=True)	
-	content = RichTextField()
-	slug = models.SlugField(max_length=50,)
-	media = models.FileField(upload_to=images_upload)
-	
 
-	def __unicode__(self):
+
+class EglisePartenaire(models.Model):
+    titre = models.CharField(max_length=250, blank=True)	
+    content = RichTextField()
+    slug = models.SlugField(max_length=50,)
+    media = models.FileField(upload_to=images_upload)
+    def __unicode__(self):
 		return self.titre  
-	def __str__(self):
-		return self.titre
+    def __str__(self):
+        return self.titre
+
+    class Meta:
+        managed = False
+        db_table = 'EnseignementsBibliques_eglisepartenaire'

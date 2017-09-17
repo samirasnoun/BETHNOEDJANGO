@@ -123,4 +123,5 @@ class Migration(migrations.Migration):
             name='photo',
             field=models.OneToOneField(default='', on_delete=django.db.models.deletion.CASCADE, to='EgliseBethnoe.Image'),
         ),
+
     ]

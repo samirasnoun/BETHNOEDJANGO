@@ -104,17 +104,21 @@ def BibleEnKabyleLectureView(request, slug):
  
 @csrf_protect 
 def BibleEnKabyleEcouteView(request, slug):
-	try:
-		section = Section.objects.get(onglet='BLKBL')
-	except Section.DoesNotExist:
-		section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')
-	chapitre_en_lecture = ChapitreBible.objects.get(slug=slug)
 
+	chapitre_en_lecture = ChapitreBible.objects.get(slug=slug)
+	
+
+
+	
+	
 	chapitres = list(ChapitreBible.objects.filter(livre=chapitre_en_lecture.livre))
 
 	current = chapitres.index(chapitre_en_lecture)
 	audios = []
-
+	try:
+		section = Section.objects.get(onglet='BLKBL')
+	except Section.DoesNotExist:
+		section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')
 
 
 
@@ -135,7 +139,7 @@ def BibleEnKabyleEcouteView(request, slug):
 		"current": current, 
 		"prec": prec,
 		"suiv": suiv, 
-		"ecoute_lecture": '',
+		"ecoute_lecture": 'ecoute',
 		"section": section,
 		"chapitres": chapitres,
 

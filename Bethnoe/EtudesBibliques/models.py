@@ -13,8 +13,6 @@ class EtudeBiblique(models.Model):
 	def __str__(self):
 		return self.titre
 
-
-
 class IntrofuctionEtudeBiblique(models.Model):
 	content = RichTextField()
 	titre = models.CharField(max_length=250, blank=True)	

@@ -18,13 +18,16 @@
           <div class="list-group active col-md-10">
             {% for chapitre_r in chapitres_r %} 
 
-            {% if not ecoute_lecture %}   
+            {% if ecoute_lecture == 'lecture' %}  
 
-            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre_r.slug %}" class="list-group-item">{{ chapitre_r.titre|upper }}</a>   
+  
 
-            {% else %}
 
-            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre_r.slug %}" class="list-group-item">{{ chapitre_r.titre|upper }}</a>            
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleLecture' slug=chapitre_r.slug %}" class="list-group-item  col-md-2" id="element-chapitre">{{ chapitre_r.titre|upper }}</a>   
+
+            {% elif ecoute_lecture == 'ecoute' %}
+
+            <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chapitre_r.slug %}" class="list-group-item col-md-2" id="element-chapitre">{{ chapitre_r.titre|upper }}</a>            
 
             {% endif %}
 

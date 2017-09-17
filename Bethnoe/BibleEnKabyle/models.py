@@ -10,7 +10,7 @@ class LivreBible(models.Model):
         ('NV', 'Nouveau Testament'),
         ('AC', 'Ancien Testament'),)
 	type_na = models.CharField(max_length=2, choices=ANCIEN_NOUVEAU, default='nv')
-	slug = models.SlugField(max_length=50,)
+	slug = models.SlugField(max_length=50, unique=True)
 	def __unicode__(self):
 		return self.titre  
 	def __str__(self):
@@ -24,7 +24,7 @@ class ChapitreBible(models.Model):
 	content = RichTextField()
 	titre = models.CharField(max_length=250, blank=True)
 	livre = models.ForeignKey(LivreBible, on_delete=models.CASCADE)
-	slug = models.SlugField(max_length=50,)
+	slug = models.SlugField(max_length=50, unique=True,)
 	audio = models.FileField(upload_to=audio_upload_files)
 	def __unicode__(self):
 		return self.titre  

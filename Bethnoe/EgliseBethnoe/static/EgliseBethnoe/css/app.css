@@ -416,7 +416,7 @@ img.img-responsive.imageeglisebethnoe {
         padding-right: 10px;
         max-width: 100px;
 
-        background: lawngreen;
+        background: #ffeb3b;
     border-radius: 5px;
     }
 
@@ -857,6 +857,7 @@ h3#label-lecture {
     display: block;
     text-align: center;
     /* float: right; */
+    padding-top: 1px;
 }
 
 
@@ -872,3 +873,69 @@ h3#label-ecoute {
 
 
 
+div#article a {
+    color: #ffeb3b;
+}
+
+
+
+.col-md-10.col-xs-offset-1.text {
+    max-height: 600px;
+    overflow-x: hidden;
+    margin-top: 15px;
+    float: left;
+    background-color: hsla(0, 0%, 62%, 0.86);
+}
+
+div#mCSB_1_container {
+    text-align: justify;
+}
+
+.col-md-9.col-md-offset-1.menu_eglisebethnoe {
+    background-color: rgba(174, 176, 175, 0.8);
+    color: black;
+    /* background: url(images/yvoire-eglise-croix.jpg); */
+    min-height: 150px;
+    padding: 20px;
+    color: wheat;
+    border-radius: 10px;
+    padding-top: 10px;
+    color: rgba(174, 176, 175, 0.8);
+    color: #FFEB3B;
+    float: left;
+}
+
+footer {
+    background-color: #a1d861;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+div#text-footer {
+    color: chocolate;
+    font-size: 12px;
+    text-transform: lowercase;
+    font-family: fantasy;
+}
+
+.text-banner {
+    text-align: center;
+    margin: 40px 20px;
+    color: white;
+}
+.activity-element {
+    text-align: center;
+    color: white;
+}
+.activity-element img {
+    width: 150px;
+    height: 150px;
+    border-radius: 1000px;
+}
+
+
+div#culte_hebdo {
+    color: #ffeb3b;
+    font-size: 25px;
+}
