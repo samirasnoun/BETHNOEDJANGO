@@ -52,4 +52,25 @@ class Migration(migrations.Migration):
             name='theme',
             field=models.ForeignKey(blank=True, on_delete=django.db.models.deletion.CASCADE, to='EnseignementsBibliques.Theme'),
         ),
+                migrations.CreateModel(
+            name='EglisePartenaire',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('titre', models.CharField(blank=True, max_length=250)),
+                ('content', ckeditor.fields.RichTextField()),
+                ('slug', models.SlugField()),
+                ('media', models.FileField(upload_to=EnseignementsBibliques.models.images_upload)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Section',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('onglet', models.CharField(choices=[('EBTNE', 'Eglise Bethnoe'), ('EGPTR', 'Eglise partenaire'), ('BLKBL', 'Bible en Kabyle'), ('ETDBB', 'Etudes bibliques'), ('ENSBI', 'Enseignements bibliques'), ('LOUAN', 'Louanges'), ('FORUM', 'Forum'), ('LIENS', 'Liens'), ('ACUIL', 'Accueil')], default='EBTNE', max_length=6)),
+                ('titre', models.CharField(blank=True, max_length=250)),
+                ('content', ckeditor.fields.RichTextField()),
+                ('media', models.FileField(upload_to=EnseignementsBibliques.models.fond_upload)),
+                ('logo', models.FileField(default='', upload_to=EnseignementsBibliques.models.fond_upload)),
+            ],
+        ),
     ]
