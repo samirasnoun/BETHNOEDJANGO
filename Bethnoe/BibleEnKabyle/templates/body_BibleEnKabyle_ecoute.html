@@ -56,11 +56,11 @@ Ecouter la bible en kabyle
 
 
 
-                {% if forloop.counter0 == current %}            
+                {% if forloop.counter == current %}            
 
-                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}" id="active">{{forloop.counter0}}</a></li>                           
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}" id="active">{{forloop.counter}}</a></li>                           
                 {% else %}
-                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}">{{forloop.counter0}}</a></li>
+                <li><a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=chap.slug %}">{{forloop.counter}}</a></li>
                 {% endif %}
 
                 {% endfor %}
