@@ -55,14 +55,31 @@
                     <br>
                 </div>
                 <div class="col-md-12 col-lg-12 text-center">
-                    <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
-                    preload="auto" width="500" max-height="500" poster="/media/{{ES.image}}"
+
+
+
+                    {% if ES.type_media == "VI" %}
+
+                <video id="really-cool-video" class="video-js vjs-default-skin vjs-big-play-centered" controls
+                    preload="auto" width="500" max-height="500" poster="/media/{{ ES.image|default_if_none:'soliel-kabyle_pLAWUoG.png' }}"
                     data-setup='{}' margin='auto'>
-                    <source src="/media/{{ES.media}}" type="video/mp4" >
+                    <source src="/media/{{ ES.media|default_if_none:'soliel-kabyle_pLAWUoG.png' }}" type="video/mp4" >
                         <p class="vjs-no-js">
                          Pour regarder cette video, il faut un naviguateur internet à jour qui supporte HTML5 et javascript 
                      </p>
                  </video>
+
+                    {% else %}
+
+                 <iframe width="560" height="315" src="{{ES.url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+                    {% endif %}
+
+
+
+
              </div>
              <div class="col-md-12">
                 <br>

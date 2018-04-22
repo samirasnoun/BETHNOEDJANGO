@@ -19,7 +19,6 @@ def BibleEnKabyleView(request, ecoute_lecture):
 	text_recherche=""
 
 	if(request.method == 'POST'): 
-		
 		form = Recherche(request.POST)
 		if form.is_valid():
 			text_recherche = form.cleaned_data['text_recherche']
@@ -28,27 +27,24 @@ def BibleEnKabyleView(request, ecoute_lecture):
 	
 	livs_right = LivreBible.objects.filter(type_na='NV')
 	for liv in livs_right :
-		
-		"chap_r = ChapitreBible.objects.filter(livre=liv).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
+		#"chap_r = ChapitreBible.objects.filter(livre=liv).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
 		chap_r = ChapitreBible.objects.filter(livre=liv).filter(content__icontains=text_recherche)
 		cc = []
 		for c in chap_r:
 			cc.append(c)
 		livres_avec_chapitres_right[liv] = cc
 
-	
 	livs_left = LivreBible.objects.filter(type_na='AC')
 	for liv_l in livs_left : 
-		
-		"chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
+		#"chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(titre__contains=text_recherche).filter(content__contains=text_recherche)"
 		chap_l = ChapitreBible.objects.filter(livre=liv_l).filter(content__icontains=text_recherche)
 		cc_l = []
 		for c_l in chap_l:
 			cc_l.append(c_l)
 		livres_avec_chapitres_left[liv_l] = cc_l
 
-		if(ecoute_lecture=='lecture'):
-			ecoute_lecture = ''
+#		if(ecoute_lecture=='lecture'):
+#			ecoute_lecture = ''
  
  
 
@@ -104,34 +100,20 @@ def BibleEnKabyleLectureView(request, slug):
  
 @csrf_protect 
 def BibleEnKabyleEcouteView(request, slug):
-
 	chapitre_en_lecture = ChapitreBible.objects.get(slug=slug)
-	
-
-
-	
-	
 	chapitres = list(ChapitreBible.objects.filter(livre=chapitre_en_lecture.livre))
-
 	current = chapitres.index(chapitre_en_lecture)
 	audios = []
 	try:
 		section = Section.objects.get(onglet='BLKBL')
 	except Section.DoesNotExist:
 		section = Section('EBTNE', 'Titre a définir','Contenu vide', 'logo.png')
-
-
-
 	prec = ""
 	suiv = ""
-
 	if( current > 0 ):
 		prec = chapitres[current-1]
-
 	if( current+1 < len(chapitres) ):
 		suiv = chapitres[int(current+1)]
-
-
 	return render(request,
 		'BibleEnKabyle_ecoute.html', 
 		{ "chapitre": chapitre_en_lecture, 

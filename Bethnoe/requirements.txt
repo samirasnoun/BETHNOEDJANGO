@@ -6,7 +6,7 @@ django-guardian==1.4.6
 murmurhash==0.26.4
 numpy==1.11.3
 pathlib==1.0.1
-Pillow==3.3.0
+Pillow==4.2.1
 plac==0.9.6
 preshed==0.46.4
 pytz==2016.6.1
