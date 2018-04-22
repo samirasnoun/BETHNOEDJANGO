@@ -38,21 +38,22 @@ class Theme(models.Model):
 		return self.titre  
 	def __str__(self):
 		return self.titre	
-
+ 
 class EnseignementBiblique(models.Model):
 	TYPE_MEDIA = (
-        ('AD', 'Audio'),
-        ('VI', 'Vidéo'),)
+		('AD', 'Audio'),
+		('VI', 'Vidéo'),
+		('YT', 'YOUTUBE'),)
 	type_media = models.CharField(max_length=2, choices=TYPE_MEDIA, default='vi')
 	content = RichTextField()
 	titre = models.CharField(max_length=250, blank=True)	
 	slug = models.SlugField(max_length=50,)
-	media = models.FileField(upload_to=media_upload_files)
-	image = models.FileField(upload_to=media_upload_files, default='')	
+	media = models.FileField(upload_to=media_upload_files, blank=True)
+	image = models.FileField(upload_to=media_upload_files,blank=True, default='')	
 	titre_media = models.CharField(max_length=250, blank=True)
 	auteur = models.ForeignKey(Auteur, blank=True,  on_delete=models.CASCADE)
 	theme = models.ForeignKey(Theme, blank=True,  on_delete=models.CASCADE)
-
+	url =  models.URLField(max_length=200, blank=True, default='')
 	def __unicode__(self):
 		return self.titre  
 	def __str__(self):
@@ -61,29 +62,29 @@ class EnseignementBiblique(models.Model):
 
 
 class Section(models.Model):
-    
-    ANGLET_SITE = (
-                ('EBTNE', 'Eglise Bethnoe'),
-                ('EGPTR', 'Eglise partenaire'),
-                ('BLKBL', 'Bible en Kabyle'),
-                ('ETDBB', 'Etudes bibliques'),
-                ('ENSBI', 'Enseignements bibliques'),
-                ('LOUAN', 'Louanges'),
-                ('FORUM', 'Forum'),
-                ('LIENS', 'Liens'),
-                ('ACUIL', 'Accueil'),
-                
+	
+	ANGLET_SITE = (
+				('EBTNE', 'Eglise Bethnoe'),
+				('EGPTR', 'Eglise partenaire'),
+				('BLKBL', 'Bible en Kabyle'),
+				('ETDBB', 'Etudes bibliques'),
+				('ENSBI', 'Enseignements bibliques'),
+				('LOUAN', 'Louanges'),
+				('FORUM', 'Forum'),
+				('LIENS', 'Liens'),
+				('ACUIL', 'Accueil'),
+				
 
-    )
-    onglet = models.CharField(max_length=6, choices=ANGLET_SITE, default='EBTNE')
-    titre = models.CharField(max_length=250, blank=True)
-    content = RichTextField()
-    media = models.FileField(upload_to=fond_upload)
-    logo = models.FileField(upload_to=fond_upload, default='')
-    def __unicode__(self):
-    	return self.titre  
-    def __str__(self):
-    	return self.titre
+	)
+	onglet = models.CharField(max_length=6, choices=ANGLET_SITE, default='EBTNE')
+	titre = models.CharField(max_length=250, blank=True)
+	content = RichTextField()
+	media = models.FileField(upload_to=fond_upload)
+	logo = models.FileField(upload_to=fond_upload, default='')
+	def __unicode__(self):
+		return self.titre  
+	def __str__(self):
+		return self.titre
 
 
 
@@ -91,15 +92,15 @@ class Section(models.Model):
 
 
 class EglisePartenaire(models.Model):
-    titre = models.CharField(max_length=250, blank=True)	
-    content = RichTextField()
-    slug = models.SlugField(max_length=50,)
-    media = models.FileField(upload_to=images_upload)
-    def __unicode__(self):
+	titre = models.CharField(max_length=250, blank=True)	
+	content = RichTextField()
+	slug = models.SlugField(max_length=50,)
+	media = models.FileField(upload_to=images_upload)
+	def __unicode__(self):
 		return self.titre  
-    def __str__(self):
-        return self.titre
+	def __str__(self):
+		return self.titre
 
-    class Meta:
-        managed = False
-        db_table = 'EnseignementsBibliques_eglisepartenaire'
+	class Meta:
+		managed = False
+		db_table = 'EnseignementsBibliques_eglisepartenaire'
