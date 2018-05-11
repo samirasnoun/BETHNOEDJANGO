@@ -7,6 +7,7 @@ Ecouter la bible en kabyle
 <br>
 <br>
 <br> 
+
 <div class="container-fluid" style="background-image: url(/media/{{section.media}})">
   <section class="row bibleenkabyle">
 
@@ -16,6 +17,7 @@ Ecouter la bible en kabyle
     <br>
     <br>
     <br>  
+
     <div class="col-sm-8 col-md-12">
 
 
@@ -53,8 +55,6 @@ Ecouter la bible en kabyle
 
 
                 {% for chap in chapitres_all %}
-
-
 
                 {% if forloop.counter == current %}            
 
@@ -121,7 +121,7 @@ Ecouter la bible en kabyle
             {% for m in chapitres %}
 
             <li class="list-group-item list-group-item-info">
-                <a href="/media/{{m.audio}}">{{m}}</a>
+                <a href="{%  url 'BibleEnKabyle:BibleEnKabyleEcoute' slug=m.slug %}">{{m}}</a>
             </li>
 
              {% endfor %}

@@ -4,6 +4,7 @@
         <br>
         <br>
         {% for livre_l, chapitres_l in livres_avec_chapitres_left.items %}
+        {% if chapitres_l %}
 
         <div class="col-md-12">
 
@@ -33,6 +34,8 @@
           </div>
 
         </div>
+
+        {% endif %}
 
         {% endfor %}
 
