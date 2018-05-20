@@ -31,7 +31,7 @@
 
                 {% endif %}
 
-                <a href="{{ image.lien }}" target="_blanck">  <img class="img-responsive center-block" id="image_carousel_index" src="{% static image.get__absolute_url %}" alt="{{image.title}}"       > </a>
+                <a href="{{ image.lien }}" target="_blanck">  <img class="img-responsive center-block" id="image_carousel_index" src="/media/{{  image.get__absolute_url }}" alt="{{image.title}}"       > </a>
 
                 <div class="carousel-caption">
                 <h3>{{image.title}}</h3>
@@ -74,7 +74,7 @@
         <a href="{{dirigent.lien}}">
 
         <div class="activity-element col-md-4 wow fadeInLeft">
-            <img src="{% static dirigent.photo.get__absolute_url %}" />
+            <img src="/media/{{ dirigent.photo.get__absolute_url }}" />
             <h3>{{dirigent.nom}} {{dirigent.prenom}}</h3>
             <p>{{dirigent.role}}</p>
         </div> 
